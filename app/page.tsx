@@ -73,24 +73,25 @@ export default function Home() {
         {mobileMenuOpen && <nav className="mobile-nav" aria-label="Mobile navigation"><a href="#about" onClick={() => setMobileMenuOpen(false)}>About <span>↗</span></a><a href="#programmes" onClick={() => setMobileMenuOpen(false)}>Programmes <span>↗</span></a><a href="#resources" onClick={() => setMobileMenuOpen(false)}>Resources <span>↗</span></a><a href="#notices" onClick={() => setMobileMenuOpen(false)}>Noticeboard <span>↗</span></a><a href="#support" onClick={() => setMobileMenuOpen(false)}>Student support <span>↗</span></a></nav>}
       </header>
 
-      <section className="hero-section">
+      <section className="hero-section hero-premium">
         <div className="hero-grid-pattern" />
-        <div className="hero-ring ring-a" /><div className="hero-ring ring-b" />
         <div className="site-container hero-layout">
           <div className="hero-copy">
-            <div className="eyebrow eyebrow-light"><span /> THE MCT STUDENT COMMUNITY</div>
-            <h1>Learn with purpose.<br /><em>Lead with confidence.</em></h1>
-            <p>A shared digital space for MCT law students — bringing academic resources, student support and campus updates together.</p>
-            <div className="hero-buttons"><a className="button button-gold" href="#resources">Explore the student hub <b>↗</b></a><a className="hero-text-link" href="#about">Discover our community <span>→</span></a></div>
-            <div className="hero-meta"><span>ACADEMICS <b>·</b> COMMUNITY <b>·</b> SUPPORT</span><span className="hero-meta-number">01 <i>/</i> 04</span></div>
+            <div className="eyebrow eyebrow-light"><span /> LEARN&nbsp; · &nbsp;LEAD&nbsp; · &nbsp;BELONG</div>
+            <h1>MCT Students&apos; Union<br /><em>Your Voice, Our Priority.</em></h1>
+            <p>A connected space for academic excellence, student welfare and a vibrant campus community at MCT College of Legal Studies.</p>
+            <div className="hero-buttons"><a className="button button-gold" href="#resources">Explore our resources <b>↗</b></a><a className="hero-text-link" href="#about">About our union <span>→</span></a></div>
+            <div className="hero-meta"><span>ACADEMICS <b>·</b> COMMUNITY <b>·</b> SUPPORT</span><span className="hero-meta-number">MCT <i>·</i> MELMURI</span></div>
           </div>
-          <div className="hero-art" aria-hidden="true">
-            <div className="art-frame"><div className="art-topline"><span>MCT / STUDENT UNION</span><span>EST. COMMUNITY</span></div><img className="hero-campus-photo" src="https://mctlawcollege.org/assets/images/facilities/fac1.webp" alt="Facility at MCT College of Legal Studies, Melmuri" /><div className="art-caption"><span>KNOWLEDGE</span><span>JUSTICE</span><span>UNITY</span></div></div>
-            <div className="art-stamp">MELMURI<br /><b>KERALA</b></div>
-            <div className="art-side-label">YOUR CAMPUS. YOUR VOICE.</div>
+          <div className="hero-art" aria-label="MCT College of Legal Studies facility photograph">
+            <div className="art-frame"><div className="art-topline"><span>MCT / STUDENT UNION</span><span>MELMURI · KERALA</span></div><img className="hero-campus-photo" src="https://mctlawcollege.org/assets/images/facilities/fac1.webp" alt="MCT College of Legal Studies facility in Melmuri, Malappuram" /><div className="art-caption"><span>KNOWLEDGE</span><span>JUSTICE</span><span>UNITY</span></div></div>
+            <div className="art-stamp">YOUR CAMPUS<br /><b>YOUR VOICE</b></div>
           </div>
         </div>
         <div className="hero-bottom-line" />
+      </section>
+      <section className="hero-feature-strip" aria-label="Student hub quick access">
+        <div className="site-container hero-feature-grid">{quickLinks.map((item, index) => <a className="hero-feature-card" href={item.href} key={item.title}><span className="hero-feature-icon">{item.icon}</span><strong>{item.title}</strong><small>{index === 0 ? "Find previous papers" : index === 1 ? "Organise your study" : index === 2 ? "Private student support" : index === 3 ? "Updates and deadlines" : index === 4 ? "Campus programmes" : "Connect by consent"}</small><b>↗</b></a>)}</div>
       </section>
 
       <section className="intro-section section-space" id="about">
