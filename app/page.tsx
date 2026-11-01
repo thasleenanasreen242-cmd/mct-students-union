@@ -78,7 +78,7 @@ export default function Home() {
         <div className="site-container hero-layout">
           <div className="hero-copy">
             <div className="eyebrow eyebrow-light"><span /> LEARN&nbsp; · &nbsp;LEAD&nbsp; · &nbsp;BELONG</div>
-            <h1>Your voice.<br /><em>Your campus.</em><br />Your community.</h1>
+            <h1>MCT Students&apos; Union<br /><em>Your voice. Your campus. Your community.</em></h1>
             <p>A connected space for academic excellence, student welfare and a vibrant campus community at MCT College of Legal Studies.</p>
             <div className="hero-buttons"><a className="button button-gold" href="#resources">Explore our resources <b>↗</b></a><a className="hero-text-link" href="#about">About our union <span>→</span></a></div>
             <div className="hero-meta"><span>ACADEMICS <b>·</b> COMMUNITY <b>·</b> SUPPORT</span><span className="hero-meta-number">MCT <i>·</i> MELMURI</span></div>
