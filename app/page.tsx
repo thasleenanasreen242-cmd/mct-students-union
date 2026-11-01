@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import VirtualCourtroom from "./components/VirtualCourtroom";
 
 const programmes = [
   { label: "05 YEARS", title: "BBA LL.B (Hons.)", detail: "Integrated business and law programme", semesters: "10 semesters", href: "#five-year" },
@@ -25,7 +26,6 @@ const notices = [
 export default function Home() {
   const [query, setQuery] = useState("");
   const [activeProgramme, setActiveProgramme] = useState("all");
-  const [courtroomFocus, setCourtroomFocus] = useState("bench");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [chatInput, setChatInput] = useState("");
@@ -121,40 +121,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="courtroom-section section-space" id="courtroom">
-        <div className="site-container courtroom-layout">
-          <div className="courtroom-copy">
-            <div className="eyebrow eyebrow-light"><span /> EXPERIENCE THE LAW</div>
-            <h2>Step inside<br /><em>the courtroom.</em></h2>
-            <p>Explore a virtual moot court environment inspired by the spaces where legal arguments are presented, examined and decided.</p>
-            <div className="courtroom-focus-panel" aria-live="polite">
-              <span>EXPLORE THE COURTROOM</span>
-              <strong>{courtroomFocus === "bench" ? "The Judge's Bench" : courtroomFocus === "bar" ? "Counsel Tables" : courtroomFocus === "witness" ? "Witness Box" : "Public Gallery"}</strong>
-              <p>{courtroomFocus === "bench" ? "The elevated bench represents the court's authority and the responsibility to hear each side impartially." : courtroomFocus === "bar" ? "Counsel tables are where advocates organise submissions, examine records and present arguments." : courtroomFocus === "witness" ? "The witness box is where testimony is given and carefully tested through examination." : "The public gallery reflects the open-court principle and the public's right to observe proceedings, subject to legal restrictions."}</p>
-            </div>
-            <div className="courtroom-legend"><span><i className="legend-gold" /> Select a point in the scene</span><span>INTERACTIVE 3D-STYLE MODEL</span></div>
-          </div>
-          <div className="courtroom-visual">
-            <div className="courtroom-scene" role="group" aria-label="Interactive stylised three-dimensional courtroom">
-              <div className="courtroom-ceiling" />
-              <div className="courtroom-backwall"><div className="courtroom-emblem">§</div><div className="courtroom-wall-lines" /></div>
-              <div className="courtroom-column column-left" /><div className="courtroom-column column-right" />
-              <div className="courtroom-bench"><span>THE BENCH</span></div>
-              <div className="courtroom-judge-seat"><span>J</span></div>
-              <button type="button" className={courtroomFocus === "bench" ? "courtroom-hotspot active" : "courtroom-hotspot"} style={{left:"50%",top:"37%"}} onClick={() => setCourtroomFocus("bench")} aria-label="Explore judge's bench">01</button>
-              <div className="courtroom-floor" />
-              <div className="courtroom-counsel counsel-left"><span>COUNSEL</span></div><div className="courtroom-counsel counsel-right"><span>COUNSEL</span></div>
-              <button type="button" className={courtroomFocus === "bar" ? "courtroom-hotspot active" : "courtroom-hotspot"} style={{left:"28%",top:"67%"}} onClick={() => setCourtroomFocus("bar")} aria-label="Explore counsel tables">02</button>
-              <div className="courtroom-witness"><span>WITNESS</span></div>
-              <button type="button" className={courtroomFocus === "witness" ? "courtroom-hotspot active" : "courtroom-hotspot"} style={{left:"72%",top:"55%"}} onClick={() => setCourtroomFocus("witness")} aria-label="Explore witness box">03</button>
-              <div className="courtroom-gallery"><span>PUBLIC GALLERY</span></div>
-              <button type="button" className={courtroomFocus === "gallery" ? "courtroom-hotspot active" : "courtroom-hotspot"} style={{left:"50%",top:"88%"}} onClick={() => setCourtroomFocus("gallery")} aria-label="Explore public gallery">04</button>
-              <div className="courtroom-floor-glow" />
-            </div>
-            <div className="courtroom-caption"><span>MOOT COURT / LEARNING ENVIRONMENT</span><span>01 — 04</span></div>
-          </div>
-        </div>
-      </section>
+      <VirtualCourtroom />
 
       <section className="support-section section-space" id="support"><div className="site-container support-layout"><div><div className="eyebrow"><span /> YOUR VOICE MATTERS</div><h2>Support that<br /><em>takes you seriously.</em></h2><p>A dedicated space is being prepared for students to raise concerns privately and follow up through a secure reference process.</p><a className="button button-navy" href="https://mctlawcollege.org/" target="_blank" rel="noreferrer">Contact student union <b>↗</b></a></div><div className="support-panel"><div className="support-panel-head"><span>STUDENT SUPPORT</span><b>PRIVATE BY DESIGN</b></div><div className="support-step"><span>01</span><div><strong>Share a concern</strong><small>Identified or anonymous submission options planned.</small></div></div><div className="support-step"><span>02</span><div><strong>Receive a reference</strong><small>Private tracking without public exposure.</small></div></div><div className="support-step"><span>03</span><div><strong>Follow progress</strong><small>Updates visible only to the student and authorised reviewers.</small></div></div><div className="support-secure">✳ &nbsp; Submissions will open after secure access controls are implemented.</div></div></div></section>
 
