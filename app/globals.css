@@ -47,3 +47,24 @@
  .hero-section:after{inset:auto -40% -25% 5%;height:50%}
 }
 @media(prefers-reduced-motion:reduce){.hero-copy,.hero-art{animation:none}.art-frame,.support-panel,.notice-item,.notice-arrow{transition:none}}
+
+.events-directory-section{background:#F4F6F9}
+.events-directory-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.events-block,.directory-block{padding:38px 34px;min-height:370px}
+.events-block{background:#fff;border:1px solid #DCE3EB}
+.directory-block{background:#102943;color:#F4F6F9}
+.events-block h2,.directory-block h2{font:clamp(34px,4vw,46px)/1.13 var(--serif);letter-spacing:-.04em;font-weight:500;margin:22px 0 13px}
+.events-block h2 em{color:#A98243}.directory-block h2 em{color:var(--gold-soft)}
+.events-block>p,.directory-block>p{font-size:10px;line-height:1.9;color:#718096;max-width:360px;margin:0}
+.directory-block>p{color:#C1CDDA}
+.event-placeholder{margin-top:35px;padding:18px 0;border-top:1px solid #E1E7ED;border-bottom:1px solid #E1E7ED;display:flex;align-items:center;gap:15px}
+.event-date{font-size:7px;letter-spacing:.13em;color:#A98243;border:1px solid #E5D8BD;padding:9px}
+.event-placeholder div,.directory-consent div{display:flex;flex-direction:column;gap:6px}
+.event-placeholder strong,.directory-consent strong{font-size:10px;color:#243B55}
+.event-placeholder small,.directory-consent small{font-size:8px;line-height:1.7;color:#7A899B}
+.event-placeholder>b{margin-left:auto;color:#B38A3E}
+.directory-consent{display:flex;gap:14px;align-items:flex-start;margin-top:34px;padding:17px;border:1px solid rgba(231,239,247,.2);background:rgba(255,255,255,.035)}
+.consent-mark{width:35px;height:35px;display:grid;place-items:center;border:1px solid rgba(217,185,111,.6);color:var(--gold);font-size:20px;flex-shrink:0}
+.directory-consent strong{color:#F2F5F8}.directory-consent small{color:#B9C7D6}
+.directory-status{display:block;margin-top:20px;font-size:7px;letter-spacing:.14em;color:var(--gold-soft)}
+@media(max-width:680px){.events-directory-grid{grid-template-columns:1fr}.events-block,.directory-block{padding:28px 22px;min-height:320px}}
