@@ -12,7 +12,7 @@ const quickLinks = [
   { icon: "§", title: "Smart study area", detail: "Organise papers, legal references and revision materials", href: "#study-area", tag: "STUDY" },
   { icon: "✳", title: "Grievance portal", detail: "Submit confidential complaints and track progress privately", href: "#support", tag: "SUPPORT" },
   { icon: "▦", title: "Noticeboard", detail: "View announcements, academic updates and deadlines", href: "#notices", tag: "CAMPUS" },
-  { icon: "◷", title: "Events calendar", detail: "See Students' Union programmes and college events", href: "#events", tag: "CAMPUS" },
+  { icon: "◷", title: "Events calendar", detail: "See Students&apos; Union programmes and college events", href: "#events", tag: "CAMPUS" },
   { icon: "◎", title: "Student directory", detail: "Find classmates who have chosen to be listed", href: "#directory", tag: "COMMUNITY" },
 ];
 
@@ -44,7 +44,7 @@ export default function Home() {
         <div className="site-container header-inner">
           <a className="identity" href="#" aria-label="MCT Students' Union home">
             <span className="identity-seal"><b>M</b><small>✳</small></span>
-            <span className="identity-text"><strong>MCT STUDENTS' UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span>
+            <span className="identity-text"><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span>
           </a>
           <nav className="desktop-nav" aria-label="Main navigation">
             <a href="#about">About</a><a href="#programmes">Programmes</a><a href="#resources">Resources</a><a href="#notices">Noticeboard</a>
@@ -78,7 +78,7 @@ export default function Home() {
       <section className="intro-section section-space" id="about">
         <div className="site-container intro-layout">
           <div className="intro-heading"><div className="eyebrow"><span /> A SPACE BUILT FOR STUDENTS</div><h2>More than a website.<br /><em>A stronger student community.</em></h2></div>
-          <div className="intro-copy"><p>This student-led platform brings useful academic tools and community updates into one accessible place. Whether you're preparing for an exam, looking for a previous paper or seeking support, start here.</p><a className="underlined-link" href="#resources">Explore what you can do <span>↗</span></a></div>
+          <div className="intro-copy"><p>This student-led platform brings useful academic tools and community updates into one accessible place. Whether you&apos;re preparing for an exam, looking for a previous paper or seeking support, start here.</p><a className="underlined-link" href="#resources">Explore what you can do <span>↗</span></a></div>
         </div>
         <div className="site-container stats-strip"><div><strong>02</strong><span>LAW PROGRAMMES</span></div><div><strong>16</strong><span>SEMESTERS ACROSS PROGRAMMES</span></div><div><strong>01</strong><span>CONNECTED STUDENT HUB</span></div><div className="stats-note">A shared space<br />for every MCT law student.</div></div>
       </section>
@@ -106,13 +106,13 @@ export default function Home() {
       <section className="notice-section section-space" id="notices"><div className="site-container"><div className="section-head"><div><div className="eyebrow"><span /> THE NOTICEBOARD</div><h2>Stay informed.<br /><em>Stay connected.</em></h2></div><p>Academic updates, student union announcements and campus activities — together in one place.</p></div><div className="notice-list">{notices.map((n) => <article className="notice-item" key={n.number}><span className="notice-no">{n.number}</span><div className="notice-title"><small>{n.category}</small><h3>{n.title}</h3></div><span className="notice-date">{n.date}</span><span className="notice-arrow">↗</span></article>)}</div></div></section>
 
       <section className="events-directory-section section-space" id="events"><div className="site-container events-directory-grid">
-        <div className="events-block"><div className="eyebrow"><span /> CAMPUS LIFE</div><h2>Make room for<br /><em>what's happening.</em></h2><p>One calendar for Students' Union programmes, academic dates and college events.</p><div className="event-placeholder"><span className="event-date">CALENDAR</span><div><strong>Upcoming events will appear here</strong><small>Event dates, venues and registration details will be published once confirmed.</small></div><b>↗</b></div></div>
+        <div className="events-block"><div className="eyebrow"><span /> CAMPUS LIFE</div><h2>Make room for<br /><em>what&apos;s happening.</em></h2><p>One calendar for Students&apos; Union programmes, academic dates and college events.</p><div className="event-placeholder"><span className="event-date">CALENDAR</span><div><strong>Upcoming events will appear here</strong><small>Event dates, venues and registration details will be published once confirmed.</small></div><b>↗</b></div></div>
         <div className="directory-block" id="directory"><div className="eyebrow eyebrow-light"><span /> STUDENT COMMUNITY</div><h2>Find your people.<br /><em>Stay connected.</em></h2><p>A voluntary directory for classmates who choose to share a limited student profile.</p><div className="directory-consent"><span className="consent-mark">◎</span><div><strong>Opt-in, not automatic</strong><small>Only students who explicitly consent may be listed. Contact details stay hidden unless separately chosen for sharing.</small></div></div><span className="directory-status">DIRECTORY PREPARATION · NO PROFILES PUBLISHED</span></div>
       </div></section>
 
-      <section className="closing-section"><div className="site-container closing-inner"><div className="eyebrow eyebrow-light"><span /> MCT STUDENTS' UNION</div><h2>Learn together.<br /><em>Move forward together.</em></h2><p>A stronger student experience begins with a connected community.</p><a className="button button-gold" href="#resources">Explore the student hub <b>↗</b></a></div></section>
+      <section className="closing-section"><div className="site-container closing-inner"><div className="eyebrow eyebrow-light"><span /> MCT STUDENTS&apos; UNION</div><h2>Learn together.<br /><em>Move forward together.</em></h2><p>A stronger student experience begins with a connected community.</p><a className="button button-gold" href="#resources">Explore the student hub <b>↗</b></a></div></section>
 
-      <footer className="site-footer"><div className="site-container footer-main"><a className="identity identity-footer" href="#"><span className="identity-seal"><b>M</b><small>✳</small></span><span className="identity-text"><strong>MCT STUDENTS' UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span></a><p>A student-led digital space for<br />the MCT College of Legal Studies community.</p><a className="footer-official" href="https://mctlawcollege.org/" target="_blank" rel="noreferrer">Official college website ↗</a></div><div className="site-container footer-bottom"><span>© {new Date().getFullYear()} MCT Students' Union</span><span>Melmuri · Malappuram · Kerala</span><span>MADE FOR STUDENTS, WITH STUDENTS.</span></div><div className="site-container footer-disclaimer">Independent student-led platform. Not the official college website. College affiliation or endorsement is not implied.</div></footer>
+      <footer className="site-footer"><div className="site-container footer-main"><a className="identity identity-footer" href="#"><span className="identity-seal"><b>M</b><small>✳</small></span><span className="identity-text"><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span></a><p>A student-led digital space for<br />the MCT College of Legal Studies community.</p><a className="footer-official" href="https://mctlawcollege.org/" target="_blank" rel="noreferrer">Official college website ↗</a></div><div className="site-container footer-bottom"><span>© {new Date().getFullYear()} MCT Students&apos; Union</span><span>Melmuri · Malappuram · Kerala</span><span>MADE FOR STUDENTS, WITH STUDENTS.</span></div><div className="site-container footer-disclaimer">Independent student-led platform. Not the official college website. College affiliation or endorsement is not implied.</div></footer>
     </main>
   );
 }
