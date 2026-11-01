@@ -23,6 +23,7 @@ const notices = [
 export default function Home() {
   const [query, setQuery] = useState("");
   const [activeProgramme, setActiveProgramme] = useState("all");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const filteredLinks = useMemo(() => quickLinks.filter((item) =>
     (activeProgramme === "all" || item.tag.toLowerCase() === activeProgramme) &&
     (item.title + " " + item.detail).toLowerCase().includes(query.toLowerCase())
@@ -46,8 +47,10 @@ export default function Home() {
           <nav className="desktop-nav" aria-label="Main navigation">
             <a href="#about">About</a><a href="#programmes">Programmes</a><a href="#resources">Resources</a><a href="#notices">Noticeboard</a>
           </nav>
+          <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen((open) => !open)}><span /><span /></button>
           <a className="header-action" href="#support">Student support <span>↗</span></a>
         </div>
+        {mobileMenuOpen && <nav className="mobile-nav" aria-label="Mobile navigation"><a href="#about" onClick={() => setMobileMenuOpen(false)}>About <span>↗</span></a><a href="#programmes" onClick={() => setMobileMenuOpen(false)}>Programmes <span>↗</span></a><a href="#resources" onClick={() => setMobileMenuOpen(false)}>Resources <span>↗</span></a><a href="#notices" onClick={() => setMobileMenuOpen(false)}>Noticeboard <span>↗</span></a><a href="#support" onClick={() => setMobileMenuOpen(false)}>Student support <span>↗</span></a></nav>}
       </header>
 
       <section className="hero-section">
