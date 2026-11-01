@@ -3,27 +3,27 @@ const programmes = [
     number: "01",
     name: "BBA LL.B (Hons.)",
     detail: "Five-year integrated law programme",
-    semesters: "10 semesters",
+    semesters: "10 SEMESTERS",
     href: "#five-year",
   },
   {
     number: "02",
     name: "LL.B (Unitary)",
     detail: "Three-year undergraduate law programme",
-    semesters: "6 semesters",
+    semesters: "6 SEMESTERS",
     href: "#three-year",
   },
 ];
 
 const updates = [
-  { tag: "ACADEMIC", title: "Previous question paper library", date: "RESOURCE" },
-  { tag: "STUDENT SUPPORT", title: "Student grievance portal", date: "COMING SOON" },
-  { tag: "UNION", title: "Notices and student announcements", date: "UPDATES" },
+  { tag: "ACADEMIC RESOURCES", title: "Previous question paper library", status: "COMING SOON" },
+  { tag: "STUDENT SUPPORT", title: "Private grievance and support portal", status: "IN DEVELOPMENT" },
+  { tag: "UNION", title: "Notices and student announcements", status: "UPDATES SOON" },
 ];
 
 function Brand() {
   return (
-    <a className="brand" href="#" aria-label="MCT Students Union home">
+    <a className="brand" href="#" aria-label="MCT Students' Union home">
       <span className="brand-mark">M<span>✳</span></span>
       <span className="brand-copy">
         <strong>MCT STUDENTS&apos; UNION</strong>
@@ -38,7 +38,7 @@ export default function Home() {
     <main>
       <div className="topline">
         <div className="container topline-inner">
-          <span> MCT COLLEGE OF LEGAL STUDIES · MELMURI, MALAPPURAM</span>
+          <span>MCT COLLEGE OF LEGAL STUDIES · MELMURI, MALAPPURAM</span>
           <span className="topline-right">A student-led support & resource space</span>
         </div>
       </div>
@@ -48,8 +48,8 @@ export default function Home() {
           <Brand />
           <nav aria-label="Main navigation">
             <a href="#about">About</a>
-            <a href="#resources">Resources</a>
             <a href="#programmes">Programmes</a>
+            <a href="#resources">Resources</a>
             <a href="#notices">Notices</a>
           </nav>
           <a className="nav-cta" href="#grievance">Student support <span>↗</span></a>
@@ -126,7 +126,7 @@ export default function Home() {
           <div className="eyebrow"><span className="eyebrow-line" /> ACADEMIC TOOLKIT</div>
           <div className="section-heading resource-heading">
             <h2>Everything you need<br /><em>for the next step.</em></h2>
-            <p>Find question papers by programme, semester<br />and subject. More resources will be added.</p>
+            <p>Find question papers by programme, semester<br />and subject. Verified materials will be added.</p>
           </div>
           <div className="resource-grid">
             <article className="resource-card" id="five-year">
@@ -134,24 +134,27 @@ export default function Home() {
               <span className="resource-label">FIVE-YEAR PROGRAMME</span>
               <h3>BBA LL.B<br />(Hons.)</h3>
               <p>Previous question papers arranged across all 10 semesters.</p>
-              <span className="resource-status">LIBRARY BEING PREPARED</span>
+              <span className="resource-status">10 SEMESTERS · LIBRARY IN PREPARATION</span>
             </article>
             <article className="resource-card featured-resource" id="three-year">
               <div className="resource-icon">§</div>
               <span className="resource-label">THREE-YEAR PROGRAMME</span>
               <h3>LL.B<br />(Unitary)</h3>
               <p>Previous question papers arranged across all 6 semesters.</p>
-              <span className="resource-status">LIBRARY BEING PREPARED</span>
+              <span className="resource-status">6 SEMESTERS · LIBRARY IN PREPARATION</span>
             </article>
             <article className="resource-card" id="grievance">
               <div className="resource-icon">✳</div>
               <span className="resource-label">STUDENT SUPPORT</span>
               <h3>Grievance<br />Portal</h3>
               <p>A private channel for students to share concerns and seek support.</p>
-              <span className="resource-status">PORTAL SETUP IN PROGRESS</span>
+              <span className="resource-status">SECURE PORTAL IN DEVELOPMENT</span>
             </article>
           </div>
-          <p className="privacy-note">Privacy matters. Grievance submissions will be accessible only to authorised student representatives once the secure portal is enabled.</p>
+          <p className="privacy-note">
+            Privacy matters. Grievance submissions will not be collected until secure storage,
+            restricted administrator access and private tracking are implemented.
+          </p>
         </div>
       </section>
 
@@ -169,7 +172,7 @@ export default function Home() {
               <article className="notice-row" key={item.title}>
                 <span className="notice-number">0{index + 1}</span>
                 <div className="notice-main"><span>{item.tag}</span><h3>{item.title}</h3></div>
-                <span className="notice-date">{item.date}</span>
+                <span className="notice-date">{item.status}</span>
                 <span className="notice-arrow">↗</span>
               </article>
             ))}
@@ -197,7 +200,7 @@ export default function Home() {
           <span>MADE FOR STUDENTS, WITH STUDENTS.</span>
         </div>
         <div className="container disclaimer">
-          This is an independent student-led resource website and is not presented as the official college website.
+          This is an independent student-led resource website and is not the official college website.
         </div>
       </footer>
     </main>
