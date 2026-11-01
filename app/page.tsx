@@ -1,208 +1,108 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
 const programmes = [
-  {
-    number: "01",
-    name: "BBA LL.B (Hons.)",
-    detail: "Five-year integrated law programme",
-    semesters: "10 SEMESTERS",
-    href: "#five-year",
-  },
-  {
-    number: "02",
-    name: "LL.B (Unitary)",
-    detail: "Three-year undergraduate law programme",
-    semesters: "6 SEMESTERS",
-    href: "#three-year",
-  },
+  { label: "05 YEARS", title: "BBA LL.B (Hons.)", detail: "Integrated business and law programme", semesters: "10 semesters", href: "#five-year" },
+  { label: "03 YEARS", title: "LL.B (Unitary)", detail: "Undergraduate law programme", semesters: "6 semesters", href: "#three-year" },
 ];
 
-const updates = [
-  { tag: "ACADEMIC RESOURCES", title: "Previous question paper library", status: "COMING SOON" },
-  { tag: "STUDENT SUPPORT", title: "Private grievance and support portal", status: "IN DEVELOPMENT" },
-  { tag: "UNION", title: "Notices and student announcements", status: "UPDATES SOON" },
+const quickLinks = [
+  { icon: "▤", title: "Question papers", detail: "Search by programme, semester and subject", href: "#resources", tag: "ACADEMICS" },
+  { icon: "§", title: "Legal resources", detail: "Bare Acts, judgments and study materials", href: "#legal-library", tag: "STUDY" },
+  { icon: "✳", title: "Student support", detail: "A private channel to raise a concern", href: "#support", tag: "WELLBEING" },
+  { icon: "▦", title: "Events & notices", detail: "Keep up with student and union updates", href: "#notices", tag: "CAMPUS" },
 ];
 
-function Brand() {
-  return (
-    <a className="brand" href="#" aria-label="MCT Students' Union home">
-      <span className="brand-mark">M<span>✳</span></span>
-      <span className="brand-copy">
-        <strong>MCT STUDENTS&apos; UNION</strong>
-        <small>COLLEGE OF LEGAL STUDIES</small>
-      </span>
-    </a>
-  );
-}
+const notices = [
+  { category: "ACADEMIC", title: "Academic resource library is being prepared", date: "COMING SOON", number: "01" },
+  { category: "STUDENTS' UNION", title: "Student announcements and updates", date: "UPDATES SOON", number: "02" },
+  { category: "CAMPUS LIFE", title: "Events and activities calendar", date: "COMING SOON", number: "03" },
+];
 
 export default function Home() {
+  const [query, setQuery] = useState("");
+  const [activeProgramme, setActiveProgramme] = useState("all");
+  const filteredLinks = useMemo(() => quickLinks.filter((item) =>
+    (activeProgramme === "all" || item.tag.toLowerCase() === activeProgramme) &&
+    (item.title + " " + item.detail).toLowerCase().includes(query.toLowerCase())
+  ), [query, activeProgramme]);
+
   return (
-    <main>
-      <div className="topline">
-        <div className="container topline-inner">
-          <span>MCT COLLEGE OF LEGAL STUDIES · MELMURI, MALAPPURAM</span>
-          <span className="topline-right">A student-led support & resource space</span>
+    <main className="site-shell">
+      <div className="utility-bar">
+        <div className="site-container utility-inner">
+          <span>MCT COLLEGE OF LEGAL STUDIES <i /> MELMURI, MALAPPURAM</span>
+          <span className="utility-right">A STUDENT-LED DIGITAL COMMUNITY <b>↗</b></span>
         </div>
       </div>
 
-      <header className="site-header">
-        <div className="container nav-wrap">
-          <Brand />
-          <nav aria-label="Main navigation">
-            <a href="#about">About</a>
-            <a href="#programmes">Programmes</a>
-            <a href="#resources">Resources</a>
-            <a href="#notices">Notices</a>
+      <header className="main-header">
+        <div className="site-container header-inner">
+          <a className="identity" href="#" aria-label="MCT Students' Union home">
+            <span className="identity-seal"><b>M</b><small>✳</small></span>
+            <span className="identity-text"><strong>MCT STUDENTS' UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span>
+          </a>
+          <nav className="desktop-nav" aria-label="Main navigation">
+            <a href="#about">About</a><a href="#programmes">Programmes</a><a href="#resources">Resources</a><a href="#notices">Noticeboard</a>
           </nav>
-          <a className="nav-cta" href="#grievance">Student support <span>↗</span></a>
+          <a className="header-action" href="#support">Student support <span>↗</span></a>
         </div>
       </header>
 
-      <section className="hero">
-        <div className="hero-orb orb-one" />
-        <div className="hero-orb orb-two" />
-        <div className="container hero-content">
-          <div className="eyebrow"><span className="eyebrow-line" /> THE STUDENT COMMUNITY</div>
-          <h1>Your voice.<br /><em>Your campus.</em><br />Your community.</h1>
-          <p className="hero-description">
-            A shared space for MCT law students to stay informed, access academic
-            resources and make student voices heard.
-          </p>
-          <div className="hero-actions">
-            <a className="button button-light" href="#resources">Explore resources <span>↗</span></a>
-            <a className="text-link light-link" href="#grievance">Raise a concern <span>→</span></a>
+      <section className="hero-section">
+        <div className="hero-grid-pattern" />
+        <div className="hero-ring ring-a" /><div className="hero-ring ring-b" />
+        <div className="site-container hero-layout">
+          <div className="hero-copy">
+            <div className="eyebrow eyebrow-light"><span /> THE MCT STUDENT COMMUNITY</div>
+            <h1>Learn with purpose.<br /><em>Lead with confidence.</em></h1>
+            <p>A shared digital space for MCT law students — bringing academic resources, student support and campus updates together.</p>
+            <div className="hero-buttons"><a className="button button-gold" href="#resources">Explore the student hub <b>↗</b></a><a className="hero-text-link" href="#about">Discover our community <span>→</span></a></div>
+            <div className="hero-meta"><span>ACADEMICS <b>·</b> COMMUNITY <b>·</b> SUPPORT</span><span className="hero-meta-number">01 <i>/</i> 04</span></div>
           </div>
-          <div className="hero-foot">
-            <span>LEARN TOGETHER. STAND TOGETHER.</span>
-            <span className="hero-index">01 / 04</span>
+          <div className="hero-art" aria-hidden="true">
+            <div className="art-frame"><div className="art-topline"><span>MCT / STUDENT UNION</span><span>EST. COMMUNITY</span></div><div className="art-monogram">M<span>§</span></div><div className="art-caption"><span>KNOWLEDGE</span><span>JUSTICE</span><span>UNITY</span></div></div>
+            <div className="art-stamp">MELMURI<br /><b>KERALA</b></div>
+            <div className="art-side-label">YOUR CAMPUS. YOUR VOICE.</div>
           </div>
         </div>
-        <div className="hero-side-note">STUDENT LIFE · ACADEMICS · SUPPORT</div>
+        <div className="hero-bottom-line" />
       </section>
 
-      <section className="intro section-pad" id="about">
-        <div className="container intro-grid">
-          <div>
-            <div className="eyebrow dark-eyebrow"><span className="eyebrow-line" /> ABOUT THIS SPACE</div>
-            <h2>Law school is a journey.<br /><em>Let&apos;s make it better, together.</em></h2>
-          </div>
-          <div className="intro-copy">
-            <p>
-              Created as a student-led digital hub for the MCT College of Legal
-              Studies community. Find academic material, follow important
-              announcements and discover ways to connect with student support.
-            </p>
-            <p className="muted">Built around access, participation and a stronger student community.</p>
-          </div>
+      <section className="intro-section section-space" id="about">
+        <div className="site-container intro-layout">
+          <div className="intro-heading"><div className="eyebrow"><span /> A SPACE BUILT FOR STUDENTS</div><h2>More than a website.<br /><em>A stronger student community.</em></h2></div>
+          <div className="intro-copy"><p>This student-led platform brings useful academic tools and community updates into one accessible place. Whether you're preparing for an exam, looking for a previous paper or seeking support, start here.</p><a className="underlined-link" href="#resources">Explore what you can do <span>↗</span></a></div>
+        </div>
+        <div className="site-container stats-strip"><div><strong>02</strong><span>LAW PROGRAMMES</span></div><div><strong>16</strong><span>SEMESTERS ACROSS PROGRAMMES</span></div><div><strong>01</strong><span>CONNECTED STUDENT HUB</span></div><div className="stats-note">A shared space<br />for every MCT law student.</div></div>
+      </section>
+
+      <section className="programmes-section section-space" id="programmes">
+        <div className="site-container">
+          <div className="section-head"><div><div className="eyebrow"><span /> FIND YOUR ACADEMIC SPACE</div><h2>One community.<br /><em>Two pathways.</em></h2></div><p>Dedicated academic spaces for both programmes, organised to make study resources easier to find.</p></div>
+          <div className="programme-cards">{programmes.map((p, i) => <a href={p.href} className="programme-tile" key={p.title}><div className="tile-top"><span>{p.label}</span><b>0{i + 1}</b></div><div className="tile-main"><h3>{p.title}</h3><p>{p.detail}</p></div><div className="tile-bottom"><span>{p.semesters}</span><b>Explore programme <i>↗</i></b></div></a>)}</div>
         </div>
       </section>
 
-      <section className="programmes section-pad" id="programmes">
-        <div className="container">
-          <div className="section-heading">
-            <div>
-              <div className="eyebrow dark-eyebrow"><span className="eyebrow-line" /> YOUR ACADEMIC PATH</div>
-              <h2>Choose your <em>programme.</em></h2>
-            </div>
-            <p>Dedicated academic resource spaces<br />for both law programmes.</p>
-          </div>
-          <div className="programme-grid">
-            {programmes.map((programme) => (
-              <a className="programme-card" href={programme.href} key={programme.number}>
-                <span className="card-number">{programme.number}</span>
-                <span className="card-arrow">↗</span>
-                <div>
-                  <h3>{programme.name}</h3>
-                  <p>{programme.detail}</p>
-                  <span className="semester-count">{programme.semesters}</span>
-                </div>
-                <span className="card-bottom">EXPLORE RESOURCES <b>→</b></span>
-              </a>
-            ))}
-          </div>
+      <section className="hub-section section-space" id="resources">
+        <div className="site-container">
+          <div className="hub-heading"><div><div className="eyebrow eyebrow-light"><span /> THE STUDENT WORKSPACE</div><h2>Everything in one<br /><em>well-organised place.</em></h2></div><p>Find the right resource, stay informed and get connected with the student community.</p></div>
+          <div className="hub-tools"><label className="hub-search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search student resources..." aria-label="Search student resources" /></label><div className="hub-filters"><button className={activeProgramme === "all" ? "active" : ""} onClick={() => setActiveProgramme("all")}>All</button><button className={activeProgramme === "academics" ? "active" : ""} onClick={() => setActiveProgramme("academics")}>Academics</button><button className={activeProgramme === "study" ? "active" : ""} onClick={() => setActiveProgramme("study")}>Study</button><button className={activeProgramme === "wellbeing" ? "active" : ""} onClick={() => setActiveProgramme("wellbeing")}>Support</button><button className={activeProgramme === "campus" ? "active" : ""} onClick={() => setActiveProgramme("campus")}>Campus</button></div></div>
+          <div className="hub-card-grid">{filteredLinks.map((item, i) => <a href={item.href} className="hub-card" key={item.title}><div className="hub-card-top"><span className="hub-icon">{item.icon}</span><span className="hub-card-number">0{i + 1}</span></div><div><span className="hub-tag">{item.tag}</span><h3>{item.title}</h3><p>{item.detail}</p></div><div className="hub-card-link">EXPLORE <b>↗</b></div></a>)}</div>
+          {filteredLinks.length === 0 && <p className="empty-search">No matching resources. Try another search.</p>}
+          <div className="library-callout" id="legal-library"><div><span className="eyebrow eyebrow-light"><span /> BUILT FOR LAW STUDENTS</span><h3>Your legal learning<br /><em>toolkit starts here.</em></h3><p>We are preparing a structured library for question papers, legal study references and programme materials.</p></div><div className="library-callout-mark">§</div></div>
+          <div className="programme-resource-row"><div id="five-year"><span>05-YEAR PROGRAMME</span><strong>BBA LL.B (Hons.)</strong><small>10 semesters · Question paper library in preparation</small></div><div id="three-year"><span>03-YEAR PROGRAMME</span><strong>LL.B (Unitary)</strong><small>6 semesters · Question paper library in preparation</small></div></div>
         </div>
       </section>
 
-      <section className="resources section-pad" id="resources">
-        <div className="container">
-          <div className="eyebrow"><span className="eyebrow-line" /> ACADEMIC TOOLKIT</div>
-          <div className="section-heading resource-heading">
-            <h2>Everything you need<br /><em>for the next step.</em></h2>
-            <p>Find question papers by programme, semester<br />and subject. Verified materials will be added.</p>
-          </div>
-          <div className="resource-grid">
-            <article className="resource-card" id="five-year">
-              <div className="resource-icon">⌘</div>
-              <span className="resource-label">FIVE-YEAR PROGRAMME</span>
-              <h3>BBA LL.B<br />(Hons.)</h3>
-              <p>Previous question papers arranged across all 10 semesters.</p>
-              <span className="resource-status">10 SEMESTERS · LIBRARY IN PREPARATION</span>
-            </article>
-            <article className="resource-card featured-resource" id="three-year">
-              <div className="resource-icon">§</div>
-              <span className="resource-label">THREE-YEAR PROGRAMME</span>
-              <h3>LL.B<br />(Unitary)</h3>
-              <p>Previous question papers arranged across all 6 semesters.</p>
-              <span className="resource-status">6 SEMESTERS · LIBRARY IN PREPARATION</span>
-            </article>
-            <article className="resource-card" id="grievance">
-              <div className="resource-icon">✳</div>
-              <span className="resource-label">STUDENT SUPPORT</span>
-              <h3>Grievance<br />Portal</h3>
-              <p>A private channel for students to share concerns and seek support.</p>
-              <span className="resource-status">SECURE PORTAL IN DEVELOPMENT</span>
-            </article>
-          </div>
-          <p className="privacy-note">
-            Privacy matters. Grievance submissions will not be collected until secure storage,
-            restricted administrator access and private tracking are implemented.
-          </p>
-        </div>
-      </section>
+      <section className="support-section section-space" id="support"><div className="site-container support-layout"><div><div className="eyebrow"><span /> YOUR VOICE MATTERS</div><h2>Support that<br /><em>takes you seriously.</em></h2><p>A dedicated space is being prepared for students to raise concerns privately and follow up through a secure reference process.</p><a className="button button-navy" href="mailto:studentsunion@mctlawcollege.org?subject=Student%20support%20enquiry">Contact student union <b>↗</b></a></div><div className="support-panel"><div className="support-panel-head"><span>STUDENT SUPPORT</span><b>PRIVATE BY DESIGN</b></div><div className="support-step"><span>01</span><div><strong>Share a concern</strong><small>Identified or anonymous submission options planned.</small></div></div><div className="support-step"><span>02</span><div><strong>Receive a reference</strong><small>Private tracking without public exposure.</small></div></div><div className="support-step"><span>03</span><div><strong>Follow progress</strong><small>Updates visible only to the student and authorised reviewers.</small></div></div><div className="support-secure">✳ &nbsp; Submissions will open after secure access controls are implemented.</div></div></div></section>
 
-      <section className="notices section-pad" id="notices">
-        <div className="container">
-          <div className="section-heading">
-            <div>
-              <div className="eyebrow dark-eyebrow"><span className="eyebrow-line" /> THE NOTICEBOARD</div>
-              <h2>Stay in the <em>loop.</em></h2>
-            </div>
-            <p>One place for student updates,<br />resources and important information.</p>
-          </div>
-          <div className="notice-list">
-            {updates.map((item, index) => (
-              <article className="notice-row" key={item.title}>
-                <span className="notice-number">0{index + 1}</span>
-                <div className="notice-main"><span>{item.tag}</span><h3>{item.title}</h3></div>
-                <span className="notice-date">{item.status}</span>
-                <span className="notice-arrow">↗</span>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="notice-section section-space" id="notices"><div className="site-container"><div className="section-head"><div><div className="eyebrow"><span /> THE NOTICEBOARD</div><h2>Stay informed.<br /><em>Stay connected.</em></h2></div><p>Academic updates, student union announcements and campus activities — together in one place.</p></div><div className="notice-list">{notices.map((n) => <article className="notice-item" key={n.number}><span className="notice-no">{n.number}</span><div className="notice-title"><small>{n.category}</small><h3>{n.title}</h3></div><span className="notice-date">{n.date}</span><span className="notice-arrow">↗</span></article>)}</div></div></section>
 
-      <section className="closing">
-        <div className="container closing-inner">
-          <div className="eyebrow"><span className="eyebrow-line" /> THE MCT COMMUNITY</div>
-          <h2>Stronger voices.<br /><em>Stronger futures.</em></h2>
-          <a className="button button-light" href="#resources">Explore the student hub <span>↗</span></a>
-        </div>
-      </section>
+      <section className="closing-section"><div className="site-container closing-inner"><div className="eyebrow eyebrow-light"><span /> MCT STUDENTS' UNION</div><h2>Learn together.<br /><em>Move forward together.</em></h2><p>A stronger student experience begins with a connected community.</p><a className="button button-gold" href="#resources">Explore the student hub <b>↗</b></a></div></section>
 
-      <footer className="footer">
-        <div className="container footer-top">
-          <Brand />
-          <p>A student-led digital space for<br />MCT College of Legal Studies.</p>
-          <a href="https://mctlawcollege.org/" target="_blank" rel="noreferrer">College website ↗</a>
-        </div>
-        <div className="container footer-bottom">
-          <span>© {new Date().getFullYear()} MCT Students&apos; Union</span>
-          <span>Melmuri · Malappuram · Kerala</span>
-          <span>MADE FOR STUDENTS, WITH STUDENTS.</span>
-        </div>
-        <div className="container disclaimer">
-          This is an independent student-led resource website and is not the official college website.
-        </div>
-      </footer>
+      <footer className="site-footer"><div className="site-container footer-main"><a className="identity identity-footer" href="#"><span className="identity-seal"><b>M</b><small>✳</small></span><span className="identity-text"><strong>MCT STUDENTS' UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span></a><p>A student-led digital space for<br />the MCT College of Legal Studies community.</p><a className="footer-official" href="https://mctlawcollege.org/" target="_blank" rel="noreferrer">Official college website ↗</a></div><div className="site-container footer-bottom"><span>© {new Date().getFullYear()} MCT Students' Union</span><span>Melmuri · Malappuram · Kerala</span><span>MADE FOR STUDENTS, WITH STUDENTS.</span></div><div className="site-container footer-disclaimer">Independent student-led platform. Not the official college website. College affiliation or endorsement is not implied.</div></footer>
     </main>
   );
 }
