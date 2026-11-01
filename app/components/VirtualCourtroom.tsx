@@ -1,5 +1,6 @@
 "use client";
 
+import type * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 
 type Landmark = "bench" | "counsel" | "witness" | "gallery";
