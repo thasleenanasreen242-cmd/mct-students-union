@@ -85,7 +85,7 @@ export default function Home() {
             <div className="hero-meta"><span>ACADEMICS <b>·</b> COMMUNITY <b>·</b> SUPPORT</span><span className="hero-meta-number">01 <i>/</i> 04</span></div>
           </div>
           <div className="hero-art" aria-hidden="true">
-            <div className="art-frame"><div className="art-topline"><span>MCT / STUDENT UNION</span><span>EST. COMMUNITY</span></div><div className="art-monogram">M<span>§</span></div><div className="art-caption"><span>KNOWLEDGE</span><span>JUSTICE</span><span>UNITY</span></div></div>
+            <div className="art-frame"><div className="art-topline"><span>MCT / STUDENT UNION</span><span>EST. COMMUNITY</span></div><img className="hero-campus-photo" src="https://mctlawcollege.org/assets/images/facilities/fac1.webp" alt="Facility at MCT College of Legal Studies, Melmuri" /><div className="art-caption"><span>KNOWLEDGE</span><span>JUSTICE</span><span>UNITY</span></div></div>
             <div className="art-stamp">MELMURI<br /><b>KERALA</b></div>
             <div className="art-side-label">YOUR CAMPUS. YOUR VOICE.</div>
           </div>

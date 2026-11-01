@@ -101,3 +101,12 @@
 .official-logo-wrap img{display:block;width:100%;height:100%;object-fit:contain;border-radius:50%}
 .identity{gap:12px}
 @media(max-width:680px){.identity-seal.official-logo-wrap{width:46px;height:46px;flex-basis:46px}.identity{gap:9px}}
+
+
+/* Authentic MCT campus image supplied by the user */
+.art-frame{overflow:hidden}
+.art-frame:before{z-index:2;pointer-events:none}
+.art-frame:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(9,28,48,.28) 0%,rgba(9,28,48,.02) 42%,rgba(9,28,48,.72) 100%)}
+.hero-campus-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;border:0}
+.art-topline,.art-caption{z-index:3}
+.art-stamp,.art-side-label{z-index:4}
