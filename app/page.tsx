@@ -61,7 +61,7 @@ export default function Home() {
       <header className="main-header">
         <div className="site-container header-inner">
           <a className="identity" href="#" aria-label="MCT Students' Union home">
-            <span className="identity-seal"><b>M</b><small>✳</small></span>
+            <span className="identity-seal official-logo-wrap"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies official logo" /></span>
             <span className="identity-text"><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span>
           </a>
           <nav className="desktop-nav" aria-label="Main navigation">
