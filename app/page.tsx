@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const programmes = [
   { label: "05 YEARS", title: "BBA LL.B (Hons.)", detail: "Integrated business and law programme", semesters: "10 semesters", href: "#five-year" },
@@ -29,6 +29,28 @@ export default function Home() {
   const [chatOpen, setChatOpen] = useState(false);
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState([{ from: "bot", text: "Hello! I can help you find question papers, programme information, notices and student support. What would you like to know?" }]);
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      ".section-space, .hero-feature-card, .programme-tile, .hub-card, .notice-item, .support-panel, .event-placeholder, .directory-consent, .library-callout, .programme-resource-row > div, .stats-strip > div"
+    );
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -45px 0px" });
+
+    elements.forEach((element) => {
+      element.classList.add("scroll-reveal");
+      observer.observe(element);
+    });
+    return () => observer.disconnect();
+  }, []);
   const sendChat = (value = chatInput) => {
     const text = value.trim();
     if (!text) return;
