@@ -1,228 +1,47 @@
 "use client";
-
 import type * as THREE from "three";
-import { useEffect, useRef, useState } from "react";
-
-type Landmark = "bench" | "counsel" | "witness" | "gallery";
-
-const landmarkCopy: Record<Landmark, { title: string; detail: string }> = {
-  bench: { title: "The Judge's Bench", detail: "The elevated bench represents the court's authority and the responsibility to hear each side impartially." },
-  counsel: { title: "Counsel Tables", detail: "Counsel tables are where advocates organise submissions, examine records and present arguments." },
-  witness: { title: "Witness Box", detail: "The witness box is where testimony is given and carefully tested through examination." },
-  gallery: { title: "Public Gallery", detail: "The public gallery reflects the open-court principle and the public's right to observe proceedings, subject to legal restrictions." },
+import { useEffect,useRef,useState } from "react";
+type Area="home"|"programmes"|"papers"|"study"|"notices"|"events"|"support"|"directory";
+type Place="bench"|"counsel"|"witness"|"gallery";
+const nav:{id:Area;label:string}[]=[{id:"home",label:"Welcome"},{id:"programmes",label:"Law programmes"},{id:"papers",label:"Question bank"},{id:"study",label:"Smart study area"},{id:"notices",label:"Noticeboard"},{id:"events",label:"Events calendar"},{id:"support",label:"Student support"},{id:"directory",label:"Student directory"}];
+const content:Record<Area,{eyebrow:string;title:string;body:string;items:string[]}> = {
+home:{eyebrow:"MCT COLLEGE OF LEGAL STUDIES · MELMURI",title:"MCT Students' Union",body:"Your voice. Your campus. Your community. A student-led digital space for learning, student welfare and campus life.",items:["Explore the courtroom around you","Choose a destination from the menu","Drag to look around · scroll or pinch to zoom"]},
+programmes:{eyebrow:"ACADEMIC SPACES",title:"Two pathways. One community.",body:"Dedicated student spaces for the law programmes offered at MCT College of Legal Studies.",items:["BBA LL.B (Hons.) · 5 years · 10 semesters","LL.B (Unitary) · 3 years · 6 semesters","Programme resources are being prepared"]},
+papers:{eyebrow:"ACADEMIC RESOURCE LIBRARY",title:"Question bank",body:"Previous question papers organised by programme, semester and subject.",items:["BBA LL.B (Hons.) · 10 semesters","LL.B (Unitary) · 6 semesters","PDF downloads will be enabled as papers are uploaded"]},
+study:{eyebrow:"BUILT FOR LAW STUDENTS",title:"Smart study area",body:"A planned workspace to keep study materials and revision resources organised.",items:["Organise by programme and semester","Sort materials by subject","Save legal references and revision notes"]},
+notices:{eyebrow:"CAMPUS INFORMATION",title:"Noticeboard",body:"A central place for academic updates, student union announcements and important deadlines.",items:["Academic resource library preparation","Student announcements and updates","Live notices will appear when published"]},
+events:{eyebrow:"CAMPUS LIFE",title:"Events calendar",body:"A shared calendar for Students' Union programmes, academic dates and college events.",items:["Union programmes","College events and activities","Dates and venues will be added once confirmed"]},
+support:{eyebrow:"YOUR VOICE MATTERS",title:"Student support",body:"A confidential grievance service is being planned. It will open only after secure storage and access controls are ready.",items:["Private concern submission","Secure reference-based follow-up","No grievance submissions are collected on this preview"]},
+directory:{eyebrow:"STUDENT COMMUNITY",title:"Student directory",body:"A voluntary directory for classmates who choose to share a limited student profile.",items:["Opt-in only · no profiles published","Contact details hidden by default","Students decide what information they share"]}
 };
-
-export default function VirtualCourtroom() {
-  const mountRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState<Landmark>("bench");
-  const [ready, setReady] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    let disposed = false;
-    let renderer: import("three").WebGLRenderer | undefined;
-    let frame = 0;
-    let cleanup = () => {};
-    const mount = mountRef.current;
-    if (!mount) return;
-
-    const build = async () => {
-      try {
-        const THREE = await import("three");
-        const { OrbitControls } = await import("three/examples/jsm/controls/OrbitControls.js");
-        if (disposed) return;
-
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color("#101f30");
-        scene.fog = new THREE.Fog("#101f30", 15, 34);
-        const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
-        camera.position.set(0, 5.8, 13.5);
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.7));
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.15;
-        mount.appendChild(renderer.domElement);
-
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.target.set(0, 2.5, -1);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.055;
-        controls.minDistance = 5;
-        controls.maxDistance = 19;
-        controls.maxPolarAngle = Math.PI * 0.48;
-        controls.minPolarAngle = 0.35;
-        controls.enablePan = true;
-        controls.panSpeed = 0.55;
-        controls.rotateSpeed = 0.55;
-        controls.zoomSpeed = 0.8;
-        renderer.domElement.style.touchAction = "none";
-
-        scene.add(new THREE.HemisphereLight("#dce8f3", "#302116", 2.1));
-        const warm = new THREE.DirectionalLight("#ffe2b1", 3.2);
-        warm.position.set(-5, 11, 7);
-        warm.castShadow = true;
-        warm.shadow.mapSize.set(1024, 1024);
-        scene.add(warm);
-        const fill = new THREE.PointLight("#d6e7ff", 24, 22);
-        fill.position.set(5, 6, -5);
-        scene.add(fill);
-
-        const materials = {
-          wall: new THREE.MeshStandardMaterial({ color: "#243c53", roughness: 0.88 }),
-          wood: new THREE.MeshStandardMaterial({ color: "#603b28", roughness: 0.38 }),
-          woodLight: new THREE.MeshStandardMaterial({ color: "#986c42", roughness: 0.4 }),
-          gold: new THREE.MeshStandardMaterial({ color: "#c9a768", metalness: 0.62, roughness: 0.3 }),
-          stone: new THREE.MeshStandardMaterial({ color: "#b9ae99", roughness: 0.68 }),
-          floor: new THREE.MeshStandardMaterial({ color: "#4b3a31", roughness: 0.55 }),
-          dark: new THREE.MeshStandardMaterial({ color: "#172838", roughness: 0.8 }),
-          leather: new THREE.MeshStandardMaterial({ color: "#3b2521", roughness: 0.72 }),
-        };
-        const box = (w:number,h:number,d:number,mat:THREE.Material,x:number,y:number,z:number) => {
-          const mesh = new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);
-          mesh.position.set(x,y,z); mesh.castShadow=true; mesh.receiveShadow=true; scene.add(mesh); return mesh;
-        };
-        const cylinder = (rt:number,rb:number,h:number,mat:THREE.Material,x:number,y:number,z:number) => {
-          const mesh = new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,24),mat);
-          mesh.position.set(x,y,z); mesh.castShadow=true; scene.add(mesh); return mesh;
-        };
-
-        box(22,.35,24,materials.floor,0,-.22,-2);
-        box(22,8,.45,materials.wall,0,4,-13);
-        box(.45,8,24,materials.wall,-11,4,-2);
-        box(.45,8,24,materials.wall,11,4,-2);
-        box(22,.35,24,materials.dark,0,8,-2);
-        // Rear wall panelling and judicial crest
-        for(let x=-9;x<=9;x+=3) box(.09,6,.12,materials.gold,x,4.3,-12.72);
-        box(3.2,.12,.18,materials.gold,0,6.2,-12.68);
-        box(3.2,.12,.18,materials.gold,0,2.2,-12.68);
-        const crest = new THREE.Mesh(new THREE.TorusGeometry(.72,.055,12,64),materials.gold);
-        crest.position.set(0,5.15,-12.55); scene.add(crest);
-        const crestBar=box(.08,1.15,.08,materials.gold,0,5.15,-12.5);
-        crestBar.rotation.z=Math.PI/8;
-        // Classical columns on either side
-        for(const x of [-9.1,9.1]) {
-          cylinder(.42,.5,6.4,materials.stone,x,3.2,-9.5);
-          cylinder(.68,.68,.22,materials.gold,x,6.45,-9.5);
-          cylinder(.68,.68,.22,materials.gold,x,.1,-9.5);
-        }
-        // Raised judicial dais, bench and high-backed chair
-        box(8,.42,3.1,materials.woodLight,0,.25,-9.4);
-        box(7.8,1.05,1.2,materials.wood,0,1,-10.35);
-        box(7.9,.12,1.3,materials.gold,0,1.58,-10.35);
-        box(5.5,1.15,.35,materials.leather,0,2.25,-11.1);
-        box(5.8,.13,.42,materials.gold,0,1.72,-11.1);
-        // Judge's chair
-        box(1.65,2.6,.5,materials.leather,0,3.1,-11.6);
-        box(1.9,.16,.58,materials.gold,0,4.38,-11.6);
-        // Counsel tables, chairs and lecterns
-        for(const x of [-4.5,4.5]) {
-          box(3.6,.22,1.8,materials.wood,x,1.05,-4.7);
-          box(3.5,.12,1.72,materials.woodLight,x,1.2,-4.7);
-          for(const dx of [-1.35,1.35]) {
-            box(.12,.85,.12,materials.wood,x+dx,.52,-5.25);
-            box(.12,.85,.12,materials.wood,x+dx,.52,-4.15);
-          }
-          for(const cx of [-1,0,1]) {
-            box(.72,.18,.72,materials.leather,x+cx*1.15,.65,-2.55);
-            box(.72,.9,.16,materials.wood,x+cx*1.15,1.12,-2.85);
-          }
-        }
-        // Witness box in the centre
-        box(2.2,1.1,1.6,materials.wood,0,.75,-1.2);
-        box(2.3,.13,1.7,materials.gold,0,1.35,-1.2);
-        box(.12,1.2,.12,materials.wood, -1,.8,-.45);
-        box(.12,1.2,.12,materials.wood, 1,.8,-.45);
-        box(2.1,.1,.12,materials.gold,0,1.38,-.45);
-        // Public gallery seating in rows
-        for(let row=0;row<3;row++) {
-          for(let col=-3;col<=3;col++) {
-            const z=2.1+row*2.15;
-            box(1.05,.22,.72,materials.woodLight,col*1.35,.72,z);
-            box(1.05,.9,.16,materials.leather,col*1.35,1.18,z+.28);
-          }
-        }
-        // Warm pendant lights
-        for(const x of [-5,0,5]) {
-          cylinder(.035,.035,1.2,materials.gold,x,7.2,-5);
-          const lamp=new THREE.PointLight("#ffdda7",18,9);
-          lamp.position.set(x,6.3,-5); scene.add(lamp);
-          const shade=new THREE.Mesh(new THREE.SphereGeometry(.22,16,12),new THREE.MeshStandardMaterial({color:"#ffe2a6",emissive:"#b77b35",emissiveIntensity:1.2}));
-          shade.position.set(x,6.15,-5); scene.add(shade);
-        }
-        const raycaster = new THREE.Raycaster();
-        const pointer = new THREE.Vector2();
-        const hitTargets: { mesh:THREE.Object3D; key:Landmark }[] = [];
-        const addTarget=(key:Landmark,x:number,y:number,z:number)=>{
-          const marker=new THREE.Mesh(new THREE.SphereGeometry(.22,20,20),new THREE.MeshStandardMaterial({color:"#e3c17b",emissive:"#9b7135",emissiveIntensity:.75}));
-          marker.position.set(x,y,z); marker.userData.landmark=key; scene.add(marker); hitTargets.push({mesh:marker,key});
-        };
-        addTarget("bench",0,2.7,-10.7);
-        addTarget("counsel",-4.5,1.9,-4.7);
-        addTarget("witness",0,1.8,-1.2);
-        addTarget("gallery",0,1.7,5.8);
-        const onClick=(event:PointerEvent)=>{
-          const rect=renderer!.domElement.getBoundingClientRect();
-          pointer.x=((event.clientX-rect.left)/rect.width)*2-1;
-          pointer.y=-((event.clientY-rect.top)/rect.height)*2+1;
-          raycaster.setFromCamera(pointer,camera);
-          const hit=raycaster.intersectObjects(hitTargets.map(t=>t.mesh),false)[0];
-          if(hit?.object.userData.landmark) window.dispatchEvent(new CustomEvent("courtroom-landmark",{detail:hit.object.userData.landmark}));
-        };
-        renderer.domElement.addEventListener("click",onClick);
-        const resize=()=>{
-          if(!mount || !renderer) return;
-          const width=mount.clientWidth, height=mount.clientHeight;
-          if(!width||!height) return;
-          camera.aspect=width/height; camera.updateProjectionMatrix(); renderer.setSize(width,height,false);
-        };
-        const observer=new ResizeObserver(resize); observer.observe(mount); resize();
-        const animate=()=>{ if(disposed)return; frame=requestAnimationFrame(animate); controls.update(); renderer!.render(scene,camera); };
-        animate();
-        cleanup=()=>{ observer.disconnect(); renderer?.domElement.removeEventListener("click",onClick); controls.dispose(); scene.traverse(o=>{const m=o as THREE.Mesh;if(m.geometry)m.geometry.dispose();if(Array.isArray(m.material))m.material.forEach(v=>v.dispose());else if(m.material)m.material.dispose();}); };
-        setReady(true);
-      } catch (e) { console.error("Courtroom 3D could not initialise",e); setError(true); }
-    };
-    void build();
-    return ()=>{disposed=true;cancelAnimationFrame(frame);cleanup();if(renderer){renderer.dispose();if(renderer.domElement.parentElement===mount)mount.removeChild(renderer.domElement);}};
-  }, []);
-
-  useEffect(()=>{
-    const listener=(event:Event)=>setActive((event as CustomEvent<Landmark>).detail);
-    window.addEventListener("courtroom-landmark",listener);
-    return ()=>window.removeEventListener("courtroom-landmark",listener);
-  },[]);
-
-  const moveTo=(key:Landmark)=>{
-    setActive(key);
-    const targets:Record<Landmark,string>={bench:"bench",counsel:"counsel",witness:"witness",gallery:"gallery"};
-    window.dispatchEvent(new CustomEvent("courtroom-focus",{detail:targets[key]}));
-  };
-
-  return (
-    <section className="courtroom-section section-space" id="courtroom">
-      <div className="site-container courtroom-immersive">
-        <div className="courtroom-heading">
-          <div className="eyebrow eyebrow-light"><span /> EXPERIENCE THE LAW</div>
-          <h2>Enter the <em>moot courtroom.</em></h2>
-          <p>Explore a navigable 3D courtroom. Drag to look around, scroll or pinch to move closer, and select a destination to explore.</p>
-        </div>
-        <div className="courtroom-viewport-shell">
-          <div className="courtroom-viewport" ref={mountRef} aria-label="Interactive 3D virtual moot courtroom" role="application">
-            {!ready && !error && <div className="courtroom-loading">Preparing your virtual courtroom…</div>}
-            {error && <div className="courtroom-loading">3D view is unavailable on this device. Please try a WebGL-enabled browser.</div>}
-            <div className="courtroom-hud"><span>LIVE 3D ENVIRONMENT</span><span>DRAG · ZOOM · EXPLORE</span></div>
-          </div>
-          <div className="courtroom-destinations">
-            {(["bench","counsel","witness","gallery"] as Landmark[]).map((key,index)=>(
-              <button type="button" key={key} className={active===key?"active":""} onClick={()=>moveTo(key)}><span>0{index+1}</span>{landmarkCopy[key].title}</button>
-            ))}
-          </div>
-        </div>
-        <div className="courtroom-detail" aria-live="polite"><span>NOW EXPLORING</span><strong>{landmarkCopy[active].title}</strong><p>{landmarkCopy[active].detail}</p></div>
-      </div>
-    </section>
-  );
+const places:{id:Place;label:string;pos:[number,number,number]}[]=[{id:"bench",label:"Judge's bench",pos:[0,2.5,-10.8]},{id:"counsel",label:"Counsel tables",pos:[-4.5,1.5,-5]},{id:"witness",label:"Witness box",pos:[0,1.5,-1.5]},{id:"gallery",label:"Public gallery",pos:[0,1.5,6]}];
+export default function VirtualCourtroom(){
+const mount=useRef<HTMLDivElement>(null);const [area,setArea]=useState<Area>("home");const [menu,setMenu]=useState(false);const [ready,setReady]=useState(false);const [err,setErr]=useState(false);const [place,setPlace]=useState<Place>("bench");
+useEffect(()=>{let dead=false,frame=0;let renderer:THREE.WebGLRenderer|undefined;let clean=()=>{};const host=mount.current;if(!host)return;
+const init=async()=>{try{const T=await import("three");const {OrbitControls}=await import("three/examples/jsm/controls/OrbitControls.js");if(dead)return;
+const scene=new T.Scene();scene.background=new T.Color("#142638");scene.fog=new T.Fog("#142638",22,43);
+const camera=new T.PerspectiveCamera(52,1,.1,100);camera.position.set(0,5.5,16);
+renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;host.appendChild(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement);controls.target.set(0,2.6,-2);controls.enableDamping=true;controls.dampingFactor=.06;controls.minDistance=4;controls.maxDistance=25;controls.maxPolarAngle=Math.PI*.49;controls.minPolarAngle=.2;controls.enablePan=true;controls.rotateSpeed=.55;controls.zoomSpeed=.8;renderer.domElement.style.touchAction="none";
+scene.add(new T.HemisphereLight("#e5efff","#38271c",2));const sun=new T.DirectionalLight("#ffe1b0",3.2);sun.position.set(-6,12,7);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);scene.add(sun);const fill=new T.PointLight("#cbdfff",30,30);fill.position.set(5,6,-6);scene.add(fill);
+const m={wall:new T.MeshStandardMaterial({color:"#263f55",roughness:.85}),wood:new T.MeshStandardMaterial({color:"#68432e",roughness:.4}),trim:new T.MeshStandardMaterial({color:"#a77a4b",roughness:.4}),gold:new T.MeshStandardMaterial({color:"#d0ad6c",metalness:.55,roughness:.3}),floor:new T.MeshStandardMaterial({color:"#49372d",roughness:.5}),leather:new T.MeshStandardMaterial({color:"#402723",roughness:.7}),stone:new T.MeshStandardMaterial({color:"#bfb5a3"})};
+const box=(w:number,h:number,d:number,mat:THREE.Material,x:number,y:number,z:number)=>{const o=new T.Mesh(new T.BoxGeometry(w,h,d),mat);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;scene.add(o);return o};
+const cyl=(a:number,b:number,h:number,mat:THREE.Material,x:number,y:number,z:number)=>{const o=new T.Mesh(new T.CylinderGeometry(a,b,h,24),mat);o.position.set(x,y,z);o.castShadow=true;scene.add(o)};
+box(23,.4,28,m.floor,0,-.2,-1.5);box(23,9,.5,m.wall,0,4.5,-15);box(.5,9,28,m.wall,-11.5,4.5,-1.5);box(.5,9,28,m.wall,11.5,4.5,-1.5);box(23,.35,28,m.wall,0,9,-1.5);
+for(let x=-10;x<=10;x+=2.5){box(.07,7,.12,m.gold,x,4.5,-14.7);box(.07,7,.12,m.gold,x,4.5,11.5)}
+for(const x of [-9,9]){cyl(.4,.52,7,m.stone,x,3.5,-11);cyl(.68,.68,.2,m.gold,x,7.1,-11)}
+const crest=new T.Mesh(new T.TorusGeometry(.8,.06,12,48),m.gold);crest.position.set(0,5.2,-14.5);scene.add(crest);
+box(8.5,.45,3.5,m.trim,0,.2,-10.7);box(7.8,1,1.3,m.wood,0,1,-11.5);box(8,.13,1.4,m.gold,0,1.55,-11.5);box(5.7,1.1,.35,m.leather,0,2.2,-12.1);box(1.8,2.6,.5,m.leather,0,3.1,-12.8);box(2,.15,.6,m.gold,0,4.4,-12.8);
+for(const x of [-4.7,4.7]){box(3.8,.2,1.8,m.wood,x,1,-5.5);box(3.9,.12,1.9,m.trim,x,1.15,-5.5);for(let i=-1;i<=1;i++){box(.7,.18,.65,m.leather,x+i*1.15,.65,-3.1);box(.7,.9,.15,m.wood,x+i*1.15,1.1,-3.4)}}
+box(2.4,1.15,1.7,m.wood,0,.75,-1.6);box(2.5,.14,1.8,m.gold,0,1.4,-1.6);for(const x of [-1,1])box(.12,1.2,.12,m.wood,x,.85,-.6);
+for(let r=0;r<3;r++)for(let c=-3;c<=3;c++){box(1.1,.2,.75,m.trim,c*1.4,.7,2+r*2.2);box(1.1,.9,.16,m.leather,c*1.4,1.15,2.3+r*2.2)}
+for(const x of [-6,0,6]){cyl(.03,.03,1.2,m.gold,x,7.6,-6);const lamp=new T.PointLight("#ffdda7",20,10);lamp.position.set(x,6.8,-6);scene.add(lamp)}
+const hit:THREE.Object3D[]=[];places.forEach(p=>{const o=new T.Mesh(new T.SphereGeometry(.24,16,16),new T.MeshStandardMaterial({color:"#f0cf83",emissive:"#98702e",emissiveIntensity:.8}));o.position.set(...p.pos);o.userData.place=p.id;scene.add(o);hit.push(o)});
+const ray=new T.Raycaster(),pointer=new T.Vector2();let down=0;const click=(e:MouseEvent)=>{if(performance.now()-down>250)return;const r=renderer!.domElement.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height*2-1));ray.setFromCamera(pointer,camera);const found=ray.intersectObjects(hit)[0];if(found){const id=found.object.userData.place as Place;focus(id)}};const pointerDown=()=>{down=performance.now()};const focus=(id:Place)=>{const p=places.find(v=>v.id===id);if(!p)return;setPlace(id);const target=new T.Vector3(...p.pos);camera.position.copy(target.clone().add(new T.Vector3(0,3.2,6.7)));controls.target.copy(target);controls.update()};
+const onFocus=(e:Event)=>focus((e as CustomEvent<Place>).detail);renderer.domElement.addEventListener("pointerdown",pointerDown);renderer.domElement.addEventListener("click",click);window.addEventListener("mct-focus",onFocus);
+const resize=()=>{if(!host||!renderer)return;const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)};const obs=new ResizeObserver(resize);obs.observe(host);resize();const animate=()=>{if(dead)return;frame=requestAnimationFrame(animate);controls.update();renderer!.render(scene,camera)};animate();
+clean=()=>{obs.disconnect();window.removeEventListener("mct-focus",onFocus);renderer?.domElement.removeEventListener("pointerdown",pointerDown);renderer?.domElement.removeEventListener("click",click);controls.dispose();scene.traverse(o=>{const q=o as THREE.Mesh;if(q.geometry)q.geometry.dispose();if(Array.isArray(q.material))q.material.forEach(v=>v.dispose());else if(q.material)q.material.dispose()})};setReady(true);
+}catch(e){console.error(e);setErr(true)}};void init();return()=>{dead=true;cancelAnimationFrame(frame);clean();if(renderer){renderer.dispose();if(renderer.domElement.parentElement===host)host.removeChild(renderer.domElement)}}},[]);
+const go=(id:Place)=>{setPlace(id);window.dispatchEvent(new CustomEvent("mct-focus",{detail:id}))};
+return <main className="mct-world"><div className="mct-world-canvas" ref={mount} aria-label="Interactive full 3D courtroom" role="application">{!ready&&!err&&<div className="mct-world-loading">Preparing the courtroom…</div>}{err&&<div className="mct-world-loading">WebGL is unavailable in this browser.</div>}</div><div className="mct-world-vignette"/><header className="mct-world-header"><a className="mct-world-brand" href="#" onClick={e=>{e.preventDefault();setArea("home")}}><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies"/><span><b>MCT STUDENTS' UNION</b><small>COLLEGE OF LEGAL STUDIES · MELMURI</small></span></a><button className="mct-world-menu-button" onClick={()=>setMenu(v=>!v)}>{menu?"CLOSE ×":"EXPLORE MENU ☰"}</button></header>{menu&&<nav className="mct-world-menu"><div className="mct-world-menu-kicker">EXPLORE THE STUDENT HUB</div>{nav.map(n=><button key={n.id} className={area===n.id?"selected":""} onClick={()=>{setArea(n.id);setMenu(false)}}>{n.label}<b>↗</b></button>)}</nav>}<section className="mct-world-panel" aria-live="polite"><div className="mct-world-panel-top"><span>{content[area].eyebrow}</span><span>STUDENT HUB</span></div><h1>{content[area].title}</h1><p>{content[area].body}</p><ul>{content[area].items.map((v,i)=><li key={i}>{v}</li>)}</ul><div className="mct-world-panel-actions"><button onClick={()=>setMenu(true)}>Explore student hub <b>↗</b></button><span>STUDENT-LED · PUBLIC ACCESS</span></div></section><aside className="mct-world-landmarks"><span>MOVE THROUGH THE COURTROOM</span>{places.map((p,i)=><button key={p.id} className={place===p.id?"active":""} onClick={()=>go(p.id)}><i>0{i+1}</i>{p.label}</button>)}</aside><footer className="mct-world-footer"><span>DRAG TO LOOK AROUND</span><span>SCROLL / PINCH TO ZOOM</span><span>SELECT A LANDMARK TO MOVE</span></footer><div className="mct-world-live"><i/> IMMERSIVE 3D ENVIRONMENT</div></main>
 }
