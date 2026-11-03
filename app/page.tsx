@@ -118,10 +118,6 @@ export default function Home() {
         </div>
         <div className="hero-bottom-line" />
       </section>
-      <section className="hero-feature-strip" aria-label="Student hub quick access">
-        <div className="site-container hero-feature-grid">{quickLinks.map((item, index) => <a className="hero-feature-card" href={item.href} key={item.title}><span className="hero-feature-icon">{item.icon}</span><strong>{item.title}</strong><small>{index === 0 ? "Find previous papers" : index === 1 ? "Organise your study" : index === 2 ? "Private student support" : index === 3 ? "Updates and deadlines" : index === 4 ? "Campus programmes" : "Connect by consent"}</small><b>↗</b></a>)}</div>
-      </section>
-
       <section className="intro-section section-space" id="about">
         <div className="site-container intro-layout">
           <div className="intro-heading"><div className="eyebrow"><span /> A SPACE BUILT FOR STUDENTS</div><h2>More than a website.<br /><em>A stronger student community.</em></h2></div>
