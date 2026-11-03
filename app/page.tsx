@@ -72,7 +72,7 @@ export default function Home() {
   ), [query, activeProgramme]);
 
   return (
-    <main className="site-shell">
+    <main className="site-shell" id="top">
       <div className="utility-bar">
         <div className="site-container utility-inner">
           <span>MCT COLLEGE OF LEGAL STUDIES <i /> MELMURI, MALAPPURAM</span>
@@ -87,12 +87,18 @@ export default function Home() {
             <span className="identity-text"><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span>
           </a>
           <nav className="desktop-nav" aria-label="Main navigation">
-            <a href="#about">About</a><a href="#programmes">Programmes</a><a href="#resources">Resources</a><a href="#notices">Noticeboard</a>
+            <a href="#top">Home</a><a href="#study-area">Study Area</a><a href="#programmes">Programmes</a><a href="#notices">Notices</a>
           </nav>
-          <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen((open) => !open)}><span /><span /></button>
+          <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} aria-controls="mobile-primary-navigation" onClick={() => setMobileMenuOpen((open) => !open)}><span /><span /></button>
           <a className="header-action" href="#support">Student support <span>↗</span></a>
         </div>
-        {mobileMenuOpen && <nav className="mobile-nav" aria-label="Mobile navigation"><a href="#about" onClick={() => setMobileMenuOpen(false)}>About <span>↗</span></a><a href="#programmes" onClick={() => setMobileMenuOpen(false)}>Programmes <span>↗</span></a><a href="#resources" onClick={() => setMobileMenuOpen(false)}>Resources <span>↗</span></a><a href="#notices" onClick={() => setMobileMenuOpen(false)}>Noticeboard <span>↗</span></a><a href="#support" onClick={() => setMobileMenuOpen(false)}>Student support <span>↗</span></a></nav>}
+        {mobileMenuOpen && <nav className="mobile-nav" id="mobile-primary-navigation" aria-label="Mobile navigation">
+          <a href="#top" onClick={() => setMobileMenuOpen(false)}><span>Home</span><b>01</b></a>
+          <a href="#study-area" onClick={() => setMobileMenuOpen(false)}><span>Study Area</span><b>02</b></a>
+          <a href="#programmes" onClick={() => setMobileMenuOpen(false)}><span>Programmes</span><b>03</b></a>
+          <a href="#notices" onClick={() => setMobileMenuOpen(false)}><span>Notices</span><b>04</b></a>
+          <a href="#support" onClick={() => setMobileMenuOpen(false)}><span>Support</span><b>05</b></a>
+        </nav>}
       </header>
 
       <section className="hero-section hero-premium">
