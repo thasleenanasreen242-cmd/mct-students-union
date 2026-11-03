@@ -1,174 +1,738 @@
-"use client";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
 
-import { useMemo, useState } from "react";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-const programmes = [
-  { label: "05 YEARS", title: "BBA LL.B (Hons.)", detail: "Integrated business and law programme", semesters: "10 semesters", href: "#five-year" },
-  { label: "03 YEARS", title: "LL.B (Unitary)", detail: "Undergraduate law programme", semesters: "6 semesters", href: "#three-year" },
-];
-
-const quickLinks = [
-  { icon: "▤", title: "Question bank", detail: "Search and download previous papers by semester and subject", href: "#question-bank", tag: "ACADEMICS" },
-  { icon: "§", title: "Smart study area", detail: "Organise papers, legal references and revision materials", href: "#study-area", tag: "STUDY" },
-  { icon: "✳", title: "Grievance portal", detail: "Submit confidential complaints and track progress privately", href: "#support", tag: "SUPPORT" },
-  { icon: "▦", title: "Noticeboard", detail: "View announcements, academic updates and deadlines", href: "#notices", tag: "CAMPUS" },
-  { icon: "◷", title: "Events calendar", detail: "See Students&apos; Union programmes and college events", href: "#events", tag: "CAMPUS" },
-  { icon: "◎", title: "Student directory", detail: "Find classmates who have chosen to be listed", href: "#directory", tag: "COMMUNITY" },
-];
-
-const notices = [
-  { category: "ACADEMIC", title: "Academic resource library is being prepared", date: "COMING SOON", number: "01" },
-  { category: "STUDENTS' UNION", title: "Student announcements and updates", date: "UPDATES SOON", number: "02" },
-  { category: "CAMPUS LIFE", title: "Events and activities calendar", date: "COMING SOON", number: "03" },
-];
-
-export default function Home() {
-  const [query, setQuery] = useState("");
-  const [activeProgramme, setActiveProgramme] = useState("all");
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
-  const [chatInput, setChatInput] = useState("");
-  const [chatMessages, setChatMessages] = useState([{ from: "bot", text: "Hello! I can help you find question papers, programme information, notices and student support. What would you like to know?" }]);
-  const sendChat = (value = chatInput) => {
-    const text = value.trim();
-    if (!text) return;
-    const lower = text.toLowerCase();
-    let answer = "I can help with the question bank, BBA LL.B and LL.B programmes, notices, events, student directory or grievance support. Try asking about one of these.";
-    if (lower.includes("paper") || lower.includes("question bank") || lower.includes("previous")) answer = "The question bank is being prepared for both programmes. Use the Question bank section to find the BBA LL.B (Hons.) and LL.B (Unitary) paper collections. PDF downloads will be enabled when papers are uploaded.";
-    else if (lower.includes("bba") || lower.includes("five") || lower.includes("5 year")) answer = "The BBA LL.B (Hons.) is the five-year programme, organised across 10 semesters. Visit the Programmes section for its student resource area.";
-    else if (lower.includes("unitary") || lower.includes("three") || lower.includes("3 year") || lower.includes("ll.b")) answer = "The LL.B (Unitary) is the three-year programme, organised across 6 semesters. Visit the Programmes section for its student resource area.";
-    else if (lower.includes("grievance") || lower.includes("complaint") || lower.includes("problem")) answer = "The grievance portal is planned for confidential submissions and private progress tracking. It will open only after secure storage and access controls are ready. For now, use the official college website for contact information.";
-    else if (lower.includes("notice") || lower.includes("deadline") || lower.includes("announcement")) answer = "Academic notices and student announcements will appear on the Noticeboard. The current notice area is a preview and does not yet contain live announcements.";
-    else if (lower.includes("event") || lower.includes("calendar") || lower.includes("programme")) answer = "Union programmes and college events will be listed in the Events Calendar once dates and venues are confirmed.";
-    else if (lower.includes("directory") || lower.includes("classmate") || lower.includes("student")) answer = "The student directory is planned as an opt-in feature. Only students who explicitly consent will be listed.";
-    setChatMessages((items) => [...items, { from: "user", text }, { from: "bot", text: answer }]);
-    setChatInput("");
-  };
-  const filteredLinks = useMemo(() => quickLinks.filter((item) =>
-    (activeProgramme === "all" || item.tag.toLowerCase() === activeProgramme) &&
-    (item.title + " " + item.detail).toLowerCase().includes(query.toLowerCase())
-  ), [query, activeProgramme]);
-
-  return (
-    <main className="site-shell">
-      <div className="utility-bar">
-        <div className="site-container utility-inner">
-          <span>MCT COLLEGE OF LEGAL STUDIES <i /> MELMURI, MALAPPURAM</span>
-          <span className="utility-right">A STUDENT-LED DIGITAL COMMUNITY <b>↗</b></span>
-        </div>
-      </div>
-
-      <header className="main-header">
-        <div className="site-container header-inner">
-          <a className="identity" href="#" aria-label="MCT Students' Union home">
-            <span className="identity-seal official-logo-wrap"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies official logo" /></span>
-            <span className="identity-text"><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span>
-          </a>
-          <nav className="desktop-nav" aria-label="Main navigation">
-            <a href="#about">About</a><a href="#programmes">Programmes</a><a href="#resources">Resources</a><a href="#notices">Noticeboard</a>
-          </nav>
-          <button className="mobile-menu-toggle" type="button" aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileMenuOpen} onClick={() => setMobileMenuOpen((open) => !open)}><span /><span /></button>
-          <a className="header-action" href="#support">Student support <span>↗</span></a>
-        </div>
-        {mobileMenuOpen && <nav className="mobile-nav" aria-label="Mobile navigation"><a href="#about" onClick={() => setMobileMenuOpen(false)}>About <span>↗</span></a><a href="#programmes" onClick={() => setMobileMenuOpen(false)}>Programmes <span>↗</span></a><a href="#resources" onClick={() => setMobileMenuOpen(false)}>Resources <span>↗</span></a><a href="#notices" onClick={() => setMobileMenuOpen(false)}>Noticeboard <span>↗</span></a><a href="#support" onClick={() => setMobileMenuOpen(false)}>Student support <span>↗</span></a></nav>}
-      </header>
-
-      <section className="hero-section hero-premium">
-        <div className="hero-grid-pattern" />
-        <div className="site-container hero-layout">
-          <div className="hero-copy">
-            <div className="eyebrow eyebrow-light"><span /> LEARN&nbsp; · &nbsp;LEAD&nbsp; · &nbsp;BELONG</div>
-            <h1>MCT Students&apos; Union<br /><em>Your voice. Your campus. Your community.</em></h1>
-            <p>A connected space for academic excellence, student welfare and a vibrant campus community at MCT College of Legal Studies.</p>
-            <div className="hero-buttons"><a className="button button-gold" href="#resources">Explore our resources <b>↗</b></a><a className="hero-text-link" href="#about">About our union <span>→</span></a></div>
-            <div className="hero-meta"><span>ACADEMICS <b>·</b> COMMUNITY <b>·</b> SUPPORT</span><span className="hero-meta-number">MCT <i>·</i> MELMURI</span></div>
-          </div>
-          <div className="hero-art" aria-label="MCT College of Legal Studies facility photograph">
-            <div className="art-frame"><div className="art-topline"><span>MCT / STUDENT UNION</span><span>MELMURI · KERALA</span></div><img className="hero-campus-photo" src="https://mctlawcollege.org/assets/images/facilities/fac1.webp" alt="MCT College of Legal Studies facility in Melmuri, Malappuram" /><div className="art-caption"><span>KNOWLEDGE</span><span>JUSTICE</span><span>UNITY</span></div></div>
-            <div className="art-stamp">YOUR CAMPUS<br /><b>YOUR VOICE</b></div>
-          </div>
-        </div>
-        <div className="hero-bottom-line" />
-      </section>
-      <section className="hero-feature-strip" aria-label="Student hub quick access">
-        <div className="site-container hero-feature-grid">{quickLinks.map((item, index) => <a className="hero-feature-card" href={item.href} key={item.title}><span className="hero-feature-icon">{item.icon}</span><strong>{item.title}</strong><small>{index === 0 ? "Find previous papers" : index === 1 ? "Organise your study" : index === 2 ? "Private student support" : index === 3 ? "Updates and deadlines" : index === 4 ? "Campus programmes" : "Connect by consent"}</small><b>↗</b></a>)}</div>
-      </section>
-
-      <section className="intro-section section-space" id="about">
-        <div className="site-container intro-layout">
-          <div className="intro-heading"><div className="eyebrow"><span /> A SPACE BUILT FOR STUDENTS</div><h2>More than a website.<br /><em>A stronger student community.</em></h2></div>
-          <div className="intro-copy"><p>This student-led platform brings useful academic tools and community updates into one accessible place. Whether you&apos;re preparing for an exam, looking for a previous paper or seeking support, start here.</p><a className="underlined-link" href="#resources">Explore what you can do <span>↗</span></a></div>
-        </div>
-        <div className="site-container stats-strip"><div><strong>02</strong><span>LAW PROGRAMMES</span></div><div><strong>16</strong><span>SEMESTERS ACROSS PROGRAMMES</span></div><div><strong>01</strong><span>CONNECTED STUDENT HUB</span></div><div className="stats-note">A shared space<br />for every MCT law student.</div></div>
-      </section>
-
-      <section className="programmes-section section-space" id="programmes">
-        <div className="site-container">
-          <div className="section-head"><div><div className="eyebrow"><span /> FIND YOUR ACADEMIC SPACE</div><h2>One community.<br /><em>Two pathways.</em></h2></div><p>Dedicated academic spaces for both programmes, organised to make study resources easier to find.</p></div>
-          <div className="programme-cards">{programmes.map((p, i) => <a href={p.href} className="programme-tile" key={p.title}><div className="tile-top"><span>{p.label}</span><b>0{i + 1}</b></div><div className="tile-main"><h3>{p.title}</h3><p>{p.detail}</p></div><div className="tile-bottom"><span>{p.semesters}</span><b>Explore programme <i>↗</i></b></div></a>)}</div>
-        </div>
-      </section>
-
-      <section className="hub-section section-space" id="resources">
-        <div className="site-container">
-          <div className="hub-heading"><div><div className="eyebrow eyebrow-light"><span /> THE STUDENT WORKSPACE</div><h2>Everything in one<br /><em>well-organised place.</em></h2></div><p>Find the right resource, stay informed and get connected with the student community.</p></div>
-          <div className="hub-tools"><label className="hub-search"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search student resources..." aria-label="Search student resources" /></label><div className="hub-filters"><button className={activeProgramme === "all" ? "active" : ""} onClick={() => setActiveProgramme("all")}>All</button><button className={activeProgramme === "academics" ? "active" : ""} onClick={() => setActiveProgramme("academics")}>Academics</button><button className={activeProgramme === "study" ? "active" : ""} onClick={() => setActiveProgramme("study")}>Study</button><button className={activeProgramme === "wellbeing" ? "active" : ""} onClick={() => setActiveProgramme("support")}>Support</button><button className={activeProgramme === "campus" ? "active" : ""} onClick={() => setActiveProgramme("campus")}>Campus</button><button className={activeProgramme === "community" ? "active" : ""} onClick={() => setActiveProgramme("community")}>Community</button></div></div>
-          <div className="hub-card-grid">{filteredLinks.map((item, i) => <a href={item.href} className="hub-card" key={item.title}><div className="hub-card-top"><span className="hub-icon">{item.icon}</span><span className="hub-card-number">0{i + 1}</span></div><div><span className="hub-tag">{item.tag}</span><h3>{item.title}</h3><p>{item.detail}</p></div><div className="hub-card-link">EXPLORE <b>↗</b></div></a>)}</div>
-          {filteredLinks.length === 0 && <p className="empty-search">No matching resources. Try another search.</p>}
-          <div className="library-callout" id="study-area"><div><span className="eyebrow eyebrow-light"><span /> BUILT FOR LAW STUDENTS</span><h3>Your smart study<br /><em>space starts here.</em></h3><p>Keep previous papers, subject references and revision resources organised by programme, semester and subject.</p></div><div className="library-callout-mark">§</div></div>
-          <div className="programme-resource-row" id="question-bank"><div id="five-year"><span>05-YEAR PROGRAMME</span><strong>BBA LL.B (Hons.)</strong><small>10 semesters · Search and download previous papers</small></div><div id="three-year"><span>03-YEAR PROGRAMME</span><strong>LL.B (Unitary)</strong><small>6 semesters · Search and download previous papers</small></div></div>
-        </div>
-      </section>
-
-      <section className="support-section section-space" id="support"><div className="site-container support-layout"><div><div className="eyebrow"><span /> YOUR VOICE MATTERS</div><h2>Support that<br /><em>takes you seriously.</em></h2><p>A dedicated space is being prepared for students to raise concerns privately and follow up through a secure reference process.</p><a className="button button-navy" href="https://mctlawcollege.org/" target="_blank" rel="noreferrer">Contact student union <b>↗</b></a></div><div className="support-panel"><div className="support-panel-head"><span>STUDENT SUPPORT</span><b>PRIVATE BY DESIGN</b></div><div className="support-step"><span>01</span><div><strong>Share a concern</strong><small>Identified or anonymous submission options planned.</small></div></div><div className="support-step"><span>02</span><div><strong>Receive a reference</strong><small>Private tracking without public exposure.</small></div></div><div className="support-step"><span>03</span><div><strong>Follow progress</strong><small>Updates visible only to the student and authorised reviewers.</small></div></div><div className="support-secure">✳ &nbsp; Submissions will open after secure access controls are implemented.</div></div></div></section>
-
-      <section className="notice-section section-space" id="notices"><div className="site-container"><div className="section-head"><div><div className="eyebrow"><span /> THE NOTICEBOARD</div><h2>Stay informed.<br /><em>Stay connected.</em></h2></div><p>Academic updates, student union announcements and campus activities — together in one place.</p></div><div className="notice-list">{notices.map((n) => <article className="notice-item" key={n.number}><span className="notice-no">{n.number}</span><div className="notice-title"><small>{n.category}</small><h3>{n.title}</h3></div><span className="notice-date">{n.date}</span><span className="notice-arrow">↗</span></article>)}</div></div></section>
-
-      <section className="events-directory-section section-space" id="events"><div className="site-container events-directory-grid">
-        <div className="events-block"><div className="eyebrow"><span /> CAMPUS LIFE</div><h2>Make room for<br /><em>what&apos;s happening.</em></h2><p>One calendar for Students&apos; Union programmes, academic dates and college events.</p><div className="event-placeholder"><span className="event-date">CALENDAR</span><div><strong>Upcoming events will appear here</strong><small>Event dates, venues and registration details will be published once confirmed.</small></div><b>↗</b></div></div>
-        <div className="directory-block" id="directory"><div className="eyebrow eyebrow-light"><span /> STUDENT COMMUNITY</div><h2>Find your people.<br /><em>Stay connected.</em></h2><p>A voluntary directory for classmates who choose to share a limited student profile.</p><div className="directory-consent"><span className="consent-mark">◎</span><div><strong>Opt-in, not automatic</strong><small>Only students who explicitly consent may be listed. Contact details stay hidden unless separately chosen for sharing.</small></div></div><span className="directory-status">DIRECTORY PREPARATION · NO PROFILES PUBLISHED</span></div>
-      </div></section>
-
-      <section className="closing-section"><div className="site-container closing-inner"><div className="eyebrow eyebrow-light"><span /> MCT STUDENTS&apos; UNION</div><h2>Learn together.<br /><em>Move forward together.</em></h2><p>A stronger student experience begins with a connected community.</p><a className="button button-gold" href="#resources">Explore the student hub <b>↗</b></a></div></section>
-
-      <div className="student-chat">
-        {chatOpen && <section className="chat-window" aria-label="MCT student help chat">
-          <div className="chat-head"><div className="chat-avatar">M</div><div><strong>MCT Student Help</strong><small><span /> Quick answers · Student hub</small></div><button type="button" className="chat-close" aria-label="Close chat" onClick={() => setChatOpen(false)}>×</button></div>
-          <div className="chat-body" aria-live="polite">
-            {chatMessages.map((message, index) => <div className={message.from === "user" ? "chat-message user-message" : "chat-message bot-message"} key={index}>{message.text}</div>)}
-            {chatMessages.length === 1 && <div className="chat-suggestions"><button type="button" onClick={() => sendChat("How do I find previous question papers?")}>Question papers</button><button type="button" onClick={() => sendChat("Tell me about the programmes")}>Programmes</button><button type="button" onClick={() => sendChat("How can I submit a grievance?")}>Student support</button></div>}
-          </div>
-          <form className="chat-compose" onSubmit={(event) => { event.preventDefault(); sendChat(); }}><input value={chatInput} onChange={(event) => setChatInput(event.target.value)} placeholder="Ask about the student hub..." aria-label="Type your question" /><button type="submit" aria-label="Send message" disabled={!chatInput.trim()}>↑</button></form>
-          <p className="chat-disclaimer">Automated quick answers. For official information, check college announcements.</p>
-        </section>}
-        <button type="button" className="chat-launcher" onClick={() => setChatOpen((open) => !open)} aria-expanded={chatOpen} aria-label={chatOpen ? "Close student help chat" : "Open student help chat"}><span className="chat-launcher-icon">{chatOpen ? "×" : "✳"}</span><span>{chatOpen ? "Close" : "Ask MCT"}</span></button>
-      </div>
-      <footer className="site-footer"><div className="site-container footer-main"><a className="identity identity-footer" href="#"><span className="identity-seal"><b>M</b><small>✳</small></span><span className="identity-text"><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span></a><p>A student-led digital space for<br />the MCT College of Legal Studies community.</p><a className="footer-official" href="https://mctlawcollege.org/" target="_blank" rel="noreferrer">Official college website ↗</a></div><div className="site-container footer-bottom"><span>© {new Date().getFullYear()} MCT Students&apos; Union</span><span>Melmuri · Malappuram · Kerala</span><span>MADE FOR STUDENTS, WITH STUDENTS.</span></div><div className="site-container footer-disclaimer">Independent student-led platform. Not the official college website. College affiliation or endorsement is not implied.</div></footer>
-    </main>
-  );
+:root {
+  --navy: #071522;
+  --navy-2: #0b2030;
+  --navy-3: #102b3d;
+  --cyan: #73d9e8;
+  --gold: #d8b879;
+  --paper: #f5f6f3;
+  --ink: #142332;
+  --muted: #75818b;
+  --line: rgba(15, 39, 54, .12);
 }
 
+* { box-sizing: border-box; }
 
-/* Subtle scroll-entry reveals */
-@media (prefers-reduced-motion: no-preference){
-  .scroll-reveal{
-    opacity:0;
-    transform:translate3d(0,28px,0);
-    transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);
-    will-change:opacity,transform;
-  }
-  .scroll-reveal.is-visible{
-    opacity:1;
-    transform:translate3d(0,0,0);
-  }
-  .hero-feature-card.scroll-reveal:nth-child(2),
-  .hub-card.scroll-reveal:nth-child(2),
-  .programme-tile.scroll-reveal:nth-child(2){transition-delay:.08s}
-  .hero-feature-card.scroll-reveal:nth-child(3),
-  .hub-card.scroll-reveal:nth-child(3){transition-delay:.16s}
-  .hero-feature-card.scroll-reveal:nth-child(4),
-  .hub-card.scroll-reveal:nth-child(4){transition-delay:.24s}
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-@media (prefers-reduced-motion: reduce){
-  .scroll-reveal{opacity:1;transform:none;transition:none}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+.site-shell { overflow: hidden; }
+.site-container { width: min(1180px, calc(100% - 64px)); margin: auto; }
+.section-space { padding: 105px 0; }
+
+.utility-bar {
+  background: #04101a;
+  color: #aab8c2;
+  font-size: 9px;
+  letter-spacing: 1.6px;
+}
+.utility-inner {
+  min-height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.utility-inner i {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 9px 2px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.utility-right b { color: var(--gold); margin-left: 8px; }
+
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(10,30,45,.08);
+}
+.header-inner {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+.identity { display: flex; align-items: center; gap: 12px; }
+.identity-seal {
+  width: 46px;
+  height: 46px;
+  border: 1px solid #e3e6e5;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: white;
+}
+.identity-seal img { width: 100%; height: 100%; object-fit: contain; }
+.identity-text { display: flex; flex-direction: column; gap: 4px; }
+.identity-text strong { font-size: 12px; letter-spacing: 1.1px; }
+.identity-text small { color: #7b8790; font-size: 8px; letter-spacing: 1.5px; }
+
+.desktop-nav { display: flex; align-items: center; gap: 34px; }
+.desktop-nav a {
+  color: #4d5a65;
+  font-size: 12px;
+  transition: color .2s;
+}
+.desktop-nav a:hover { color: #078ca4; }
+
+.header-action {
+  padding: 12px 17px;
+  background: var(--navy);
+  color: white;
+  border-radius: 3px;
+  font-size: 11px;
+}
+.header-action span { color: var(--cyan); margin-left: 8px; }
+
+.mobile-menu-toggle, .mobile-nav { display: none; }
+
+/* Hero */
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background: var(--navy);
+}
+.hero-premium {
+  background:
+    radial-gradient(ellipse at 80% 40%, rgba(36,104,124,.25), transparent 42%),
+    linear-gradient(115deg, #06131f 0%, #0a2030 58%, #102e3d 100%);
+}
+.hero-grid-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: .13;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(90deg, black, transparent 85%);
+}
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  min-height: 610px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 65px;
+  padding-top: 65px;
+  padding-bottom: 80px;
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8a969d;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.eyebrow > span {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+}
+.eyebrow-light { color: #9aabb5; }
+
+.hero-copy h1 {
+  margin: 27px 0 20px;
+  font-size: clamp(39px, 5.2vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -2.8px;
+  font-weight: 600;
+}
+.hero-copy h1 em,
+.intro-heading h2 em,
+.section-head h2 em,
+.hub-heading h2 em,
+.library-callout h3 em,
+.support-layout h2 em,
+.events-block h2 em,
+.directory-block h2 em,
+.closing-inner h2 em {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+.hero-copy h1 em { font-size: .68em; letter-spacing: -.8px; }
+.hero-copy > p {
+  max-width: 490px;
+  color: #b1c0c8;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.hero-buttons { display: flex; align-items: center; gap: 25px; margin-top: 32px; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  transition: transform .2s, background .2s;
+}
+.button:hover { transform: translateY(-3px); }
+.button-gold { background: var(--gold); color: #142332; }
+.button-gold:hover { background: #e7ca91; }
+.hero-text-link { color: #d2dce1; font-size: 11px; }
+.hero-text-link span { margin-left: 8px; color: var(--cyan); }
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 75px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  color: #9aabb5;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+.hero-meta b, .hero-meta i { color: var(--gold); }
+
+.hero-art { position: relative; padding: 20px 15px 25px 0; }
+.art-frame {
+  position: relative;
+  padding: 13px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.art-topline, .art-caption {
+  display: flex;
+  justify-content: space-between;
+  color: #c5d2d8;
+  font-size: 8px;
+  letter-spacing: 1.3px;
+}
+.art-topline { padding: 4px 2px 13px; }
+.hero-campus-photo {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  filter: saturate(.78) contrast(1.03);
+}
+.art-caption { padding: 14px 2px 3px; color: var(--gold); }
+.art-stamp {
+  position: absolute;
+  right: -15px;
+  bottom: -3px;
+  padding: 17px 22px;
+  background: var(--gold);
+  color: #172633;
+  font-size: 9px;
+  line-height: 1.7;
+  letter-spacing: 1.2px;
+  transform: rotate(3deg);
+}
+.art-stamp b { font-size: 12px; }
+.hero-bottom-line { height: 3px; background: linear-gradient(90deg, var(--gold), var(--cyan), transparent); }
+
+/* Quick access */
+
+.hero-feature-strip {
+  position: relative;
+  z-index: 2;
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+.hero-feature-grid { display: grid; grid-template-columns: repeat(6, 1fr); }
+.hero-feature-card {
+  min-height: 145px;
+  padding: 22px 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-right: 1px solid var(--line);
+  transition: background .2s, transform .2s;
+}
+.hero-feature-card:first-child { border-left: 1px solid var(--line); }
+.hero-feature-card:hover { background: #f2f8f8; transform: translateY(-4px); }
+.hero-feature-icon { color: #0b9aaf; font-size: 23px; margin-bottom: 13px; }
+.hero-feature-card strong { font-size: 11px; }
+.hero-feature-card small { margin-top: 6px; color: var(--muted); font-size: 9px; line-height: 1.5; }
+.hero-feature-card > b { align-self: flex-end; margin-top: -13px; color: #b28f51; }
+
+/* Intro */
+
+.intro-section { background: var(--paper); }
+.intro-layout {
+  display: grid;
+  grid-template-columns: 1fr .75fr;
+  gap: 100px;
+  align-items: end;
+}
+.intro-heading h2, .section-head h2, .hub-heading h2,
+.support-layout h2, .events-block h2, .directory-block h2 {
+  margin: 23px 0 0;
+  font-size: clamp(34px, 4vw, 49px);
+  line-height: 1.17;
+  letter-spacing: -1.7px;
+}
+.intro-heading h2 em, .section-head h2 em { color: #a9844d; }
+.intro-copy p, .section-head > p {
+  color: #65727b;
+  font-size: 13px;
+  line-height: 1.95;
+}
+.underlined-link {
+  display: inline-block;
+  margin-top: 14px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+}
+.underlined-link span { color: #b28f51; margin-left: 12px; }
+
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1.1fr;
+  margin-top: 85px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+.stats-strip > div { display: flex; flex-direction: column; gap: 8px; }
+.stats-strip strong { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 500; }
+.stats-strip span { color: #849098; font-size: 8px; letter-spacing: 1.2px; }
+.stats-strip .stats-note {
+  justify-content: center;
+  color: #73808a;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Programmes */
+
+.programmes-section { background: #fff; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 60px;
+  margin-bottom: 42px;
+}
+.section-head > p { max-width: 350px; margin-bottom: 5px; }
+.programme-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.programme-tile {
+  min-height: 260px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #f3f5f2;
+  border: 1px solid #e7eae7;
+  transition: transform .25s, box-shadow .25s;
+}
+.programme-tile:hover { transform: translateY(-5px); box-shadow: 0 18px 35px rgba(12,35,48,.09); }
+.tile-top, .tile-bottom { display: flex; justify-content: space-between; align-items: center; }
+.tile-top span, .tile-bottom span { color: #89949a; font-size: 9px; letter-spacing: 1.3px; }
+.tile-top b { color: #b28f51; font-size: 11px; }
+.tile-main h3 { margin: 20px 0 8px; font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 500; }
+.tile-main p { color: #78838b; font-size: 12px; }
+.tile-bottom { padding-top: 20px; border-top: 1px solid var(--line); }
+.tile-bottom b { font-size: 10px; }
+.tile-bottom i { color: #b28f51; margin-left: 10px; }
+
+/* Student workspace */
+
+.hub-section {
+  color: white;
+  background:
+    radial-gradient(ellipse at 90% 15%, rgba(37,111,128,.2), transparent 35%),
+    #081a28;
+}
+.hub-heading { display: flex; justify-content: space-between; align-items: end; gap: 50px; }
+.hub-heading h2 { color: white; }
+.hub-heading > p { max-width: 340px; color: #a6b5bd; font-size: 13px; line-height: 1.9; }
+.hub-tools { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 45px 0 25px; }
+.hub-search {
+  width: min(350px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+}
+.hub-search span { color: var(--cyan); font-size: 22px; }
+.hub-search input { width: 100%; border: 0; outline: 0; color: white; background: transparent; font-size: 11px; }
+.hub-search input::placeholder { color: #92a3ad; }
+.hub-filters { display: flex; flex-wrap: wrap; gap: 7px; }
+.hub-filters button {
+  padding: 9px 12px;
+  color: #a9b7bf;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.16);
+  font-size: 9px;
+}
+.hub-filters button:hover, .hub-filters button.active {
+  color: #102332;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.hub-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+.hub-card {
+  min-height: 225px;
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.12);
+  transition: background .2s, transform .2s;
+}
+.hub-card:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+.hub-card-top { display: flex; justify-content: space-between; }
+.hub-icon { color: var(--cyan); font-size: 25px; }
+.hub-card-number { color: #7e909b; font-size: 10px; }
+.hub-tag { color: var(--gold); font-size: 8px; letter-spacing: 1.5px; }
+.hub-card h3 { margin: 9px 0; font-size: 17px; font-weight: 600; }
+.hub-card p { margin: 0; color: #9eafb8; font-size: 10px; line-height: 1.7; }
+.hub-card-link {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(255,255,255,.13);
+  color: #9eafb8;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+}
+.hub-card-link b { color: var(--gold); }
+.empty-search { padding: 25px 0; color: #b4c1c8; font-size: 12px; }
+
+.library-callout {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 55px;
+  padding: 45px;
+  background: #102c3d;
+  border: 1px solid rgba(255,255,255,.13);
+}
+.library-callout h3 { margin: 18px 0 10px; font-family: 'Playfair Display', serif; font-size: 35px; line-height: 1.2; font-weight: 500; }
+.library-callout p { max-width: 520px; color: #a9bac2; font-size: 12px; line-height: 1.8; }
+.library-callout-mark { color: rgba(216,184,121,.2); font-family: 'Playfair Display', serif; font-size: 150px; }
+.programme-resource-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+.programme-resource-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 23px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.13);
+}
+.programme-resource-row span { color: var(--gold); font-size: 8px; letter-spacing: 1.5px; }
+.programme-resource-row strong { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 500; }
+.programme-resource-row small { color: #9eafb8; font-size: 10px; }
+
+/* Support */
+
+.support-section { background: #f0f2ef; }
+.support-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: center; }
+.support-layout h2 { margin-bottom: 20px; }
+.support-layout h2 em { color: #a9844d; }
+.support-layout > div:first-child > p { max-width: 430px; color: #697781; font-size: 13px; line-height: 1.9; }
+.button-navy { margin-top: 20px; background: var(--navy); color: white; }
+.button-navy b { color: var(--cyan); }
+.support-panel { padding: 30px; background: white; border: 1px solid var(--line); }
+.support-panel-head { display: flex; justify-content: space-between; padding-bottom: 22px; border-bottom: 1px solid var(--line); font-size: 9px; letter-spacing: 1.4px; }
+.support-panel-head b { color: #a9844d; font-size: 8px; }
+.support-step { display: flex; align-items: flex-start; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.support-step > span { color: #b28f51; font-family: 'Playfair Display', serif; font-size: 22px; }
+.support-step div { display: flex; flex-direction: column; gap: 6px; }
+.support-step strong { font-size: 12px; }
+.support-step small { color: #7b8790; font-size: 10px; line-height: 1.6; }
+.support-secure { margin-top: 20px; color: #75828a; font-size: 9px; line-height: 1.7; }
+
+/* Noticeboard */
+
+.notice-section { background: white; }
+.notice-list { border-top: 1px solid var(--line); }
+.notice-item {
+  display: grid;
+  grid-template-columns: 55px 1fr 120px 25px;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 8px;
+  border-bottom: 1px solid var(--line);
+  transition: padding .2s, background .2s;
+}
+.notice-item:hover { padding-left: 18px; background: #fafbf9; }
+.notice-no { color: #b28f51; font-family: 'Playfair Display', serif; font-size: 20px; }
+.notice-title small { color: #a9844d; font-size: 8px; letter-spacing: 1.4px; }
+.notice-title h3 { margin: 7px 0 0; font-size: 14px; font-weight: 600; }
+.notice-date { color: #89949a; font-size: 8px; letter-spacing: 1px; }
+.notice-arrow { color: #b28f51; }
+
+/* Events and directory */
+
+.events-directory-section { padding-top: 0; background: white; }
+.events-directory-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.events-block { padding: 60px 55px 60px 0; }
+.events-block h2, .directory-block h2 { font-size: 38px; }
+.events-block h2 em { color: #a9844d; }
+.events-block > p, .directory-block > p { color: #71808a; font-size: 12px; line-height: 1.9; }
+.event-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 35px;
+  padding: 20px;
+  background: #f3f5f2;
+}
+.event-date { color: #a9844d; font-size: 8px; letter-spacing: 1px; }
+.event-placeholder div { display: flex; flex-direction: column; gap: 6px; }
+.event-placeholder strong { font-size: 11px; }
+.event-placeholder small { color: #78858d; font-size: 9px; line-height: 1.6; }
+.event-placeholder > b { margin-left: auto; color: #a9844d; }
+
+.directory-block {
+  padding: 60px 45px;
+  color: white;
+  background: var(--navy);
+}
+.directory-block h2 { color: white; }
+.directory-block h2 em { color: var(--gold); }
+.directory-block > p { color: #aab8c0; }
+.directory-consent { display: flex; gap: 18px; margin-top: 35px; padding: 20px; background: rgba(255,255,255,.07); }
+.consent-mark { color: var(--cyan); font-size: 26px; }
+.directory-consent div { display: flex; flex-direction: column; gap: 7px; }
+.directory-consent strong { font-size: 11px; }
+.directory-consent small { color: #aab8c0; font-size: 9px; line-height: 1.7; }
+.directory-status { display: block; margin-top: 25px; color: var(--gold); font-size: 8px; letter-spacing: 1.2px; }
+
+/* Closing */
+
+.closing-section {
+  padding: 100px 0;
+  color: white;
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(34,105,124,.22), transparent 45%),
+    #061522;
+}
+.closing-inner { text-align: center; }
+.closing-inner .eyebrow { justify-content: center; }
+.closing-inner h2 { margin: 25px 0 15px; font-size: clamp(38px, 5vw, 57px); line-height: 1.15; }
+.closing-inner h2 em { color: var(--gold); }
+.closing-inner p { color: #aab8c0; font-size: 12px; }
+.closing-inner .button { margin-top: 22px; }
+
+/* Chat widget */
+
+.student-chat { position: fixed; right: 25px; bottom: 25px; z-index: 80; }
+.chat-window {
+  width: 340px;
+  max-width: calc(100vw - 30px);
+  margin-bottom: 14px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 18px 55px rgba(0,0,0,.2);
+}
+.chat-head { display: flex; align-items: center; gap: 12px; padding: 15px; color: white; background: var(--navy); }
+.chat-avatar { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; color: var(--navy); background: var(--gold); font-family: 'Playfair Display', serif; }
+.chat-head > div:nth-child(2) { display: flex; flex-direction: column; gap: 4px; }
+.chat-head strong { font-size: 11px; }
+.chat-head small { color: #b5c3ca; font-size: 9px; }
+.chat-head small span { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: #6fd6a1; }
+.chat-close { margin-left: auto; border: 0; color: white; background: transparent; font-size: 23px; }
+.chat-body { max-height: 320px; overflow-y: auto; padding: 15px; }
+.chat-message { width: fit-content; max-width: 90%; margin: 8px 0; padding: 11px 13px; border-radius: 9px; font-size: 10px; line-height: 1.7; }
+.bot-message { background: #f0f3f2; color: #263744; }
+.user-message { margin-left: auto; color: white; background: #12374a; }
+.chat-suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.chat-suggestions button { padding: 7px 9px; border: 1px solid #dce4e4; border-radius: 20px; color: #38505c; background: white; font-size: 9px; }
+.chat-suggestions button:hover { border-color: #68c6d4; }
+.chat-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
+.chat-form input { flex: 1; min-width: 0; padding: 10px; border: 1px solid var(--line); outline: 0; font-size: 10px; }
+.chat-form button { padding: 0 13px; border: 0; color: white; background: var(--navy); font-size: 10px; }
+
+/* Footer */
+
+.site-footer {
+  padding: 30px 0;
+  color: #9aabb5;
+  background: #04101a;
+  font-size: 9px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 900px) {
+  .site-container { width: min(100% - 42px, 720px); }
+  .desktop-nav { gap: 18px; }
+  .desktop-nav a { font-size: 10px; }
+  .header-action { padding: 11px 12px; font-size: 10px; }
+  .hero-layout { gap: 30px; min-height: 540px; }
+  .hero-copy h1 { font-size: 48px; }
+  .hero-campus-photo { height: 280px; }
+  .hero-feature-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-feature-card:nth-child(4) { border-left: 1px solid var(--line); }
+  .intro-layout, .support-layout { gap: 45px; }
+  .hub-card-grid { grid-template-columns: repeat(2, 1fr); }
+  .hub-tools { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 640px) {
+  html { scroll-padding-top: 75px; }
+  .site-container { width: calc(100% - 36px); }
+  .section-space { padding: 70px 0; }
+
+  .utility-inner { min-height: 30px; font-size: 7px; letter-spacing: .8px; }
+  .utility-right { display: none; }
+
+  .header-inner { min-height: 70px; gap: 12px; }
+  .identity { gap: 9px; }
+  .identity-seal { width: 39px; height: 39px; }
+  .identity-text strong { font-size: 10px; }
+  .identity-text small { font-size: 7px; letter-spacing: 1px; }
+  .desktop-nav, .header-action { display: none; }
+
+  .mobile-menu-toggle {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    border: 1px solid #dce3e3;
+    border-radius: 3px;
+    background: white;
+  }
+  .mobile-menu-toggle span {
+    width: 17px;
+    height: 2px;
+    background: var(--navy);
+    transition: transform .2s;
+  }
+  .mobile-menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(4px) rotate(45deg); }
+  .mobile-menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+  .mobile-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 18px 17px;
+    background: white;
+    border-top: 1px solid #edf0ef;
+    border-bottom: 1px solid #dce4e4;
+    box-shadow: 0 15px 25px rgba(5,25,38,.1);
+  }
+  .mobile-nav a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5px;
+    border-bottom: 1px solid #edf0ef;
+    color: #253847;
+    font-size: 12px;
+  }
+  .mobile-nav a:last-child { border-bottom: 0; }
+  .mobile-nav a span { color: #a9844d; }
+
+  .hero-layout { grid-template-columns: 1fr; gap: 35px; padding-top: 65px; padding-bottom: 65px; }
+  .hero-copy h1 { margin-top: 22px; font-size: clamp(39px, 11vw, 52px); letter-spacing: -1.8px; }
+  .hero-copy h1 em { font-size: .64em; line-height: 1.3; }
+  .hero-copy > p { font-size: 12px; }
+  .hero-buttons { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .hero-meta { margin-top: 42px; font-size: 7px; letter-spacing: .8px; }
+  .hero-art { padding: 5px 10px 15px 0; }
+  .hero-campus-photo { height: 245px; }
+  .art-stamp { right: -5px; }
+
+  .hero-feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-feature-card { min-height: 125px; padding: 17px 13px; }
+  .hero-feature-card:nth-child(odd) { border-left: 1px solid var(--line); }
+  .hero-feature-card:nth-child(even) { border-right: 1px solid var(--line); }
+  .hero-feature-card strong { font-size: 10px; }
+  .hero-feature-card small { font-size: 8px; }
+
+  .intro-layout, .support-layout { grid-template-columns: 1fr; gap: 25px; }
+  .intro-heading h2, .section-head h2, .hub-heading h2,
+  .support-layout h2, .events-block h2, .directory-block h2 { font-size: 35px; }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 28px 15px; margin-top: 50px; }
+  .stats-strip strong { font-size: 32px; }
+  .stats-strip .stats-note { font-size: 14px; }
+
+  .section-head, .hub-heading { align-items: flex-start; flex-direction: column; gap: 15px; }
+  .section-head { margin-bottom: 30px; }
+  .section-head > p, .hub-heading > p { margin: 0; }
+  .programme-cards { grid-template-columns: 1fr; gap: 13px; }
+  .programme-tile { min-height: 225px; padding: 22px; }
+  .tile-main h3 { font-size: 27px; }
+
+  .hub-tools { margin: 30px 0 20px; }
+  .hub-search { width: 100%; }
+  .hub-filters { gap: 6px; }
+  .hub-filters button { padding: 8px 10px; }
+  .hub-card-grid { grid-template-columns: 1fr; }
+  .hub-card { min-height: 190px; }
+  .library-callout { margin-top: 35px; padding: 27px 22px; }
+  .library-callout h3 { font-size: 30px; }
+  .library-callout-mark { font-size: 75px; }
+  .programme-resource-row { grid-template-columns: 1fr; }
+
+  .support-panel { padding: 22px 18px; }
+  .support-panel-head { gap: 12px; font-size: 8px; }
+  .notice-item { grid-template-columns: 30px 1fr 18px; gap: 10px; padding: 20px 0; }
+  .notice-date { grid-column: 2; grid-row: 2; }
+  .notice-arrow { grid-column: 3; grid-row: 1 / span 2; }
+  .notice-title h3 { font-size: 12px; line-height: 1.5; }
+
+  .events-directory-section { padding-top: 0; }
+  .events-directory-grid { grid-template-columns: 1fr; }
+  .events-block { padding: 15px 0 45px; }
+  .directory-block { padding: 40px 22px; }
+  .event-placeholder { align-items: flex-start; gap: 12px; padding: 15px; }
+
+  .closing-section { padding: 75px 0; }
+  .closing-inner h2 { font-size: 39px; }
+
+  .student-chat { right: 12px; bottom: 12px; }
+  .chat-window { width: min(340px, calc(100vw - 24px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
 }
