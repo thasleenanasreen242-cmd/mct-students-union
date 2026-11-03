@@ -736,3 +736,103 @@ img { display: block; max-width: 100%; }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Motion design layer */
+
+@keyframes mct-fade-up {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes mct-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mct-hero-image {
+  from { opacity: 0; transform: translate3d(24px, 12px, 0) scale(.97); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes mct-soft-float {
+  0%, 100% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(-9px) rotate(3deg); }
+}
+
+@keyframes mct-grid-drift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 52px 52px, 52px 52px; }
+}
+
+@keyframes mct-glow-pulse {
+  0%, 100% { opacity: .45; }
+  50% { opacity: .9; }
+}
+
+/* Gentle entrance for the first screen */
+.main-header { animation: mct-fade-in .55s ease both; }
+.hero-copy > * { animation: mct-fade-up .7s cubic-bezier(.2,.7,.2,1) both; }
+.hero-copy > *:nth-child(1) { animation-delay: .08s; }
+.hero-copy > *:nth-child(2) { animation-delay: .16s; }
+.hero-copy > *:nth-child(3) { animation-delay: .24s; }
+.hero-copy > *:nth-child(4) { animation-delay: .32s; }
+.hero-copy > *:nth-child(5) { animation-delay: .4s; }
+.hero-art { animation: mct-hero-image .9s .18s cubic-bezier(.2,.7,.2,1) both; }
+.hero-grid-pattern { animation: mct-grid-drift 24s linear infinite; }
+.art-stamp { animation: mct-soft-float 5s ease-in-out infinite; }
+
+/* Scroll reveals are activated by the existing IntersectionObserver in page.tsx */
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, 25px, 0);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.programme-tile.scroll-reveal:nth-child(2),
+.hub-card.scroll-reveal:nth-child(2),
+.notice-item.scroll-reveal:nth-child(2) { transition-delay: .09s; }
+.programme-tile.scroll-reveal:nth-child(3),
+.hub-card.scroll-reveal:nth-child(3),
+.notice-item.scroll-reveal:nth-child(3) { transition-delay: .16s; }
+.hub-card.scroll-reveal:nth-child(4),
+.hub-card.scroll-reveal:nth-child(5),
+.hub-card.scroll-reveal:nth-child(6) { transition-delay: .12s; }
+
+/* Small interactive responses */
+.desktop-nav a, .mobile-nav a, .header-action, .button,
+.underlined-link, .hub-filters button, .chat-suggestions button {
+  transition: color .22s ease, background-color .22s ease,
+    border-color .22s ease, transform .22s ease, box-shadow .22s ease;
+}
+.header-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(7,21,34,.16); }
+.button:active, .hub-filters button:active { transform: scale(.98); }
+.hero-campus-photo { transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s ease; }
+.art-frame:hover .hero-campus-photo { transform: scale(1.025); filter: saturate(.95) contrast(1.04); }
+.hub-card:hover .hub-icon { transform: translateY(-3px); }
+.hub-icon { display: inline-block; transition: transform .25s ease; }
+.mobile-nav { animation: mct-fade-up .24s ease both; }
+.chat-window { transform-origin: bottom right; animation: mct-fade-up .22s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .main-header, .hero-copy > *, .hero-art, .hero-grid-pattern, .art-stamp,
+  .mobile-nav, .chat-window {
+    animation: none !important;
+  }
+  .scroll-reveal, .scroll-reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
