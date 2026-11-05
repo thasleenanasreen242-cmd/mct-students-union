@@ -98,3 +98,18 @@
 .connect .btn,.connect .navbtn{font-family:"Manrope","Segoe UI",Arial,sans-serif;font-weight:800;letter-spacing:0}
 .connect .announcement strong{letter-spacing:-.025em}
 @media(max-width:540px){.connect .union-identity strong,.connect .footer .logo{letter-spacing:0}}
+
+
+/* Compact Instagram social CTA above footer */
+.connect .instagram-strip{background:linear-gradient(105deg,#f4f6f9,#fff 65%,#fff0f3);padding:34px 0;border-top:1px solid #e5e9ef}
+.connect .instagram-inner{display:flex;align-items:center;justify-content:space-between;gap:26px}
+.connect .instagram-copy{display:flex;align-items:center;gap:20px}
+.connect .instagram-mark{display:grid;place-items:center;flex:none;width:58px;height:58px;border-radius:15px;background:linear-gradient(145deg,#071c37,#bd2449);color:white}
+.connect .instagram-copy .eyebrow{font-size:10px;color:#c51d38}
+.connect .instagram-copy h2{font-size:23px;line-height:1.25;margin:4px 0 5px;letter-spacing:-.035em}
+.connect .instagram-copy p{font-size:13px;line-height:1.5;margin:0;color:#65758a}
+.connect .instagram-cta{display:inline-flex;align-items:center;gap:15px;white-space:nowrap;padding:14px 19px;background:#0c2a48;color:white;border-radius:4px;font-weight:800;font-size:12px;transition:background .18s ease,transform .18s ease}
+.connect .instagram-cta:hover{background:#b71936;transform:translateY(-2px)}
+.connect .instagram-cta span{font-size:17px}
+@media(max-width:750px){.connect .instagram-inner{align-items:flex-start;flex-direction:column;gap:20px}.connect .instagram-copy h2{font-size:20px}.connect .instagram-mark{width:49px;height:49px}.connect .instagram-cta{margin-left:69px}}
+@media(max-width:420px){.connect .instagram-copy{gap:12px}.connect .instagram-cta{margin-left:61px}}
