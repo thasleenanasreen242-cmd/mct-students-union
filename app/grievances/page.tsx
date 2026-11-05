@@ -32,8 +32,8 @@ export default function GrievancePage(){
   ].join("\n");
   window.location.assign("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message));
  };
- return <main className="connect"><div className="topline"><div className="wrap">MCT COLLEGE OF LEGAL STUDIES · STUDENT SUPPORT</div></div>
- <header className="nav"><div className="wrap navinner"><Link className="logo" href="/">MCT <span>CONNECT.</span></Link><Link className="navbtn" href="/">← Back home</Link></div></header>
+ return <main className="connect">
+ <header className="nav"><div className="wrap navinner"><Link className="union-identity" href="/" aria-label="MCT Students' Union home"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56"/><span><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span></Link><Link className="navbtn" href="/">← Back home</Link></div></header>
  <section className="innerhero"><div className="wrap"><div className="eyebrow">04 / STUDENT GRIEVANCE PORTAL</div><h1>Your concern matters.</h1><p>Share a campus-related concern with the Students’ Union through its official WhatsApp contact. You can review your message before sending it.</p></div></section>
  <section className="section"><div className="wrap grievance-layout"><div><div className="eyebrow">SEND A CONCERN</div><h2>Tell us what happened.</h2><p>Select a category, briefly explain the issue, then continue to WhatsApp. Your message is not submitted until you press Send in WhatsApp.</p>
  <form className="grievance-form" onSubmit={submit} noValidate>
