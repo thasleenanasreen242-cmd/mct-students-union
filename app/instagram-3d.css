@@ -194,3 +194,75 @@
  .connect .menu-glyph i,.connect .announcement,.connect .stat,.connect .step{transition:none!important}
  .connect .announcement:hover,.connect .stat:hover,.connect .step:hover{transform:none!important}
 }
+
+/* Homepage rhythm: white breathing space, mist-blue breaks, restrained dark showcases. */
+.connect .section{
+ position:relative;
+ padding-block:clamp(62px,6.5vw,92px);
+ border-top:1px solid rgba(211,223,234,.55);
+}
+.connect #quick-access,
+.connect #grievance,
+.connect #transparency,
+.connect #initiatives,
+.connect #this-week{background:#fff}
+.connect #announcements,
+.connect #library,
+.connect #suggestions,
+.connect #activities{
+ background:linear-gradient(160deg,#f3f7fb 0%,#f8fafc 52%,#f1f5f9 100%);
+}
+.connect #announcements:before,
+.connect #suggestions:before,
+.connect #activities:before{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(ellipse at 100% 5%,rgba(45,104,159,.045),transparent 42%);
+}
+.connect .section>.wrap{position:relative;z-index:1}
+.connect .sectionhead{
+ display:flex;justify-content:space-between;align-items:center;gap:36px;
+ margin-bottom:clamp(29px,3vw,40px);
+}
+.connect .sectionhead h2{margin:12px 0 0}
+.connect .sectionhead p{margin:0;max-width:385px}
+.connect .section-label-row{margin:0;min-height:50px;gap:14px}
+.connect .sectionhead .eyebrow,
+.connect .feature-eyebrow{letter-spacing:.16em}
+.connect .sectionhead h2,.connect .feature h2{max-width:690px}
+.connect .cards{row-gap:21px}
+.connect #grievance .feature,
+.connect #suggestions .feature{gap:clamp(32px,5vw,64px)}
+.connect #grievance .featurebox,
+.connect #suggestions .featurebox{
+ border:1px solid rgba(179,205,232,.32);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 25px 48px rgba(5,28,53,.19),0 0 30px rgba(190,30,66,.1);
+}
+.connect #grievance .featurebox{
+ background:linear-gradient(125deg,#071a31 0%,#123e63 40%,#1b3555 66%,#9c193b 100%);
+ background-size:170% 170%;
+}
+.connect #grievance .featurebox:before{
+ background:radial-gradient(ellipse at 82% 82%,rgba(240,52,91,.4),transparent 43%),radial-gradient(ellipse at 15% 18%,rgba(72,149,224,.2),transparent 48%);
+}
+.connect #grievance .featurebox .status{color:#fff;border-color:rgba(255,160,180,.65)}
+.connect #grievance .featurebox h3{color:#fff}
+.connect #grievance .featurebox p{color:#d3e0ec}
+.connect #suggestions .featurebox{background:linear-gradient(125deg,#071a31 0%,#113c5d 44%,#502b4d 76%,#a1183e 100%);background-size:170% 170%}
+.connect #transparency .stats{margin-top:3px}
+.connect #activities .note{margin-top:2px}
+.connect #this-week .announcement{margin-bottom:0}
+@media(max-width:800px){
+ .connect .section{padding-block:61px}
+ .connect .sectionhead{display:block;margin-bottom:29px}
+ .connect .sectionhead p{margin-top:14px;max-width:640px}
+ .connect .section-label-row{min-height:45px}
+}
+@media(max-width:600px){
+ .connect .section{padding-block:50px}
+ .connect .sectionhead{margin-bottom:25px}
+ .connect .sectionhead h2{margin-top:10px}
+ .connect .sectionhead p{margin-top:12px}
+ .connect .cards{row-gap:14px}
+ .connect #grievance .featurebox,.connect #suggestions .featurebox{min-height:230px}
+}
+@media(max-width:420px){.connect .section{padding-block:46px}}
