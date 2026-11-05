@@ -13,5 +13,13 @@ export default function CourtIcon({name,className,...rest}:{name:CourtIconName;c
   shield:<><path d="m12 2 8 4v6c0 5-3.3 8.2-8 10-4.7-1.8-8-5-8-10V6l8-4Z"/><path d="m8.5 12 2.4 2.4 4.6-4.8"/></>,
   laurel:<><path d="M12 19v3m-3-3h6M8 17C3 14 2 10 4 5c1 3 3 4 5 5M16 17c5-3 6-7 4-12-1 3-3 4-5 5M8 17l4 2 4-2"/><path d="M5 9c2 0 3 1 4 3m10-3c-2 0-3 1-4 3"/></>
  };
- return <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" className={className} {...common} {...rest}>{shapes[name]}</svg>;
+ return <svg viewBox="0 0 48 48" width="38" height="38" aria-hidden="true" className={className} {...common} {...rest}>
+  <circle cx="24" cy="24" r="22" strokeWidth=".85" opacity=".48"/>
+  <circle cx="24" cy="24" r="18.9" strokeWidth=".7" opacity=".2"/>
+  <circle cx="24" cy="24" r="18.3" fill="currentColor" stroke="none" opacity=".045"/>
+  <path d="M24 1v4M24 43v4M1 24h4M43 24h4" strokeWidth="1.1" opacity=".74"/>
+  <path d="m9 9 2.2 2.2M39 9l-2.2 2.2M9 39l2.2-2.2M39 39l-2.2-2.2" strokeWidth=".9" opacity=".43"/>
+  <g transform="translate(8 8) scale(1.3333)" strokeWidth="1.45">{shapes[name]}</g>
+  <path d="m24 4 1.6 1.6L24 7.2l-1.6-1.6L24 4Z" fill="currentColor" stroke="none" opacity=".65"/>
+ </svg>;
 }
