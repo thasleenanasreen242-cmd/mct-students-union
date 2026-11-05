@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import MCTChatBot from "./components/MCTChatBot";
 
 export const metadata: Metadata = {
   title: "MCT Students' Union | Student Support & Resources",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}<MCTChatBot /></body>
     </html>
   );
 }
