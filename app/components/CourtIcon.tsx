@@ -1,8 +1,8 @@
-import type { SVGProps } from "react";
+import type { ReactNode, SVGProps } from "react";
 export type CourtIconName="scales"|"landmark"|"book"|"scroll"|"gavel"|"quill"|"calendar"|"shield"|"laurel";
 export default function CourtIcon({name,className,...rest}:{name:CourtIconName;className?:string}&Omit<SVGProps<SVGSVGElement>,"children">){
  const common={fill:"none",stroke:"currentColor",strokeWidth:1.7,strokeLinecap:"round" as const,strokeLinejoin:"round" as const};
- const shapes:Record<CourtIconName,React.ReactNode>={
+ const shapes:Record<CourtIconName,ReactNode>={
   scales:<><path d="M12 3v17M6 21h12M8 7h8M4 9l4-2 4 2M12 9l4-2 4 2"/><path d="m4 9-2 5h8L8 9m8 0-2 5h8l-2-5"/><path d="M2 14c.6 2 7.4 2 8 0m4 0c.6 2 7.4 2 8 0"/></>,
   landmark:<><path d="M3 9h18M4 20h16M2 22h20M12 2 2 8h20L12 2Z"/><path d="M6 10v9m4-9v9m4-9v9m4-9v9"/></>,
   book:<><path d="M12 5c-3.5-2.3-6.5-2.1-10-.7v15c3.5-1.4 6.5-1.6 10 .7 3.5-2.3 6.5-2.1 10-.7v-15c-3.5-1.4-6.5-1.6-10 .7Z"/><path d="M12 5v15"/></>,
