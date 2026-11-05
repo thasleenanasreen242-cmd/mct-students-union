@@ -181,3 +181,33 @@
 .connect .instagram-inner{box-shadow:0 22px 48px rgba(9,36,67,.18),0 0 28px rgba(187,37,69,.08)}
 @media(hover:none){.connect a.card:hover,.connect .stat:hover,.connect .step:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.connect .card,.connect .stat,.connect .step,.connect .featurebox,.connect .support-panel,.connect .grievance-aside{transition:none!important}.connect a.card:hover,.connect .card:focus-within,.connect .stat:hover,.connect .step:hover{transform:none!important}}
+
+
+/* Unified premium visual language throughout the homepage */
+.connect .section{position:relative;padding-top:86px;padding-bottom:86px}
+.connect .section.alt{background:linear-gradient(180deg,#f4f7fb 0%,#f8fafd 52%,#f3f6fa 100%)}
+.connect .sectionhead{margin-bottom:38px}
+.connect .sectionhead .eyebrow:before,.connect .feature .eyebrow:before{content:"";display:inline-block;width:18px;height:2px;vertical-align:middle;margin-right:10px;background:#d01d3d;border-radius:2px}
+.connect .cards{gap:23px}
+.connect .card{min-height:230px;padding:30px}
+.connect .card h3{line-height:1.28}
+.connect .card p{color:#60738a}
+.connect .announcements{border:0;display:grid;gap:15px}
+.connect .announcement{background:linear-gradient(125deg,#fff,#fbfcff);border:1px solid #e1e7ee;border-left:3px solid #c82142;border-radius:12px;padding:25px 28px;box-shadow:0 4px 12px rgba(11,37,68,.04),0 15px 30px rgba(8,36,70,.055);transition:transform .23s ease,box-shadow .23s ease,border-color .23s ease}
+.connect .announcement:hover{transform:translateY(-3px);border-color:#dba4ad;box-shadow:0 12px 30px rgba(8,36,70,.11),0 0 18px rgba(208,29,61,.08)}
+.connect .announcement strong{font-size:17px;color:#0c2947}
+.connect .announcement small{font-size:11px;letter-spacing:.1em;color:#a42540;font-weight:800}
+.connect .hero-art{border-radius:15px;box-shadow:0 24px 55px rgba(1,13,28,.3),0 0 38px rgba(197,35,69,.15);transform:perspective(1100px) rotateY(-2deg);transition:transform .3s ease,box-shadow .3s ease}
+.connect .hero-art:hover{transform:perspective(1100px) rotateY(0deg) translateY(-4px);box-shadow:0 30px 65px rgba(1,13,28,.34),0 0 46px rgba(225,56,87,.2)}
+.connect .featurebox{border-radius:16px;padding:43px}
+.connect .featurebox h3{font-size:29px}
+.connect .featurebox:hover{box-shadow:0 25px 55px rgba(5,26,54,.25),0 0 31px rgba(189,32,64,.17)}
+.connect .stats{gap:20px}
+.connect .stat{border-top:3px solid #c92242;padding:28px;border-radius:12px}
+.connect .step{border-top:3px solid #c92242;border-radius:12px}
+.connect .note{border-radius:0 10px 10px 0;box-shadow:0 7px 22px rgba(50,29,49,.045)}
+.connect .footerlinks a{transition:color .2s ease}
+.connect .footerlinks a:hover{color:#ff7f95}
+@media(max-width:800px){.connect .section{padding-top:60px;padding-bottom:60px}.connect .cards{gap:16px}.connect .card{padding:23px;min-height:205px}.connect .hero-art{transform:none}.connect .featurebox{padding:31px}}
+@media(max-width:540px){.connect .announcement{padding:20px 17px}.connect .announcement strong{font-size:15px}.connect .sectionhead{margin-bottom:26px}.connect .stats{gap:14px}}
+@media(hover:none),(prefers-reduced-motion:reduce){.connect .announcement:hover,.connect .hero-art:hover{transform:none}.connect .hero-art{transform:none}}
