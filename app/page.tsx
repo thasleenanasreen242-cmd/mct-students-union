@@ -6,8 +6,7 @@ const quick = [
 {title:"Digital library",detail:"Law study resources and papers",href:"/library",icon:"02"},
 {title:"Union transparency",detail:"Follow verified outcomes",href:"/transparency",icon:"03"},
 {title:"Share an idea",detail:"Suggest campus improvements",href:"/suggestions",icon:"04"},
-{title:"Track initiatives",detail:"See programmes and progress",href:"/initiatives",icon:"05"},
-{title:"Announcements",detail:"Important campus updates",href:"#announcements",icon:"06"}
+{title:"Announcements",detail:"Important campus updates",href:"#announcements",icon:"05"}
 ];
 function Heading({eyebrow,title,description}:{eyebrow:string,title:string,description:string}){return <div className="sectionhead"><div><div className="eyebrow">{eyebrow}</div><h2>{title}</h2></div><p>{description}</p></div>}
 export default function Home(){
