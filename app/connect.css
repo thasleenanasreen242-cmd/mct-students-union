@@ -162,3 +162,22 @@
 .connect .instagram-cta:hover{background:#ffe7ec;color:#8f1733}
 @media(max-width:750px){.connect .instagram-strip{padding:35px 0 54px}.connect .instagram-inner{padding:36px 28px}.connect .instagram-copy h2{font-size:27px}}
 @media(max-width:420px){.connect .instagram-inner{padding:30px 20px}.connect .instagram-copy h2{font-size:23px}}
+
+
+/* Premium dimensional cards and soft brand glow */
+.connect .card,.connect .stat,.connect .step,.connect .featurebox,.connect .support-panel,.connect .grievance-aside{
+ position:relative;isolation:isolate;
+ border-radius:14px;
+ box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 4px 10px rgba(6,26,49,.045),0 18px 34px rgba(6,30,56,.075),0 0 0 1px rgba(207,25,52,.035);
+ transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease,border-color .25s ease;
+}
+.connect .card{overflow:hidden;border:1px solid rgba(13,47,82,.12);border-top:3px solid #ce2343;background:linear-gradient(150deg,#fff 0%,#fff 72%,#f7faff 100%)}
+.connect .card:before{content:"";position:absolute;z-index:-1;inset:-1px;pointer-events:none;background:radial-gradient(ellipse at 104% 0%,rgba(221,31,68,.09),transparent 47%),radial-gradient(ellipse at -10% 108%,rgba(18,69,123,.075),transparent 52%);opacity:.8;transition:opacity .25s ease}
+.connect a.card:hover,.connect .card:focus-within{transform:translateY(-7px) scale(1.008);border-color:rgba(213,38,70,.42);box-shadow:0 2px 0 rgba(255,255,255,.95) inset,0 14px 23px rgba(15,48,79,.13),0 27px 50px rgba(171,31,61,.12),0 0 24px rgba(211,40,70,.13)}
+.connect a.card:hover:before,.connect .card:focus-within:before{opacity:1}
+.connect .stat,.connect .step{background:linear-gradient(145deg,#fff,#f8fbff);border:1px solid #e3e9ef}
+.connect .stat:hover,.connect .step:hover{transform:translateY(-4px);box-shadow:0 15px 30px rgba(11,44,78,.12),0 0 19px rgba(204,39,69,.09)}
+.connect .featurebox{border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 43px rgba(9,32,60,.19),0 0 27px rgba(187,37,69,.1)}
+.connect .instagram-inner{box-shadow:0 22px 48px rgba(9,36,67,.18),0 0 28px rgba(187,37,69,.08)}
+@media(hover:none){.connect a.card:hover,.connect .stat:hover,.connect .step:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.connect .card,.connect .stat,.connect .step,.connect .featurebox,.connect .support-panel,.connect .grievance-aside{transition:none!important}.connect a.card:hover,.connect .card:focus-within,.connect .stat:hover,.connect .step:hover{transform:none!important}}
