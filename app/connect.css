@@ -239,3 +239,14 @@
  .connect .btn:before,.connect .navbtn:before,.connect .instagram-cta:before{display:none}
  .connect .btn:hover,.connect .navbtn:hover,.connect .instagram-cta:hover,.connect .textlink:hover,.connect a.card:hover .arrow,.connect .footerlinks a:hover{transform:none!important}
 }
+
+
+/* Animated dimensional gradient feature panels */
+@keyframes mct-feature-gradient{0%{background-position:0% 40%}100%{background-position:100% 65%}}
+@keyframes mct-feature-aura{0%,100%{opacity:.22;transform:translate3d(0,0,0) scale(1)}50%{opacity:.58;transform:translate3d(-12px,8px,0) scale(1.12)}}
+.connect .featurebox{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(125deg,#061b34 0%,#123e63 38%,#0f3154 61%,#9f193a 100%);background-size:200% 200%;animation:mct-feature-gradient 13s ease-in-out infinite alternate;transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease,border-color .32s ease;will-change:background-position}
+.connect .featurebox:before{content:"";position:absolute;inset:-35%;pointer-events:none;z-index:-1;background:radial-gradient(circle at 80% 70%,rgba(251,84,116,.33),transparent 34%),radial-gradient(circle at 10% 20%,rgba(75,148,221,.22),transparent 45%);animation:mct-feature-aura 9s ease-in-out infinite}
+.connect .featurebox>*{position:relative;z-index:1}
+.connect .featurebox:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.3);box-shadow:0 30px 58px rgba(5,26,54,.28),0 0 34px rgba(209,38,74,.22)}
+@media(hover:none){.connect .featurebox:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.connect .featurebox,.connect .featurebox:before{animation:none!important;transition:none!important;will-change:auto}.connect .featurebox:hover{transform:none!important}}
