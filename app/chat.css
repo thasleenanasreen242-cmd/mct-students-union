@@ -8,3 +8,13 @@
 .mct-wa-launcher:hover{background:#116e39}
 .mct-wa-launcher span{font-size:19px;line-height:1}
 @media(max-width:390px){.mct-launcher-row{gap:6px}.mct-wa-launcher{padding:12px;font-size:12px}.mct-chat-launcher{padding:12px 14px}}
+
+/* Modern icon-only floating actions */
+.mct-launcher-row{gap:11px}
+.mct-wa-launcher,.mct-chat-launcher{width:52px;height:52px;min-width:52px;padding:0;border-radius:50%;display:inline-flex;justify-content:center;align-items:center;gap:0;transition:transform .18s ease,box-shadow .18s ease}
+.mct-wa-launcher{background:#18a45b;border:1px solid #18a45b;box-shadow:0 7px 22px rgba(10,82,48,.25)}
+.mct-wa-launcher svg{display:block}
+.mct-chat-launcher{background:#092b4f;border:1px solid #295475;box-shadow:0 7px 22px rgba(7,28,55,.3)}
+.mct-chat-symbol{font-size:27px;line-height:1;color:#ff4664}
+.mct-wa-launcher:hover,.mct-chat-launcher:hover{transform:translateY(-3px);box-shadow:0 12px 27px rgba(7,28,55,.3)}
+@media(max-width:390px){.mct-wa-launcher,.mct-chat-launcher{width:47px;height:47px;min-width:47px;padding:0}}
