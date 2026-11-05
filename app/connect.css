@@ -331,3 +331,20 @@
 .connect .hero-art small:last-child{animation-delay:.48s}
 .connect .hero-art:hover{box-shadow:0 30px 70px rgba(1,12,29,.34),0 0 50px rgba(229,42,80,.25)}
 @media(prefers-reduced-motion:reduce){.connect .hero-art,.connect .hero-art:before,.connect .hero-art:after,.connect .hero-art strong,.connect .hero-art small{animation:none!important;filter:none!important}}
+
+
+/* Purposeful, court-inspired icon language */
+.connect .section-label-row{display:flex;align-items:center;gap:15px;margin-bottom:8px}
+.connect .section-label-row .eyebrow{margin:0}
+.connect .section-symbol{width:46px;height:46px;flex:none;display:grid;place-items:center;color:#c82142;background:linear-gradient(145deg,#fff,#f8e9ed);border:1px solid #edd6dd;border-radius:13px;box-shadow:0 8px 18px rgba(14,37,68,.07),0 0 15px rgba(207,34,66,.05)}
+.connect .section-symbol svg{width:24px;height:24px}
+.connect .card-topline{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:12px}
+.connect .card-symbol{width:43px;height:43px;flex:none;display:grid;place-items:center;color:#ba2542;background:linear-gradient(140deg,#f8edf0,#eef4fc);border:1px solid #e8dce4;border-radius:12px;transition:transform .28s ease,box-shadow .28s ease,color .28s ease}
+.connect .card-symbol svg{width:23px;height:23px}
+.connect a.card:hover .card-symbol{transform:rotate(-7deg) scale(1.08);color:#e02f53;box-shadow:0 0 19px rgba(216,40,78,.17)}
+.connect .feature-eyebrow,.connect .hero-eyebrow{display:flex;align-items:center;gap:10px}
+.connect .feature-eyebrow svg,.connect .hero-eyebrow svg{width:20px;height:20px;flex:none}
+.connect .feature-eyebrow svg{color:#c92242}
+.connect .hero-eyebrow svg{color:#ff9dad}
+@media(max-width:540px){.connect .section-label-row{gap:11px}.connect .section-symbol{width:39px;height:39px;border-radius:11px}.connect .section-symbol svg{width:21px;height:21px}.connect .card-symbol{width:38px;height:38px}.connect .card-symbol svg{width:21px;height:21px}}
+@media(prefers-reduced-motion:reduce){.connect .card-symbol{transition:none}.connect a.card:hover .card-symbol{transform:none}}
