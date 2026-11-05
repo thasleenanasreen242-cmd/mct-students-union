@@ -69,3 +69,9 @@
 .connect .union-identity strong{color:#fff;font-size:15px;letter-spacing:.07em}
 .connect .union-identity small{color:#aebfd1;font-size:9px;letter-spacing:.15em}
 @media(max-width:540px){.connect .union-identity{gap:8px}.connect .union-identity strong{font-size:11px;letter-spacing:.03em}.connect .union-identity small{font-size:7px;letter-spacing:.06em}}
+
+/* Two-tone brand: white MCT, crimson Students' Union */
+.connect .union-identity strong{color:#fff}
+.connect .union-identity strong em{color:#f04457;font-style:normal}
+.connect .footer .logo{color:#fff}
+.connect .footer .logo span{color:#f04457}
