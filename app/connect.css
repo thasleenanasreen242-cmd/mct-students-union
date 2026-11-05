@@ -61,3 +61,11 @@
 .connect .navlinks a:hover,.connect .mobilelinks a:hover{color:#ff8091}
 .connect .mobilelinks{border-top:1px solid #294159}
 @media(max-width:540px){.connect .navinner{min-height:78px}.connect .union-identity img{width:44px;height:54px}}
+
+
+/* Crest + Students' Union name on dark masthead */
+.connect .union-identity{gap:13px;min-width:0}
+.connect .union-identity span{display:flex;flex-direction:column;gap:4px}
+.connect .union-identity strong{color:#fff;font-size:15px;letter-spacing:.07em}
+.connect .union-identity small{color:#aebfd1;font-size:9px;letter-spacing:.15em}
+@media(max-width:540px){.connect .union-identity{gap:8px}.connect .union-identity strong{font-size:11px;letter-spacing:.03em}.connect .union-identity small{font-size:7px;letter-spacing:.06em}}
