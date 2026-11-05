@@ -7,7 +7,7 @@ type Message={role:"bot"|"user";text:string};
 const greeting="Hi! I’m the MCT Student Help assistant. I can guide you to study resources, union updates, grievances and suggestions. What would you like to find?";
 function answer(text:string){
  const q=text.toLowerCase();
- if(/grievance|complaint|hostel|problem|issue|support/.test(q)) return "To raise a concern, open the Student Grievance Portal. It prepares a message to the Union’s official WhatsApp number. Your phone number will be visible to the recipient, and this is not an anonymous channel.";
+ if(/grievance|complaint|hostel|problem|issue|support/.test(q)) return "To raise a concern, open the Student Grievance Portal. It prepares a message to the provided WhatsApp number. Your phone number will be visible to the recipient, and this is not an anonymous channel.";
  if(/paper|question|notes|library|pdf|bare act|judgment|study|semester|resource|exam/.test(q)) return "The Law Students’ Digital Library is organised around course, semester and subject. The resource catalogue and PDF downloads are still being prepared. See the Library page for details.";
  if(/suggest|idea|feedback|improve/.test(q)) return "The Student Suggestions Box is designed for ideas on academics, sports, culture, infrastructure and welfare. Online submission is not yet enabled while secure storage is being arranged.";
  if(/union|transparen|resolved|progress|initiative|activity|programme|sport|moot|event/.test(q)) return "You can explore Union Transparency and Our Initiatives & Progress for verified updates. Figures and activity reports will appear when published by the Union.";
@@ -32,7 +32,7 @@ export default function MCTChatBot(){
    <form className="mct-chat-input" onSubmit={e=>{e.preventDefault();send(input)}}><input aria-label="Ask MCT a question" placeholder="Ask about student services..." value={input} onChange={e=>setInput(e.target.value)} maxLength={500}/><button type="submit" aria-label="Send" disabled={!input.trim()}>↑</button></form>
    <p className="mct-chat-disclaimer">Automated guidance only. This chat does not submit grievances or store complaints.</p>
   </section>}
-  <div className="mct-launcher-row"><a className="mct-wa-launcher" href="https://wa.me/919496744513?text=Hello%20MCT%20Students%27%20Union%2C%20I%20need%20assistance." target="_blank" rel="noopener noreferrer" aria-label="Chat with MCT Students' Union on WhatsApp"><span aria-hidden="true">✆</span> WhatsApp</a>
+  <div className="mct-launcher-row"><a className="mct-wa-launcher" href="https://wa.me/919496744513?text=Hello%2C%20I%20need%20assistance%20regarding%20MCT%20Students%27%20Union." target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp contact"><span aria-hidden="true">✆</span> WhatsApp</a>
   <button className="mct-chat-launcher" type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-label={open?"Close MCT Student Help":"Open MCT Student Help"}><span className="mct-chat-symbol">{open?"×":"✳"}</span>{open?"Close":"Ask MCT"}</button></div>
  </div>;
 }
