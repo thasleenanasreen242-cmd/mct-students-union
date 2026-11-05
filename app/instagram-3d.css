@@ -266,3 +266,23 @@
  .connect #grievance .featurebox,.connect #suggestions .featurebox{min-height:230px}
 }
 @media(max-width:420px){.connect .section{padding-block:46px}}
+
+/* WhatsApp-specific grievance action, separate from the crimson website CTA system */
+.connect #grievance .grievance-whatsapp{
+ display:inline-flex;align-items:center;justify-content:center;gap:11px;
+ min-height:50px;padding:13px 19px;border-radius:11px;
+ background:#25D366!important;border:1px solid #25D366!important;
+ color:#052b19!important;font-size:13px;font-weight:800;line-height:1.35;
+ box-shadow:0 9px 23px rgba(20,144,76,.19),inset 0 1px 0 rgba(255,255,255,.28);
+}
+.connect #grievance .grievance-whatsapp svg{width:22px;height:22px;flex:none}
+.connect #grievance .grievance-whatsapp .whatsapp-cta-arrow{margin-left:5px;font-size:16px;transition:transform .22s ease}
+@media(hover:hover){
+ .connect #grievance .grievance-whatsapp:hover{
+  background:#20bd5a!important;border-color:#20bd5a!important;
+  box-shadow:0 15px 28px rgba(20,144,76,.25),0 0 20px rgba(37,211,102,.16);
+ }
+ .connect #grievance .grievance-whatsapp:hover .whatsapp-cta-arrow{transform:translate(2px,-2px)}
+}
+@media(max-width:420px){.connect #grievance .grievance-whatsapp{width:100%;padding:13px 12px;font-size:12px;gap:8px}}
+@media(prefers-reduced-motion:reduce){.connect #grievance .grievance-whatsapp .whatsapp-cta-arrow{transition:none!important}}
