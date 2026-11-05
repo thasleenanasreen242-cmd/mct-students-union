@@ -211,3 +211,31 @@
 @media(max-width:800px){.connect .section{padding-top:60px;padding-bottom:60px}.connect .cards{gap:16px}.connect .card{padding:23px;min-height:205px}.connect .hero-art{transform:none}.connect .featurebox{padding:31px}}
 @media(max-width:540px){.connect .announcement{padding:20px 17px}.connect .announcement strong{font-size:15px}.connect .sectionhead{margin-bottom:26px}.connect .stats{gap:14px}}
 @media(hover:none),(prefers-reduced-motion:reduce){.connect .announcement:hover,.connect .hero-art:hover{transform:none}.connect .hero-art{transform:none}}
+
+
+/* Unified interactive CTA motion */
+.connect .btn,.connect .navbtn,.connect .instagram-cta{
+ position:relative;overflow:hidden;isolation:isolate;
+ transition:transform .22s cubic-bezier(.2,.75,.3,1),box-shadow .22s ease,background-color .22s ease,border-color .22s ease,color .22s ease;
+}
+.connect .btn:before,.connect .navbtn:before,.connect .instagram-cta:before{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+ background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.25) 50%,transparent 80%);
+ transform:translateX(-140%);transition:transform .55s ease;
+}
+.connect .btn:active,.connect .navbtn:active,.connect .instagram-cta:active{transform:translateY(1px) scale(.985)}
+.connect .textlink,.connect .card .arrow,.connect .footerlinks a{
+ display:inline-block;transition:transform .22s ease,color .22s ease,opacity .22s ease;
+}
+.connect .textlink:hover{transform:translateX(5px);color:#e32a4c}
+.connect a.card:hover .arrow,.connect a.card:focus-visible .arrow{transform:translateX(7px)}
+.connect .footerlinks a:hover{transform:translateY(-2px)}
+@media(hover:hover){
+ .connect .btn:hover,.connect .navbtn:hover,.connect .instagram-cta:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(12,40,69,.19),0 0 21px rgba(211,29,62,.12)}
+ .connect .btn:hover:before,.connect .navbtn:hover:before,.connect .instagram-cta:hover:before{transform:translateX(140%)}
+}
+@media(prefers-reduced-motion:reduce){
+ .connect .btn,.connect .navbtn,.connect .instagram-cta,.connect .textlink,.connect .card .arrow,.connect .footerlinks a{transition:none!important}
+ .connect .btn:before,.connect .navbtn:before,.connect .instagram-cta:before{display:none}
+ .connect .btn:hover,.connect .navbtn:hover,.connect .instagram-cta:hover,.connect .textlink:hover,.connect a.card:hover .arrow,.connect .footerlinks a:hover{transform:none!important}
+}
