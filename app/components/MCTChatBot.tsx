@@ -32,6 +32,7 @@ export default function MCTChatBot(){
    <form className="mct-chat-input" onSubmit={e=>{e.preventDefault();send(input)}}><input aria-label="Ask MCT a question" placeholder="Ask about student services..." value={input} onChange={e=>setInput(e.target.value)} maxLength={500}/><button type="submit" aria-label="Send" disabled={!input.trim()}>↑</button></form>
    <p className="mct-chat-disclaimer">Automated guidance only. This chat does not submit grievances or store complaints.</p>
   </section>}
-  <button className="mct-chat-launcher" type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-label={open?"Close MCT Student Help":"Open MCT Student Help"}><span className="mct-chat-symbol">{open?"×":"✳"}</span>{open?"Close":"Ask MCT"}</button>
+  <div className="mct-launcher-row"><a className="mct-wa-launcher" href="https://wa.me/919496744513?text=Hello%20MCT%20Students%27%20Union%2C%20I%20need%20assistance." target="_blank" rel="noopener noreferrer" aria-label="Chat with MCT Students' Union on WhatsApp"><span aria-hidden="true">✆</span> WhatsApp</a>
+  <button className="mct-chat-launcher" type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-label={open?"Close MCT Student Help":"Open MCT Student Help"}><span className="mct-chat-symbol">{open?"×":"✳"}</span>{open?"Close":"Ask MCT"}</button></div>
  </div>;
 }
