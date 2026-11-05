@@ -1,4 +1,5 @@
 import "./connect.css";
+import "./hero-bevel.css";
 import Link from "next/link";
 import CourtIcon, { type CourtIconName } from "./components/CourtIcon";
 
