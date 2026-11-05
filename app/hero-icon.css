@@ -1,0 +1,4 @@
+/* Harmonize hero scales with the section eyebrow */
+.connect .hero-eyebrow{gap:8px}
+.connect .hero-eyebrow svg{width:17px;height:17px;color:#ff8997;flex:none}
+@media(max-width:600px){.connect .hero-eyebrow svg{width:16px;height:16px}}
