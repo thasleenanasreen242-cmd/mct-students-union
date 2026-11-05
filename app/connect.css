@@ -348,3 +348,17 @@
 .connect .hero-eyebrow svg{color:#ff9dad}
 @media(max-width:540px){.connect .section-label-row{gap:11px}.connect .section-symbol{width:39px;height:39px;border-radius:11px}.connect .section-symbol svg{width:21px;height:21px}.connect .card-symbol{width:38px;height:38px}.connect .card-symbol svg{width:21px;height:21px}}
 @media(prefers-reduced-motion:reduce){.connect .card-symbol{transition:none}.connect a.card:hover .card-symbol{transform:none}}
+
+
+/* Rich, institutional medallions for legal symbols */
+.connect .section-symbol,.connect .card-symbol{background:linear-gradient(140deg,#061a33 0%,#12385b 58%,#78213d 100%);color:#f2cf95;border:1px solid rgba(244,205,143,.48);box-shadow:0 12px 24px rgba(7,27,52,.19),inset 0 1px 0 rgba(255,255,255,.17),0 0 18px rgba(188,42,69,.12)}
+.connect .section-symbol{width:62px;height:62px;border-radius:17px}
+.connect .card-symbol{width:61px;height:61px;border-radius:17px}
+.connect .section-symbol svg,.connect .card-symbol svg{width:43px;height:43px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.22))}
+.connect .section-symbol,.connect .card-symbol{transition:transform .28s ease,box-shadow .28s ease}
+.connect a.card:hover .card-symbol{transform:translateY(-4px) rotate(-5deg) scale(1.045);color:#ffe0aa;box-shadow:0 16px 29px rgba(7,27,52,.24),0 0 22px rgba(210,53,83,.26)}
+.connect .feature-eyebrow svg,.connect .hero-eyebrow svg{width:30px;height:30px}
+.connect .feature-eyebrow svg{color:#bd2846}
+.connect .hero-eyebrow svg{color:#efb975}
+@media(max-width:600px){.connect .section-symbol{width:54px;height:54px}.connect .card-symbol{width:53px;height:53px}.connect .section-symbol svg,.connect .card-symbol svg{width:39px;height:39px}.connect .feature-eyebrow svg,.connect .hero-eyebrow svg{width:26px;height:26px}}
+@media(prefers-reduced-motion:reduce){.connect .section-symbol,.connect .card-symbol{transition:none!important}.connect a.card:hover .card-symbol{transform:none!important}}
