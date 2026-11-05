@@ -250,3 +250,68 @@
 .connect .featurebox:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.3);box-shadow:0 30px 58px rgba(5,26,54,.28),0 0 34px rgba(209,38,74,.22)}
 @media(hover:none){.connect .featurebox:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.connect .featurebox,.connect .featurebox:before{animation:none!important;transition:none!important;will-change:auto}.connect .featurebox:hover{transform:none!important}}
+
+
+/* Mobile usability: compact navigation, readable scale and touch-first layouts */
+.connect{width:100%;max-width:100%;overflow-x:clip}
+.connect section[id]{scroll-margin-top:112px}
+.connect a,.connect button{touch-action:manipulation}
+@media(max-width:800px){
+ .connect .wrap{width:calc(100% - 36px)}
+ .connect .navinner{gap:12px}
+ .connect .mobilelinks{display:flex;gap:20px;white-space:nowrap;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:13px 0}
+ .connect .mobilelinks::-webkit-scrollbar{display:none}
+ .connect .mobilelinks a{display:inline-flex;align-items:center;min-height:32px;flex:none}
+ .connect .hero{padding:58px 0 64px}
+ .connect .hero-grid{gap:26px}
+ .connect .hero h1{font-size:clamp(38px,7.6vw,57px);line-height:1.1}
+ .connect .hero p{font-size:15px;line-height:1.7}
+ .connect .hero-art{min-height:205px;padding:26px}
+ .connect .hero-art strong{font-size:clamp(33px,7vw,47px)}
+ .connect .sectionhead h2{font-size:clamp(29px,5.4vw,39px)}
+ .connect .sectionhead p{font-size:14px}
+ .connect .feature{gap:26px}
+ .connect .featurebox{min-height:235px}
+ .connect .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .connect .card{min-height:205px}
+ .connect .announcement{gap:13px}
+ .connect .instagram-inner{gap:24px}
+}
+@media(max-width:600px){
+ .connect .cards{grid-template-columns:minmax(0,1fr);gap:14px}
+ .connect .card{min-height:175px;padding:24px}
+ .connect .card h3{font-size:20px}
+ .connect .card p{margin:5px 0}
+ .connect .card .arrow{margin-top:12px}
+ .connect .stats{grid-template-columns:1fr}
+ .connect .featurebox{min-height:0}
+ .connect .instagram-copy{align-items:flex-start}
+ .connect .instagram-cta{margin-left:0;width:100%;justify-content:space-between}
+ .connect .footerlinks{gap:13px 20px}
+ .connect .footerlinks a{min-height:32px;display:inline-flex;align-items:center}
+}
+@media(max-width:420px){
+ .connect .wrap{width:calc(100% - 28px)}
+ .connect .navinner{min-height:69px}
+ .connect .union-identity img{width:39px;height:47px}
+ .connect .union-identity strong{font-size:10px}
+ .connect .union-identity small{display:none}
+ .connect .navinner>.navbtn{display:none}
+ .connect .mobilelinks{gap:17px;font-size:12px}
+ .connect .hero{padding:46px 0 52px}
+ .connect .hero h1{font-size:clamp(35px,10.3vw,43px);letter-spacing:-.05em}
+ .connect .hero-actions{gap:15px}
+ .connect .hero-actions .btn{width:100%;text-align:center}
+ .connect .hero-art{min-height:190px;padding:20px}
+ .connect .hero-art strong{font-size:33px}
+ .connect .hero-art small{font-size:9px}
+ .connect .section{padding-top:48px;padding-bottom:48px}
+ .connect .featurebox{padding:25px}
+ .connect .featurebox h3{font-size:25px}
+ .connect .instagram-strip{padding:32px 0 48px}
+ .connect .instagram-inner{padding:26px 20px}
+ .connect .instagram-copy{gap:12px}
+ .connect .instagram-mark{width:49px;height:49px}
+ .connect .instagram-copy h2{font-size:22px}
+ .connect .instagram-cta{padding:14px 17px}
+}
