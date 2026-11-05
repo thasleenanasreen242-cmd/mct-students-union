@@ -33,7 +33,7 @@ export default function GrievancePage(){
   window.location.assign("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message));
  };
  return <main className="connect">
- <header className="nav"><div className="wrap navinner"><Link className="union-identity" href="/" aria-label="MCT Students' Union home"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56"/><span><strong>MCT STUDENTS&apos; UNION</strong><small>COLLEGE OF LEGAL STUDIES</small></span></Link><Link className="navbtn" href="/">← Back home</Link></div></header>
+ <header className="nav"><div className="wrap navinner"><Link className="union-identity" href="/" aria-label="MCT Students' Union home"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56"/><span><strong>MCT <em>STUDENTS&apos; UNION</em></strong><small>COLLEGE OF LEGAL STUDIES</small></span></Link><Link className="navbtn" href="/">← Back home</Link></div></header>
  <section className="innerhero"><div className="wrap"><div className="eyebrow">04 / STUDENT GRIEVANCE PORTAL</div><h1>Your concern matters.</h1><p>Share a campus-related concern with the Students’ Union through its official WhatsApp contact. You can review your message before sending it.</p></div></section>
  <section className="section"><div className="wrap grievance-layout"><div><div className="eyebrow">SEND A CONCERN</div><h2>Tell us what happened.</h2><p>Select a category, briefly explain the issue, then continue to WhatsApp. Your message is not submitted until you press Send in WhatsApp.</p>
  <form className="grievance-form" onSubmit={submit} noValidate>
@@ -50,5 +50,5 @@ export default function GrievancePage(){
  <p className="field-hint">Recipient: +91 94967 44513. The website does not save the contents of this form or assign a tracking number.</p>
  </form></div>
  <aside className="grievance-aside"><span className="status">WHATSAPP CONTACT</span><h3>What happens next?</h3><ol><li>Fill out the complaint form.</li><li>WhatsApp opens with your prepared message.</li><li>Review and press Send.</li><li>The Union can reply in the same WhatsApp conversation.</li></ol><div className="note"><strong>Privacy:</strong> This is not an anonymous channel. The WhatsApp account receiving the complaint will see your phone number. Do not send emergencies or highly sensitive documents through this form.</div><p>If WhatsApp does not open, contact the Union at <a href="https://wa.me/919496744513" target="_blank" rel="noopener noreferrer">+91 94967 44513</a>.</p></aside></div></section>
- <footer className="footer"><div className="wrap"><div className="logo">MCT <span>CONNECT.</span></div><p>Students’ Union · Learn · Lead · Belong</p></div></footer></main>;
+ <footer className="footer"><div className="wrap"><div className="logo">MCT <span>STUDENTS&apos; UNION</span></div><p>Students’ Union · Learn · Lead · Belong</p></div></footer></main>;
 }
