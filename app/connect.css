@@ -49,3 +49,15 @@
 .connect .navlinks a:hover,.connect .mobilelinks a:hover{color:#cb1836}
 .connect .mobilelinks{border-top:1px solid #edf0f4}
 @media(max-width:540px){.connect .navinner{min-height:76px;gap:10px}.connect .union-identity{gap:9px}.connect .union-identity img{width:40px;height:46px}.connect .union-identity strong{font-size:11px;letter-spacing:.055em}.connect .union-identity small{font-size:7px;letter-spacing:.09em}.connect .navbtn{font-size:11px;padding:10px}}
+
+
+/* Crest-only midnight-blue masthead, matching Union reference */
+.connect .nav{background:#061a31;border-bottom:1px solid #294159;box-shadow:none}
+.connect .navinner{min-height:84px}
+.connect .union-identity{gap:0;min-width:52px}
+.connect .union-identity img{width:48px;height:58px;object-fit:contain}
+.connect .union-identity span{display:none}
+.connect .navlinks a,.connect .mobilelinks a{color:#f4f7fb}
+.connect .navlinks a:hover,.connect .mobilelinks a:hover{color:#ff8091}
+.connect .mobilelinks{border-top:1px solid #294159}
+@media(max-width:540px){.connect .navinner{min-height:78px}.connect .union-identity img{width:44px;height:54px}}
