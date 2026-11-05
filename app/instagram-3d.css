@@ -385,3 +385,48 @@
  .connect .instagram-inner{padding:22px 17px}
  .connect .instagram-mark{width:46px;height:46px;flex:none}
 }
+
+/* Premium compact Instagram campaign on mobile, preserving standalone treatment. */
+@media(max-width:750px){
+ .connect .instagram-strip{background:#eef3f8!important;padding:38px 0 52px!important;isolation:isolate}
+ .connect .instagram-inner{
+  position:relative;display:flex;flex-direction:column;align-items:stretch;
+  gap:25px!important;padding:34px 27px!important;min-height:0;
+  background:linear-gradient(133deg,#06182e 0%,#103b60 43%,#282a4e 69%,#a01940 100%)!important;
+  background-size:170% 170%!important;
+  border:1px solid rgba(196,220,241,.38)!important;
+  border-radius:22px!important;color:#fff!important;
+  box-shadow:inset 1px 1px 0 rgba(255,255,255,.2),inset -7px -8px 18px rgba(3,13,32,.23),0 22px 36px rgba(6,30,55,.2),0 0 27px rgba(191,35,72,.13)!important;
+  transform:none!important;
+ }
+ .connect .instagram-inner:before{width:240px;height:240px;right:-110px;top:-100px;border-color:rgba(255,255,255,.13)}
+ .connect .instagram-inner:after{width:160px;height:160px;right:-65px;top:-58px;border-color:rgba(255,255,255,.09)}
+ .connect .instagram-copy{display:flex;flex-direction:column;align-items:flex-start;gap:17px!important;max-width:100%}
+ .connect .instagram-mark{
+  width:62px!important;height:62px!important;border-radius:17px!important;
+  background:radial-gradient(circle at 25% 110%,#feda75 0%,#fa7e1e 25%,#d62976 53%,#962fbf 78%,#4f5bd5 100%)!important;
+  border:1px solid rgba(255,255,255,.37)!important;
+  box-shadow:inset 1px 1px 4px rgba(255,255,255,.17),0 11px 25px rgba(2,9,24,.3)!important;
+  transform:none;
+ }
+ .connect .instagram-mark svg{width:30px;height:30px}
+ .connect .instagram-copy .eyebrow{color:#ff9fb0!important;font-size:10px;letter-spacing:.16em}
+ .connect .instagram-copy h2{color:#fff!important;font-size:clamp(26px,6.3vw,34px)!important;line-height:1.18;margin:9px 0 12px;letter-spacing:-.045em}
+ .connect .instagram-copy p{color:#dbe7f3!important;font-size:14px;line-height:1.68;max-width:440px;margin:0}
+ .connect .instagram-cta{
+  align-self:stretch;display:flex;width:100%!important;min-height:50px;
+  margin:0!important;padding:15px 19px!important;justify-content:space-between;
+  background:#fff!important;color:#082744!important;border-radius:11px!important;
+  font-size:13px;box-shadow:0 11px 24px rgba(1,12,27,.21)!important;
+ }
+ .connect .instagram-cta:hover{background:#ffe6eb!important;color:#72142d!important}
+}
+@media(max-width:420px){
+ .connect .instagram-inner{padding:28px 23px!important;gap:23px!important;border-radius:19px!important}
+ .connect .instagram-mark{width:57px!important;height:57px!important}
+ .connect .instagram-copy{gap:15px!important}
+ .connect .instagram-copy h2{font-size:clamp(24px,6.8vw,29px)!important}
+ .connect .instagram-copy p{font-size:13px}
+ .connect .instagram-cta{min-height:48px;padding:14px 16px!important}
+}
+@media(prefers-reduced-motion:reduce){.connect .instagram-inner{animation:none!important}}
