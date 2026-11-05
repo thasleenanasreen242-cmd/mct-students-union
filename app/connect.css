@@ -113,3 +113,21 @@
 .connect .instagram-cta span{font-size:17px}
 @media(max-width:750px){.connect .instagram-inner{align-items:flex-start;flex-direction:column;gap:20px}.connect .instagram-copy h2{font-size:20px}.connect .instagram-mark{width:49px;height:49px}.connect .instagram-cta{margin-left:69px}}
 @media(max-width:420px){.connect .instagram-copy{gap:12px}.connect .instagram-cta{margin-left:61px}}
+
+
+/* Elevated Instagram follow feature */
+.connect .instagram-strip{position:relative;overflow:hidden;background:linear-gradient(112deg,#06192f 0%,#0d3557 55%,#941c3b 100%);padding:63px 0;border:0;color:#fff}
+.connect .instagram-strip:before{content:"";position:absolute;width:450px;height:450px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-120px;top:-185px;pointer-events:none}
+.connect .instagram-strip:after{content:"";position:absolute;width:300px;height:300px;border:1px solid rgba(255,255,255,.09);border-radius:50%;right:-30px;top:-95px;pointer-events:none}
+.connect .instagram-inner{position:relative;z-index:1;gap:44px}
+.connect .instagram-copy{gap:26px}
+.connect .instagram-mark{width:82px;height:82px;border:1px solid rgba(255,255,255,.32);border-radius:21px;background:linear-gradient(140deg,#293c72,#ae2654 72%,#da3855);box-shadow:0 17px 33px rgba(1,12,27,.25)}
+.connect .instagram-mark svg{width:38px;height:38px}
+.connect .instagram-copy .eyebrow{color:#ff9cae;font-size:11px;letter-spacing:.2em}
+.connect .instagram-copy h2{color:#fff;font-size:clamp(28px,3.5vw,38px);line-height:1.17;margin:9px 0 12px;letter-spacing:-.055em}
+.connect .instagram-copy p{color:#d9e3ee;font-size:15px;max-width:540px}
+.connect .instagram-cta{border-radius:5px;background:#fff;color:#092a47;padding:19px 25px;font-size:13px;box-shadow:0 13px 28px rgba(2,14,30,.19)}
+.connect .instagram-cta:hover{background:#ffe2e8;color:#8b1835}
+.connect .instagram-cta span{font-size:20px}
+@media(max-width:750px){.connect .instagram-strip{padding:46px 0}.connect .instagram-inner{gap:25px}.connect .instagram-copy{gap:17px}.connect .instagram-mark{width:64px;height:64px;border-radius:16px}.connect .instagram-mark svg{width:30px;height:30px}.connect .instagram-copy h2{font-size:26px}.connect .instagram-copy p{font-size:13px}.connect .instagram-cta{margin-left:81px;padding:15px 21px}}
+@media(max-width:420px){.connect .instagram-mark{width:53px;height:53px}.connect .instagram-copy{gap:12px}.connect .instagram-copy h2{font-size:23px}.connect .instagram-cta{margin-left:65px}}
