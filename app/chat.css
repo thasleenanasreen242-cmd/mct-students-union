@@ -22,3 +22,10 @@
 /* WhatsApp brand green */
 .mct-wa-launcher{background:#25D366;border-color:#25D366;color:#fff}
 .mct-wa-launcher:hover{background:#20bf5b;border-color:#20bf5b}
+
+
+/* Floating contact CTA interaction */
+.mct-wa-launcher,.mct-chat-launcher{transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,filter .22s ease}
+.mct-wa-launcher:active,.mct-chat-launcher:active{transform:scale(.93)}
+@media(hover:hover){.mct-wa-launcher:hover,.mct-chat-launcher:hover{transform:translateY(-4px) scale(1.045);filter:brightness(1.06)}}
+@media(prefers-reduced-motion:reduce){.mct-wa-launcher,.mct-chat-launcher{transition:none!important}.mct-wa-launcher:hover,.mct-chat-launcher:hover,.mct-wa-launcher:active,.mct-chat-launcher:active{transform:none!important}}
