@@ -145,3 +145,20 @@
 .connect .instagram-cta:hover{background:#c41d3a;color:#fff}
 @media(max-width:750px){.connect .instagram-strip{padding:44px 0 58px}.connect .instagram-inner{padding:27px 24px}.connect .instagram-copy h2{font-size:25px}.connect .instagram-cta{margin-left:81px}}
 @media(max-width:420px){.connect .instagram-inner{padding:22px 18px}.connect .instagram-cta{margin-left:65px}}
+
+
+/* Standalone navy-to-crimson Instagram campaign card */
+.connect .instagram-strip{background:#f4f6f9;padding:52px 0 76px;border:0;margin:0}
+.connect .instagram-inner{position:relative;overflow:hidden;background:linear-gradient(109deg,#06192f 0%,#103858 51%,#971b3c 100%);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:56px 45px;box-shadow:0 20px 44px rgba(10,32,59,.15);color:#fff}
+.connect .instagram-inner:before,.connect .instagram-inner:after{content:"";position:absolute;display:block;border:1px solid rgba(255,255,255,.12);border-radius:50%;pointer-events:none}
+.connect .instagram-inner:before{width:350px;height:350px;right:-65px;top:-205px}
+.connect .instagram-inner:after{width:235px;height:235px;right:0;top:-140px}
+.connect .instagram-copy,.connect .instagram-cta{position:relative;z-index:1}
+.connect .instagram-copy .eyebrow{color:#ff9cae}
+.connect .instagram-copy h2{color:#fff;font-size:clamp(28px,3.3vw,38px)}
+.connect .instagram-copy p{color:#dce7f0}
+.connect .instagram-mark{background:radial-gradient(circle at 28% 108%,#feda75 0%,#fa7e1e 25%,#d62976 54%,#962fbf 76%,#4f5bd5 100%);box-shadow:0 13px 29px rgba(6,14,30,.26)}
+.connect .instagram-cta{background:#fff;color:#092b4a;box-shadow:0 12px 26px rgba(2,13,28,.15)}
+.connect .instagram-cta:hover{background:#ffe7ec;color:#8f1733}
+@media(max-width:750px){.connect .instagram-strip{padding:35px 0 54px}.connect .instagram-inner{padding:36px 28px}.connect .instagram-copy h2{font-size:27px}}
+@media(max-width:420px){.connect .instagram-inner{padding:30px 20px}.connect .instagram-copy h2{font-size:23px}}
