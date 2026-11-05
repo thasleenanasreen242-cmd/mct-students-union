@@ -29,3 +29,12 @@
 .mct-wa-launcher:active,.mct-chat-launcher:active{transform:scale(.93)}
 @media(hover:hover){.mct-wa-launcher:hover,.mct-chat-launcher:hover{transform:translateY(-4px) scale(1.045);filter:brightness(1.06)}}
 @media(prefers-reduced-motion:reduce){.mct-wa-launcher,.mct-chat-launcher{transition:none!important}.mct-wa-launcher:hover,.mct-chat-launcher:hover,.mct-wa-launcher:active,.mct-chat-launcher:active{transform:none!important}}
+
+
+/* Safe-area-aware mobile floating controls */
+@media(max-width:600px){
+ .mct-chat{bottom:calc(14px + env(safe-area-inset-bottom,0px));right:calc(13px + env(safe-area-inset-right,0px));max-width:calc(100vw - 26px)}
+ .mct-chat-window{width:min(365px,calc(100vw - 26px));height:min(500px,calc(100dvh - 114px))}
+ .mct-launcher-row{gap:9px}
+ .mct-wa-launcher,.mct-chat-launcher{width:48px;height:48px;min-width:48px}
+}
