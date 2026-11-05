@@ -131,3 +131,17 @@
 .connect .instagram-cta span{font-size:20px}
 @media(max-width:750px){.connect .instagram-strip{padding:46px 0}.connect .instagram-inner{gap:25px}.connect .instagram-copy{gap:17px}.connect .instagram-mark{width:64px;height:64px;border-radius:16px}.connect .instagram-mark svg{width:30px;height:30px}.connect .instagram-copy h2{font-size:26px}.connect .instagram-copy p{font-size:13px}.connect .instagram-cta{margin-left:81px;padding:15px 21px}}
 @media(max-width:420px){.connect .instagram-mark{width:53px;height:53px}.connect .instagram-copy{gap:12px}.connect .instagram-copy h2{font-size:23px}.connect .instagram-cta{margin-left:65px}}
+
+
+/* Standalone Instagram card — visually separated from the footer */
+.connect .instagram-strip{background:#f4f6f9;color:#0a213c;padding:64px 0 80px;margin:0;border-top:1px solid #e5eaf0}
+.connect .instagram-strip:before,.connect .instagram-strip:after{display:none}
+.connect .instagram-inner{background:#fff;border:1px solid #e2e7ee;border-radius:18px;padding:38px 42px;box-shadow:0 16px 42px rgba(12,35,65,.075);gap:32px}
+.connect .instagram-mark{background:radial-gradient(circle at 28% 108%,#feda75 0%,#fa7e1e 25%,#d62976 54%,#962fbf 76%,#4f5bd5 100%);border:0;border-radius:19px;box-shadow:0 11px 24px rgba(151,47,191,.22)}
+.connect .instagram-copy .eyebrow{color:#c51d38}
+.connect .instagram-copy h2{color:#0a213c;font-size:clamp(26px,3vw,35px)}
+.connect .instagram-copy p{color:#5b6e84}
+.connect .instagram-cta{background:#0b2b4d;color:#fff;box-shadow:none;border-radius:6px}
+.connect .instagram-cta:hover{background:#c41d3a;color:#fff}
+@media(max-width:750px){.connect .instagram-strip{padding:44px 0 58px}.connect .instagram-inner{padding:27px 24px}.connect .instagram-copy h2{font-size:25px}.connect .instagram-cta{margin-left:81px}}
+@media(max-width:420px){.connect .instagram-inner{padding:22px 18px}.connect .instagram-cta{margin-left:65px}}
