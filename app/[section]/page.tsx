@@ -1,4 +1,5 @@
 import "../connect.css";
+import "../instagram-3d.css";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { portalSections } from "../portal-sections";
