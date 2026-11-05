@@ -7,3 +7,154 @@
 .connect .instagram-inner:hover .instagram-mark{transform:rotate(4deg) scale(1.07);box-shadow:0 19px 31px rgba(3,13,34,.3),0 0 24px rgba(227,57,126,.28)}
 @media(max-width:750px){.connect .instagram-inner{transform:none}.connect .instagram-inner:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){.connect .instagram-inner,.connect .instagram-mark{animation:none!important;transition:none!important;transform:none!important}.connect .instagram-inner:hover,.connect .instagram-inner:hover .instagram-mark{transform:none!important}}
+
+/* Final visual system: consistent spacing, type scale and dimensional cards. */
+.connect{
+  --ink:#071a30;--navy:#071a30;--muted:#586c82;
+  --accent:#d11e39;--paper:#f5f7fa;--line:#dfe6ef;
+  color:var(--ink);
+  font-family:"Manrope",Arial,sans-serif;
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.connect .wrap{width:min(1140px,calc(100% - 48px))}
+.connect h1,.connect h2,.connect h3,.connect strong,.connect .logo{font-family:"Manrope",Arial,sans-serif}
+.connect .section{padding:82px 0}
+.connect .section.alt{background:#f5f7fa}
+.connect .sectionhead{align-items:center;gap:36px;margin-bottom:34px}
+.connect .sectionhead>div{min-width:0;flex:1}
+.connect .sectionhead h2,.connect .feature h2{font-size:clamp(30px,3.2vw,42px);font-weight:800;line-height:1.15;letter-spacing:-.045em;margin:13px 0 0}
+.connect .sectionhead p{font-size:15px;line-height:1.75;max-width:385px;margin:0;color:var(--muted)}
+.connect .eyebrow{font-size:11px;letter-spacing:.18em;font-weight:800}
+.connect .hero-grid{grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(34px,5vw,68px)}
+.connect .hero h1{font-weight:800;line-height:1.035;letter-spacing:-.06em}
+.connect .hero p{line-height:1.75}
+.connect .hero-art{width:100%;max-width:100%;min-width:0}
+.connect .hero-art strong{font-size:clamp(37px,4.7vw,62px);line-height:1.12}
+.connect .cards{gap:20px;align-items:stretch}
+.connect .card{min-width:0;min-height:255px;padding:26px;border-radius:15px;display:flex;flex-direction:column;border:1px solid rgba(208,220,232,.95);border-top:3px solid var(--accent);background:linear-gradient(150deg,#fff 63%,#fafbfe 100%);box-shadow:0 10px 28px rgba(7,26,48,.07),0 2px 4px rgba(7,26,48,.025);transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+.connect a.card:hover{transform:translateY(-6px);border-color:rgba(209,30,57,.5);box-shadow:0 19px 36px rgba(7,26,48,.13),0 0 20px rgba(209,30,57,.1)}
+.connect .card h3{font-size:20px;line-height:1.35;font-weight:800;margin:10px 0 8px;letter-spacing:-.035em}
+.connect .card p{font-size:14px;line-height:1.7;color:var(--muted);margin:8px 0 16px;flex:0 0 auto}
+.connect .card .arrow{margin-top:auto;padding-top:14px;font-size:12px;line-height:1.4;letter-spacing:.015em}
+.connect .card .num{font-size:11px;letter-spacing:.13em;line-height:1.5}
+.connect .card-topline{margin-bottom:9px;align-items:flex-start}
+.connect .section-symbol{width:50px;height:50px;min-width:50px;border-radius:14px}
+.connect .card-symbol{width:50px;height:50px;min-width:50px;border-radius:14px}
+.connect .section-symbol svg,.connect .card-symbol svg{width:34px;height:34px}
+.connect .section-label-row{gap:14px}
+.connect .hero-eyebrow svg,.connect .feature-eyebrow svg{width:19px;height:19px;filter:none}
+.connect .hero-eyebrow svg{color:#ff9cac}
+.connect .feature-eyebrow svg{color:var(--accent)}
+.connect .feature{gap:clamp(30px,4.5vw,56px);align-items:stretch}
+.connect .feature>div:first-child{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-width:0}
+.connect .feature h2{margin:16px 0}
+.connect .feature>div:first-child>p{font-size:15px;line-height:1.8;color:var(--muted);max-width:525px}
+.connect .featurebox{min-width:0;min-height:315px;padding:clamp(30px,3.4vw,45px);border-radius:17px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.connect .featurebox h3{font-size:clamp(25px,2.7vw,33px);font-weight:800;line-height:1.2;letter-spacing:-.045em;margin:18px 0 12px}
+.connect .featurebox p{font-size:15px;line-height:1.75;margin:0}
+.connect .announcement{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px 24px;margin-bottom:12px;box-shadow:0 7px 19px rgba(7,26,48,.045)}
+.connect .announcements{border:0}
+.connect .announcement strong{font-size:15px;line-height:1.5;font-weight:800}
+.connect .announcement small{font-size:11px;letter-spacing:.06em;line-height:1.5}
+.connect .stats{gap:20px}
+.connect .stat{min-height:155px;display:flex;flex-direction:column;justify-content:center;padding:26px;border-radius:15px;box-shadow:0 10px 28px rgba(7,26,48,.065)}
+.connect .stat strong{font-size:33px;line-height:1.3}
+.connect .stat small{font-size:11px;line-height:1.6;letter-spacing:.07em}
+.connect .note{border-radius:12px;font-size:14px;padding:21px 25px}
+.connect .instagram-strip{isolation:isolate}
+.connect .instagram-inner{max-width:1140px}
+.connect .instagram-copy h2{font-size:clamp(26px,3vw,38px);line-height:1.2;letter-spacing:-.04em;font-weight:800}
+.connect .instagram-copy p{font-size:15px;line-height:1.7}
+.connect .footer .logo{font-size:23px;font-weight:800}
+.connect .footer p{font-size:14px;line-height:1.75}
+.connect .footerlinks{font-size:13px;line-height:1.6}
+.connect .innerhero h1{font-size:clamp(36px,4.5vw,57px)}
+.connect .steps{gap:20px}
+.connect .step{min-height:180px;padding:25px;border:1px solid var(--line);box-shadow:0 8px 22px rgba(7,26,48,.05)}
+@media(max-width:800px){
+ .connect .wrap{width:calc(100% - 36px)}
+ .connect .section{padding:60px 0}
+ .connect .sectionhead{display:block;margin-bottom:27px}
+ .connect .sectionhead p{max-width:620px;margin-top:14px}
+ .connect .hero-grid,.connect .feature{grid-template-columns:minmax(0,1fr);gap:28px}
+ .connect .hero-art{min-height:235px}
+ .connect .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ .connect .card{min-height:230px;padding:23px}
+ .connect .featurebox{min-height:260px}
+ .connect .instagram-copy h2{font-size:clamp(25px,4vw,34px)}
+}
+@media(max-width:600px){
+ .connect{font-size:14px}
+ .connect .section{padding:52px 0}
+ .connect .sectionhead h2,.connect .feature h2{font-size:clamp(28px,7.2vw,35px)}
+ .connect .sectionhead p,.connect .feature>div:first-child>p{font-size:14px}
+ .connect .cards,.connect .stats{grid-template-columns:minmax(0,1fr);gap:14px}
+ .connect .card{min-height:190px;padding:23px}
+ .connect .card h3{font-size:19px}
+ .connect .card p{margin:6px 0 12px}
+ .connect .card .arrow{padding-top:8px}
+ .connect .section-symbol,.connect .card-symbol{width:45px;height:45px;min-width:45px;border-radius:13px}
+ .connect .section-symbol svg,.connect .card-symbol svg{width:30px;height:30px}
+ .connect .featurebox{min-height:230px;padding:27px}
+ .connect .featurebox h3{font-size:27px}
+ .connect .announcement{grid-template-columns:32px minmax(0,1fr);padding:19px;gap:10px 14px}
+ .connect .announcement small{grid-column:2}
+ .connect .stat{min-height:126px}
+ .connect .instagram-copy h2{font-size:25px}
+ .connect .instagram-copy p{font-size:14px}
+ .connect .footer .logo{font-size:21px}
+}
+@media(max-width:420px){
+ .connect .wrap{width:calc(100% - 28px)}
+ .connect .section{padding:46px 0}
+ .connect .hero-art strong{font-size:clamp(31px,9vw,38px)}
+ .connect .section-symbol,.connect .card-symbol{width:42px;height:42px;min-width:42px}
+ .connect .section-symbol svg,.connect .card-symbol svg{width:28px;height:28px}
+ .connect .featurebox{padding:24px}
+ .connect .instagram-copy h2{font-size:23px}
+}
+@media(prefers-reduced-motion:reduce){.connect .card,.connect .featurebox{transition:none!important}.connect a.card:hover,.connect .featurebox:hover{transform:none!important}}
+
+
+/* Premium masthead and footer: same content, elevated visual treatment. */
+.connect .nav{background:linear-gradient(112deg,rgba(5,20,38,.98),rgba(8,31,55,.98) 68%,rgba(23,31,54,.98));border-bottom:1px solid rgba(151,181,211,.2);box-shadow:0 10px 32px rgba(2,13,29,.16);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.connect .navinner{min-height:84px;gap:28px}
+.connect .union-identity{gap:15px;min-width:0}
+.connect .union-identity img{filter:drop-shadow(0 3px 8px rgba(0,0,0,.2))}
+.connect .union-identity strong{font-weight:800;letter-spacing:-.02em}
+.connect .union-identity small{letter-spacing:.1em;opacity:.8}
+.connect .navlinks{gap:6px;align-items:center}
+.connect .navlinks a{position:relative;padding:10px 13px;border-radius:9px;font-size:13px;transition:color .2s ease,background .2s ease}
+.connect .navlinks a:hover{color:#fff;background:rgba(255,255,255,.095)}
+.connect .navlinks a:after{content:"";height:2px;position:absolute;left:13px;right:13px;bottom:4px;background:#f04a67;transform:scaleX(0);transform-origin:center;transition:transform .22s ease}
+.connect .navlinks a:hover:after,.connect .navlinks a:focus-visible:after{transform:scaleX(1)}
+.connect .navbtn{border-radius:10px;font-weight:800;padding:14px 19px;box-shadow:0 8px 19px rgba(177,15,47,.22),inset 0 1px rgba(255,255,255,.15)}
+.connect .footer{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(118deg,#041427 0%,#092842 62%,#351a35 100%);padding:70px 0 27px;border-top:1px solid rgba(173,195,221,.18)}
+.connect .footer:before{content:"";position:absolute;inset:-30% -10%;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 100% 0%,rgba(212,37,71,.18),transparent 43%),radial-gradient(ellipse at 7% 100%,rgba(45,111,177,.15),transparent 40%)}
+.connect .footer .wrap{position:relative}
+.connect .footer .logo{display:inline-block;font-weight:800;letter-spacing:-.035em;font-size:24px;padding-bottom:14px;position:relative}
+.connect .footer .logo:after{content:"";height:2px;width:58px;position:absolute;bottom:0;left:0;border-radius:3px;background:linear-gradient(90deg,#d11e39,#f47c93)}
+.connect .footer .logo span{color:#f24b65}
+.connect .footer p{max-width:590px;color:#bed0e0;margin:19px 0 28px}
+.connect .footerlinks{gap:10px 12px;padding:19px 0 23px;border-top:1px solid rgba(187,207,230,.14)}
+.connect .footerlinks a{display:inline-flex;align-items:center;min-height:37px;border:1px solid rgba(174,201,227,.15);border-radius:9px;padding:8px 13px;background:rgba(255,255,255,.035);color:#e3edf6;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.connect .footerlinks a:hover{transform:translateY(-2px);border-color:rgba(241,96,123,.55);background:rgba(255,255,255,.085);color:#fff}
+.connect .footerbottom{margin-top:5px;padding-top:23px;border-top:1px solid rgba(187,207,230,.18);line-height:1.65;color:#a8bfd3}
+@media(max-width:800px){
+ .connect .navinner{min-height:75px}
+ .connect .mobilelinks{border-top:1px solid rgba(185,207,230,.17)}
+ .connect .mobilelinks a{border-radius:7px}
+ .connect .footer{padding:55px 0 23px}
+}
+@media(max-width:420px){
+ .connect .navinner{min-height:69px}
+ .connect .union-identity{gap:10px}
+ .connect .union-identity strong{font-size:10px}
+ .connect .footer{padding:47px 0 22px}
+ .connect .footer .logo{font-size:21px}
+ .connect .footerlinks{gap:8px}
+ .connect .footerlinks a{padding:7px 10px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.connect .navlinks a,.connect .navlinks a:after,.connect .footerlinks a{transition:none!important}.connect .footerlinks a:hover{transform:none!important}}
