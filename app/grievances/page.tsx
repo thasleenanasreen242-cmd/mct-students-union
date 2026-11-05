@@ -19,7 +19,7 @@ export default function GrievancePage(){
   if(!consent){setError("Please acknowledge the WhatsApp privacy notice.");return;}
   setError("");
   const message=[
-   "MCT CONNECT | STUDENT GRIEVANCE",
+   "MCT STUDENTS’ UNION | STUDENT GRIEVANCE",
    "",
    "Category: "+category,
    "Location / facility: "+(location.trim()||"Not specified"),
@@ -28,7 +28,7 @@ export default function GrievancePage(){
    "Complaint:",
    description.trim(),
    "",
-   "Submitted via MCT CONNECT. Please acknowledge receipt and advise next steps."
+   "Sent from the Students’ Union website. Please acknowledge receipt and advise next steps."
   ].join("\n");
   window.location.assign("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message));
  };
