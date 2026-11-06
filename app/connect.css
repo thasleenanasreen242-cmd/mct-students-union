@@ -383,7 +383,7 @@
 .union-layout article { padding:clamp(24px,3vw,40px);border-radius:22px;border:1px solid rgba(125,145,170,.22);background:#fff; }
 .union-layout h3 { font-size:clamp(1.35rem,2.2vw,2rem);line-height:1.25;margin:16px 0 20px; }
 .union-introduction p { line-height:1.8; }
-.union-objectives { background:#12263d!important;color:#fff; }
+.union-objectives { background:linear-gradient(135deg,#12263d 0%,#17243b 42%,#572338 78%,#8b243a 100%)!important;color:#fff; }
 .union-objectives h3 { color:#fff; }
 .union-objectives .num { color:#adcce6; }
 .union-objectives ol { list-style:none;counter-reset:union-objective;padding:0;margin:0; }
