@@ -393,3 +393,6 @@
 .union-objectives li strong { margin-bottom:5px; }
 .union-objectives li span { color:#d9e5ee;line-height:1.6;font-size:.93rem; }
 @media(max-width:800px) { .union-layout { grid-template-columns:1fr; } }
+.college-brief { max-width:900px; }
+.college-brief h2 { font-size:clamp(1.8rem,3.5vw,3rem);margin:14px 0 18px;line-height:1.2; }
+.college-brief p { max-width:800px;font-size:1.05rem;line-height:1.8;margin-bottom:18px; }
