@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap");
+
+/* Refined typography without changing the established navy/red identity. */
+.connect {
+  font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: -.012em;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.connect h1,
+.connect h2,
+.connect h3,
+.connect .hero-art strong,
+.connect .union-identity strong,
+.connect .footer .logo,
+.connect .featurebox h3,
+.connect .announcement strong,
+.connect .card h3 {
+  font-family: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  letter-spacing: -.04em;
+}
+
+.connect .hero h1 {
+  font-weight: 800;
+  letter-spacing: -.065em;
+  line-height: 1.055;
+}
+
+.connect .sectionhead h2,
+.connect .feature h2,
+.connect .college-brief h2,
+.connect .chairman-copy h2 {
+  font-weight: 700;
+  letter-spacing: -.047em;
+  line-height: 1.16;
+}
+
+.connect .union-layout h3,
+.connect .card h3,
+.connect .chairman-profile h3 {
+  font-weight: 700;
+  letter-spacing: -.034em;
+}
+
+.connect p,
+.connect li,
+.connect address {
+  font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+  letter-spacing: -.006em;
+}
+
+.connect .eyebrow,
+.connect .num,
+.connect .status,
+.connect .card .arrow,
+.connect .announcement small,
+.connect .stat small {
+  font-family: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: .105em;
+}
+
+.connect .navlinks,
+.connect .mobilelinks,
+.connect .btn,
+.connect .navbtn,
+.connect .textlink {
+  font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -.005em;
+}
+
+.connect .union-identity strong,
+.connect .footer .logo {
+  font-weight: 800;
+  letter-spacing: -.025em;
+}
+
+.connect .union-identity small {
+  font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+  letter-spacing: .1em;
+}
