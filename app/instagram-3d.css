@@ -431,53 +431,54 @@
 }
 @media(prefers-reduced-motion:reduce){.connect .instagram-inner{animation:none!important}}
 
-/* Translucent crimson holographic Quick Access cards. */
+/* Transparent ruby glass cards with red holographic edge light. */
 .connect #quick-access{
- background:linear-gradient(155deg,#f7f9fc 0%,#f0f4f9 100%);
+ background:linear-gradient(155deg,#fff 0%,#f7f9fc 55%,#fff7f9 100%);
 }
-.connect #quick-access .cards{gap:22px}
+.connect #quick-access .cards{gap:21px}
 .connect #quick-access a.card{
- position:relative;isolation:isolate;overflow:hidden;min-height:265px;padding:29px 27px;
- background:linear-gradient(137deg,rgba(7,27,49,.96) 0%,rgba(19,44,70,.94) 42%,rgba(99,24,52,.89) 100%);
- backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
- color:#fff;border:1px solid rgba(233,95,122,.5);border-top:1px solid rgba(255,126,150,.85);
- border-radius:18px;
- box-shadow:inset 0 1px 0 rgba(255,225,233,.2),inset -5px -7px 16px rgba(5,9,26,.24),0 16px 30px rgba(17,24,49,.15),0 0 24px rgba(208,31,67,.1);
- transition:transform .32s cubic-bezier(.2,.7,.2,1),box-shadow .32s ease,border-color .32s ease;
+ position:relative;isolation:isolate;overflow:hidden;
+ min-height:255px;padding:28px 27px;border-radius:18px;
+ color:#071a30;
+ background:linear-gradient(135deg,rgba(255,255,255,.88) 0%,rgba(255,242,246,.76) 48%,rgba(224,48,88,.18) 100%);
+ border:1px solid rgba(212,43,79,.36);border-top:2px solid rgba(220,31,68,.82);
+ backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset -5px -5px 15px rgba(194,36,67,.055),0 14px 30px rgba(20,31,55,.085),0 0 24px rgba(220,45,84,.085);
+ transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
 }
 .connect #quick-access a.card:before{
- content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
- background:radial-gradient(ellipse at 90% 4%,rgba(247,75,112,.29),transparent 48%),linear-gradient(120deg,transparent 33%,rgba(255,208,220,.075) 54%,transparent 67%);
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+ background:radial-gradient(ellipse at 95% 4%,rgba(255,71,111,.18),transparent 47%),linear-gradient(115deg,transparent 35%,rgba(255,255,255,.56) 51%,transparent 67%);
 }
 .connect #quick-access a.card:after{
- content:"";position:absolute;left:12%;right:12%;bottom:-2px;height:2px;pointer-events:none;
- background:linear-gradient(90deg,transparent,rgba(255,99,132,.9),transparent);
- filter:blur(2px);opacity:.8;
+ content:"";position:absolute;left:12%;right:12%;bottom:0;height:2px;pointer-events:none;
+ background:linear-gradient(90deg,transparent,rgba(222,42,82,.65),transparent);
+ filter:blur(1px);
 }
 .connect #quick-access a.card>*{position:relative;z-index:1}
-.connect #quick-access .card .num{color:#ff9bad;letter-spacing:.15em}
-.connect #quick-access .card h3{color:#fff;font-size:20px}
-.connect #quick-access .card p{color:#d2dae8}
-.connect #quick-access .card .arrow{color:#ff9aae}
+.connect #quick-access .card .num{color:#c92244}
+.connect #quick-access .card h3{color:#071a30;font-size:20px}
+.connect #quick-access .card p{color:#596a80}
+.connect #quick-access .card .arrow{color:#c92244}
 .connect #quick-access .card-symbol{
- color:#ffc0cb;
- background:linear-gradient(140deg,rgba(18,45,70,.95),rgba(115,25,58,.85));
- border:1px solid rgba(255,141,163,.58);
- box-shadow:inset 0 1px 0 rgba(255,229,234,.18),0 0 19px rgba(231,47,84,.16),0 8px 16px rgba(0,0,0,.23);
+ color:#e44868;
+ background:linear-gradient(145deg,rgba(255,247,250,.88),rgba(245,179,195,.35));
+ border:1px solid rgba(219,50,90,.48);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.93),0 0 19px rgba(223,54,92,.16),0 8px 15px rgba(79,20,43,.12);
 }
-.connect #quick-access .card-symbol svg{filter:drop-shadow(0 0 5px rgba(255,116,145,.2))}
+.connect #quick-access .card-symbol svg{filter:drop-shadow(0 1px 3px rgba(206,38,76,.13))}
 @media(hover:hover){
  .connect #quick-access a.card:hover{
-  transform:translateY(-7px) perspective(850px) rotateX(1deg);
-  border-color:rgba(255,144,169,.95);
-  box-shadow:inset 0 1px 0 rgba(255,235,239,.3),inset -6px -8px 17px rgba(5,9,26,.21),0 23px 40px rgba(15,23,50,.23),0 0 29px rgba(216,39,77,.21);
+  transform:translateY(-6px);
+  border-color:rgba(227,49,87,.72);
+  box-shadow:inset 0 1px 0 #fff,inset -7px -8px 18px rgba(205,39,81,.085),0 22px 40px rgba(20,31,55,.12),0 0 33px rgba(229,43,83,.18);
  }
- .connect #quick-access a.card:hover .card-symbol{color:#ffe2e8;box-shadow:0 0 23px rgba(244,76,111,.3),0 12px 18px rgba(0,0,0,.23)}
- .connect #quick-access a.card:hover .arrow{color:#ffd2dc}
+ .connect #quick-access a.card:hover .card-symbol{color:#d11e39;box-shadow:0 0 24px rgba(224,56,95,.22),0 10px 16px rgba(79,20,43,.13)}
+ .connect #quick-access a.card:hover .arrow{color:#ae1733}
 }
 @media(max-width:600px){
- .connect #quick-access .cards{gap:15px}
- .connect #quick-access a.card{min-height:190px;padding:23px 21px;border-radius:15px}
+ .connect #quick-access .cards{gap:14px}
+ .connect #quick-access a.card{min-height:185px;padding:23px 21px;border-radius:15px}
  .connect #quick-access .card h3{font-size:19px}
  .connect #quick-access .card p{font-size:13px}
 }
