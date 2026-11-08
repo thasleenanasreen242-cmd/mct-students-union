@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./premium-type.css";
+import "./modern-refresh.css";
 import MCTChatBot from "./components/MCTChatBot";
 
 export const metadata: Metadata = {
