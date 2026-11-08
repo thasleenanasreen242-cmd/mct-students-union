@@ -408,3 +408,9 @@
 .chairman-copy p { line-height:1.8; }
 .chairman-draft-note { font-size:.78rem;color:#67788b;margin-top:22px;font-style:italic; }
 @media(max-width:720px) { .chairman-card { grid-template-columns:1fr; } .chairman-avatar { width:140px;border-radius:16px;font-size:3.4rem; } }
+.connect .library-home-card { cursor:default; }
+.connect .library-home-card p { flex:0; }
+.library-home-links { display:grid;gap:8px;margin:11px 0 12px; }
+.connect .library-home-links a { display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border:1px solid #efcbd3;border-radius:10px;background:#fff9fb;color:#9b213f;font-weight:700;font-size:12px;transition:background .2s,border-color .2s; }
+.connect .library-home-links a:hover { background:#ffeaf0;border-color:#d94b6b; }
+.connect .library-home-card>.arrow { display:inline-block;align-self:flex-start;font-size:11px;margin-top:auto;padding-top:9px; }
