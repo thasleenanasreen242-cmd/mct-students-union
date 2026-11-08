@@ -431,6 +431,37 @@
 }
 @media(prefers-reduced-motion:reduce){.connect .instagram-inner{animation:none!important}}
 
+/* Keep the weekly update and Instagram call-to-action legible on narrow phones. */
+@media(max-width:600px){
+ .connect #this-week .announcement{
+  display:flex!important;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-start;
+  gap:12px!important;
+  padding:22px 20px!important;
+  min-height:0;
+ }
+ .connect #this-week .announcement .num,
+ .connect #this-week .announcement strong,
+ .connect #this-week .announcement small{
+  display:block;
+  width:100%;
+  max-width:100%;
+  position:static;
+  grid-column:auto;
+  margin:0;
+  text-align:left;
+  overflow-wrap:break-word;
+ }
+ .connect #this-week .announcement .num{font-size:11px;line-height:1.35;letter-spacing:.11em}
+ .connect #this-week .announcement strong{font-size:16px;line-height:1.48}
+ .connect #this-week .announcement small{font-size:10px;line-height:1.45}
+ .connect .instagram-inner{padding-bottom:72px!important}
+ .connect .instagram-copy p{padding-right:6px}
+ .connect .instagram-cta{position:relative;z-index:2;min-width:0;white-space:normal}
+}
+
 /* Transparent ruby glass cards with red holographic edge light. */
 .connect #quick-access{
  background:linear-gradient(155deg,#fff 0%,#f7f9fc 55%,#fff7f9 100%);
