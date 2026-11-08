@@ -432,3 +432,4 @@
   .chairman-profile { grid-template-columns:94px minmax(0,1fr);column-gap:12px; }
   .chairman-avatar { width:94px;height:130px; }
 }
+.connect .action-arrow-icon, .mct-world-panel .action-arrow-icon, .mct-world-nav .action-arrow-icon { display:inline-block; width:1em; height:1em; vertical-align:-0.12em; flex-shrink:0; stroke:currentColor; }
