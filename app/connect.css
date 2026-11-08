@@ -408,3 +408,7 @@
 .chairman-copy p { line-height:1.8; }
 .chairman-draft-note { font-size:.78rem;color:#67788b;margin-top:22px;font-style:italic; }
 @media(max-width:720px) { .chairman-card { grid-template-columns:1fr; } .chairman-avatar { width:140px;border-radius:16px;font-size:3.4rem; } }
+.connect .academic-drive-card p { flex:0; }
+.academic-drive-links { display:grid;gap:9px;margin-top:auto;padding-top:12px; }
+.connect .academic-drive-links a { display:flex;justify-content:space-between;gap:8px;align-items:center;padding:11px 12px;border:1px solid #edc8d2;border-radius:10px;background:#fff7f9;color:#a52243;font-size:12px;font-weight:700;transition:background .2s,border-color .2s; }
+.connect .academic-drive-links a:hover { background:#ffe9ee;border-color:#d34a69; }
