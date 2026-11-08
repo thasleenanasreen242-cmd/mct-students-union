@@ -399,6 +399,8 @@
 .college-brief p { max-width:800px;font-size:1.05rem;line-height:1.8;margin-bottom:18px; }
 .connect .college-website-link { display:inline-flex;align-items:center;gap:5px;color:#e32248;font-weight:700; }
 .connect .college-link-arrow { display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:1.1em;line-height:1;font-weight:700;color:inherit;white-space:nowrap; }
+.connect .hero-explore-btn { display:inline-flex;align-items:center;justify-content:center;gap:8px; }
+.connect .hero-explore-btn svg { display:block;flex:none;width:18px;height:18px;stroke:currentColor; }
 @media(max-width:720px) {
   .connect .college-website-link { display:inline-flex;align-items:center;gap:5px;max-width:100%;font-size:13px;line-height:1.5; }
   .connect .college-link-arrow { flex:none;font-size:17px; }
