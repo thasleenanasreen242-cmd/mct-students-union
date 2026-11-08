@@ -517,3 +517,113 @@
  .connect #quick-access a.card{transition:none!important}
  .connect #quick-access a.card:hover{transform:none!important}
 }
+
+/* Instagram invitation — restrained editorial card, shared across screen sizes. */
+.connect .instagram-strip{
+ background:#f5f7fa!important;
+ color:#10253d!important;
+ padding:64px 0!important;
+ border:0!important;
+}
+.connect .instagram-inner{
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:center!important;
+ justify-content:space-between!important;
+ gap:36px!important;
+ min-height:210px!important;
+ padding:36px 43px!important;
+ border:1px solid #e2e8ef!important;
+ border-top:3px solid #e32d51!important;
+ border-radius:18px!important;
+ background:#fff!important;
+ background-image:radial-gradient(circle at 99% 0%,rgba(227,45,81,.075),transparent 34%)!important;
+ box-shadow:0 14px 38px rgba(18,42,71,.07)!important;
+ transform:none!important;
+ animation:none!important;
+ color:#10253d!important;
+ overflow:hidden;
+}
+.connect .instagram-inner:before,.connect .instagram-inner:after{display:none!important}
+.connect .instagram-copy{
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:center!important;
+ gap:25px!important;
+ min-width:0;
+ max-width:760px!important;
+}
+.connect .instagram-copy>div{min-width:0}
+.connect .instagram-mark{
+ display:grid!important;
+ place-items:center!important;
+ flex:none!important;
+ width:72px!important;
+ height:72px!important;
+ border:1px solid #f3c7d0!important;
+ border-radius:19px!important;
+ background:#fff1f4!important;
+ color:#cb2447!important;
+ box-shadow:none!important;
+ transform:none!important;
+}
+.connect .instagram-mark svg{width:34px!important;height:34px!important}
+.connect .instagram-copy .eyebrow{
+ color:#c82c4b!important;
+ font-family:"DM Sans","Segoe UI",Arial,sans-serif!important;
+ font-size:11px!important;
+ font-weight:800!important;
+ letter-spacing:.12em!important;
+}
+.connect .instagram-copy h2{
+ color:#10253d!important;
+ font-size:clamp(26px,3vw,37px)!important;
+ line-height:1.14!important;
+ letter-spacing:-.045em!important;
+ margin:8px 0 10px!important;
+}
+.connect .instagram-copy p{
+ color:#68798a!important;
+ font-size:14px!important;
+ line-height:1.6!important;
+ margin:0!important;
+ max-width:535px!important;
+}
+.connect .instagram-cta{
+ align-self:center!important;
+ display:inline-flex!important;
+ align-items:center!important;
+ justify-content:center!important;
+ flex:none!important;
+ width:auto!important;
+ min-height:50px!important;
+ margin:0!important;
+ padding:15px 22px!important;
+ border:1px solid #cc2345!important;
+ border-radius:12px!important;
+ background:#d92348!important;
+ color:#fff!important;
+ font-size:13px!important;
+ font-weight:800!important;
+ box-shadow:none!important;
+ transition:background .18s ease,transform .18s ease!important;
+}
+.connect .instagram-cta:hover{background:#b9193c!important;color:#fff!important;transform:translateY(-2px)!important}
+.connect .instagram-cta .action-arrow-icon{width:17px;height:17px}
+@media(max-width:750px){
+ .connect .instagram-strip{padding:40px 0 55px!important}
+ .connect .instagram-inner{
+  flex-direction:column!important;
+  align-items:stretch!important;
+  gap:24px!important;
+  padding:28px 24px!important;
+  min-height:0!important;
+  border-radius:16px!important;
+ }
+ .connect .instagram-copy{flex-direction:column!important;align-items:flex-start!important;gap:17px!important}
+ .connect .instagram-mark{width:58px!important;height:58px!important;border-radius:15px!important}
+ .connect .instagram-mark svg{width:29px!important;height:29px!important}
+ .connect .instagram-copy h2{font-size:clamp(27px,7.3vw,34px)!important;line-height:1.17!important}
+ .connect .instagram-copy p{font-size:14px!important;padding:0!important}
+ .connect .instagram-cta{align-self:stretch!important;width:100%!important;justify-content:space-between!important;min-height:52px!important;white-space:normal!important}
+}
