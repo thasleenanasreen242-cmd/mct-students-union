@@ -89,3 +89,24 @@
   font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
   letter-spacing: .1em;
 }
+
+/* Apply the same editorial font system on phones and tablets. */
+.connect, .connect button, .connect input, .connect select, .connect textarea {
+  font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+}
+.connect h1, .connect h2, .connect h3,
+.connect .hero-art strong, .connect .union-identity strong,
+.connect .footer .logo, .connect .announcement strong,
+.connect .card h3 {
+  font-family: "Inter Tight", "Segoe UI", Arial, sans-serif;
+}
+@media (max-width: 767px) {
+  .connect h1, .connect h2, .connect h3 {
+    font-family: "Inter Tight", "Segoe UI", Arial, sans-serif;
+    font-optical-sizing: auto;
+  }
+  .connect p, .connect li, .connect a, .connect button,
+  .connect input, .connect select, .connect textarea {
+    font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+  }
+}
