@@ -1,0 +1,150 @@
+/* MCT visual system 2026 — clean editorial surfaces, restrained navy/red accents. */
+.connect {
+  --modern-navy:#0b233d;
+  --modern-red:#d92348;
+  --modern-border:#e2e9f0;
+  --modern-shadow:0 12px 34px rgba(13,38,65,.065);
+  background:#fff;
+  color:var(--modern-navy);
+}
+.connect .wrap{width:min(1160px,calc(100% - 48px))}
+.connect .nav{
+  background:rgba(9,29,50,.97)!important;
+  border-bottom:1px solid rgba(255,255,255,.11)!important;
+  box-shadow:0 7px 25px rgba(5,23,42,.11)!important;
+  backdrop-filter:blur(18px);
+}
+.connect .navinner{min-height:78px}
+.connect .navlinks a{border-radius:8px;transition:color .2s ease,background .2s ease}
+.connect .navlinks a:hover{color:#ff9eaf!important}
+.connect .navbtn,.connect .btn{
+  border-radius:11px!important;
+  font-weight:750!important;
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.connect .btn:hover,.connect .navbtn:hover{transform:translateY(-2px)}
+.connect .hero{
+  background:linear-gradient(125deg,#081b31 0%,#103453 60%,#3e2543 100%)!important;
+  padding-block:105px 100px!important;
+}
+.connect .hero h1{letter-spacing:-.06em;line-height:1.04}
+.connect .hero p{line-height:1.68}
+.connect .hero-art{
+  background:linear-gradient(145deg,#143954,#203f5d 70%,#6e294b)!important;
+  background-size:100% 100%!important;
+  animation:none!important;
+  border-radius:22px!important;
+  box-shadow:0 23px 55px rgba(2,15,33,.22)!important;
+}
+.connect .hero-art:before,.connect .hero-art:after{display:none!important}
+.connect .section{padding-block:86px}
+.connect .section.alt{background:#f6f8fa!important}
+.connect .sectionhead{margin-bottom:35px}
+.connect .sectionhead h2{font-size:clamp(32px,4vw,49px);line-height:1.1}
+.connect .sectionhead p{color:#66788a;line-height:1.7}
+.connect .section-symbol{
+  width:52px!important;height:52px!important;
+  border-radius:15px!important;
+  background:#f9edf0!important;
+  border:1px solid #f1d7df!important;
+  color:#c8294b!important;
+  box-shadow:none!important;
+}
+.connect .section-symbol svg{width:28px!important;height:28px!important;filter:none!important}
+.connect .eyebrow{color:#c5294b;letter-spacing:.13em}
+.connect .cards{gap:20px}
+.connect a.card,.connect .stat,.connect .announcement,.connect .step{
+  border:1px solid var(--modern-border)!important;
+  border-radius:17px!important;
+  background:#fff!important;
+  box-shadow:var(--modern-shadow)!important;
+  transform:none;
+}
+.connect a.card,.connect #quick-access a.card{
+  min-height:240px!important;
+  padding:27px!important;
+  border-top:2px solid #d92348!important;
+  transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease!important;
+}
+.connect a.card:before,.connect a.card:after{display:none!important}
+.connect a.card:hover{
+  transform:translateY(-4px)!important;
+  border-color:#f0b8c5!important;
+  box-shadow:0 20px 38px rgba(15,38,66,.105)!important;
+}
+.connect .card-symbol,.connect #quick-access .card-symbol{
+  width:50px!important;height:50px!important;
+  border-radius:14px!important;
+  background:#fceef1!important;
+  border:1px solid #f5d6dd!important;
+  color:#c92547!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+.connect .card-symbol svg{width:27px!important;height:27px!important;filter:none!important}
+.connect .card h3{color:#0d2944;line-height:1.24}
+.connect .card p{color:#687a8c}
+.connect .card .arrow,.connect .card .num{color:#cb2a4b}
+.connect .announcement{
+  display:grid;
+  grid-template-columns:minmax(85px,.25fr) minmax(0,1fr) auto;
+  gap:17px;
+  align-items:center;
+  padding:27px 30px!important;
+}
+.connect .announcement .num{color:#c72a4c}
+.connect .announcement strong{font-size:16px;line-height:1.5}
+.connect .featurebox{
+  border:1px solid rgba(255,255,255,.19)!important;
+  border-radius:20px!important;
+  background:linear-gradient(130deg,#0b253f,#163d5c 70%,#4a2945)!important;
+  background-size:100% 100%!important;
+  box-shadow:0 16px 38px rgba(10,35,59,.14)!important;
+  transform:none!important;
+}
+.connect .featurebox:before{display:none!important}
+.connect .featurebox:hover{transform:none!important}
+.connect .stat{padding:28px!important}
+.connect .stat strong{color:#0c2a46}
+.connect .note{border-radius:13px;border-left:3px solid #d72a4d;background:#fff7f9;color:#69404c}
+.connect .footer{background:#091e34!important}
+.connect .footerlinks a{border-radius:9px}
+.connect .action-arrow-icon{vertical-align:-.12em}
+@media(max-width:800px){
+ .connect .hero{padding-block:67px 65px!important}
+ .connect .section{padding-block:65px}
+ .connect .hero-art{border-radius:18px!important}
+ .connect .cards{gap:15px}
+}
+@media(max-width:600px){
+ .connect .wrap,.connect .nav .wrap{width:calc(100% - 38px)!important}
+ .connect .navinner{min-height:72px}
+ .connect .hero{padding-block:54px 56px!important}
+ .connect .hero h1{font-size:clamp(38px,10vw,48px)!important;line-height:1.07}
+ .connect .hero p{font-size:15px!important}
+ .connect .section{padding-block:58px}
+ .connect .sectionhead h2{font-size:clamp(30px,8vw,38px)!important}
+ .connect .sectionhead p{font-size:14px}
+ .connect .section-symbol{width:44px!important;height:44px!important;border-radius:12px!important}
+ .connect .section-symbol svg{width:23px!important;height:23px!important}
+ .connect a.card,.connect #quick-access a.card{padding:23px!important;min-height:0!important;border-radius:15px!important}
+ .connect .card-symbol{width:45px!important;height:45px!important;border-radius:12px!important}
+ .connect .card-symbol svg{width:24px!important;height:24px!important}
+ .connect .announcement,
+ .connect #this-week .announcement{
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  gap:11px!important;padding:23px 21px!important;
+ }
+ .connect .announcement .num,.connect .announcement strong,.connect .announcement small{
+  display:block!important;position:static!important;width:100%!important;
+  max-width:100%!important;grid-column:auto!important;margin:0!important;
+  text-align:left!important;
+ }
+ .connect .announcement strong{font-size:15px!important;line-height:1.45!important}
+ .connect .featurebox{border-radius:16px!important;padding:25px!important}
+ .connect .stat{padding:23px!important}
+ .connect .instagram-inner{min-height:0!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .connect .card,.connect .btn,.connect .navbtn{transition:none!important}
+}
