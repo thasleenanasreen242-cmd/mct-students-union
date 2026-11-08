@@ -340,3 +340,89 @@
  .connect #quick-access .card p{margin-bottom:16px!important}
  .connect #quick-access .card .arrow{padding:9px 11px!important}
 }
+
+/* Student Hub v2: premium dark navigation tiles, rather than bordered utility cards. */
+.connect #quick-access .cards{counter-reset:hub-tile;gap:18px!important}
+.connect #quick-access a.card{
+ counter-increment:hub-tile;
+ position:relative!important;
+ isolation:isolate!important;
+ min-height:270px!important;
+ padding:28px 29px!important;
+ border:1px solid rgba(117,158,195,.38)!important;
+ border-radius:20px!important;
+ background:linear-gradient(145deg,#09223c 0%,#113b5b 100%)!important;
+ box-shadow:0 17px 34px rgba(8,32,58,.12)!important;
+ color:#fff!important;
+}
+.connect #quick-access a.card:nth-child(3n+2){background:linear-gradient(145deg,#102c49 0%,#3d294b 100%)!important}
+.connect #quick-access a.card:nth-child(3n){background:linear-gradient(145deg,#0a2943 0%,#602642 100%)!important}
+.connect #quick-access a.card:before{
+ display:block!important;content:""!important;
+ position:absolute!important;inset:auto 0 0 0!important;
+ width:auto!important;height:4px!important;
+ border-radius:0!important;
+ background:linear-gradient(90deg,#e62a51,#e65b75,transparent 86%)!important;
+ z-index:2!important;
+}
+.connect #quick-access a.card:after{
+ display:block!important;
+ content:counter(hub-tile, decimal-leading-zero)!important;
+ position:absolute!important;right:21px!important;bottom:37px!important;
+ width:auto!important;height:auto!important;
+ font-family:"Inter Tight","Segoe UI",sans-serif!important;
+ font-size:105px!important;font-weight:800!important;
+ letter-spacing:-.08em!important;line-height:1!important;
+ color:rgba(255,255,255,.055)!important;
+ background:none!important;filter:none!important;
+ pointer-events:none!important;z-index:0!important;
+}
+.connect #quick-access .card-topline{margin-bottom:28px!important}
+.connect #quick-access .card .num{color:#ff9eaf!important;font-size:10px!important;letter-spacing:.15em!important}
+.connect #quick-access .card-symbol{
+ width:44px!important;height:44px!important;
+ border-radius:50%!important;
+ color:#f7cbd5!important;
+ background:rgba(255,255,255,.085)!important;
+ border:1px solid rgba(255,255,255,.19)!important;
+}
+.connect #quick-access .card-symbol svg{width:23px!important;height:23px!important}
+.connect #quick-access .card h3{
+ position:relative;z-index:1;
+ max-width:280px;font-size:23px!important;letter-spacing:-.045em!important;
+ color:#fff!important;margin-bottom:11px!important;
+}
+.connect #quick-access .card p{
+ position:relative;z-index:1;
+ color:#c5d5e3!important;font-size:13px!important;
+ max-width:265px;margin-bottom:20px!important;
+}
+.connect #quick-access .card .arrow{
+ position:relative;z-index:2;
+ background:none!important;color:#fff!important;
+ padding:0!important;border-radius:0!important;
+ font-size:11px!important;letter-spacing:.12em!important;
+ gap:13px!important;
+}
+.connect #quick-access .card .arrow svg{
+ box-sizing:content-box;
+ width:17px!important;height:17px!important;
+ padding:10px;border-radius:50%;
+ color:#fff;background:#df294d;
+ transition:background .2s,transform .2s;
+}
+@media(hover:hover){
+ .connect #quick-access a.card:hover{
+  transform:translateY(-5px)!important;
+  border-color:rgba(255,156,178,.65)!important;
+  box-shadow:0 24px 48px rgba(8,32,58,.19)!important;
+ }
+ .connect #quick-access a.card:hover .arrow svg{background:#f03d61;transform:translate(2px,-2px)}
+}
+@media(max-width:600px){
+ .connect #quick-access a.card{min-height:232px!important;padding:25px 24px!important;border-radius:17px!important}
+ .connect #quick-access .card-topline{margin-bottom:21px!important}
+ .connect #quick-access .card h3{font-size:22px!important}
+ .connect #quick-access .card p{font-size:13px!important}
+ .connect #quick-access a.card:after{font-size:90px!important;bottom:31px!important}
+}
