@@ -38,3 +38,14 @@
  .mct-launcher-row{gap:11px}
  .mct-wa-launcher,.mct-chat-launcher{width:52px;height:52px;min-width:52px}
 }
+.mct-chat-symbol{
+ display:grid;place-items:center;
+ width:31px;height:31px;
+ border-radius:8px;
+ background:#08a95c;
+ color:#fff;
+ font-size:27px;
+ line-height:1;
+ font-weight:700;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+}
