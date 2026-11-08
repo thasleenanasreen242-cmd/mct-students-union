@@ -251,3 +251,92 @@
  .connect .footerlinks a{padding:10px 9px;font-size:11px;min-height:43px}
  .connect .footerbottom{font-size:10px!important}
 }
+
+/* Quick Access — modern service tiles with a vertical accent and compact actions. */
+.connect #quick-access{background:#f7f9fb!important}
+.connect #quick-access .cards{gap:18px!important}
+.connect #quick-access a.card{
+ position:relative!important;
+ display:flex!important;
+ flex-direction:column!important;
+ overflow:hidden!important;
+ min-height:260px!important;
+ padding:28px 27px 25px 30px!important;
+ border:1px solid #e2e9f0!important;
+ border-top:1px solid #e2e9f0!important;
+ border-radius:18px!important;
+ background:#fff!important;
+ background-image:none!important;
+ box-shadow:0 11px 32px rgba(8,35,62,.055)!important;
+ backdrop-filter:none!important;
+ transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease!important;
+}
+.connect #quick-access a.card:before{
+ display:block!important;content:""!important;
+ position:absolute!important;inset:22px auto 22px 0!important;
+ width:3px!important;border-radius:0 5px 5px 0!important;
+ background:linear-gradient(180deg,#e5284b,#a91d3c)!important;
+ opacity:.9!important;
+ z-index:0!important;
+}
+.connect #quick-access a.card:after{display:none!important}
+.connect #quick-access .card-topline{
+ display:flex!important;align-items:flex-start!important;justify-content:space-between!important;
+ gap:14px!important;margin-bottom:22px!important;
+}
+.connect #quick-access .card .num{
+ font-family:"DM Sans","Segoe UI",Arial,sans-serif!important;
+ font-size:10px!important;font-weight:800!important;
+ letter-spacing:.11em!important;line-height:1.4!important;
+ color:#b62b48!important;
+}
+.connect #quick-access .card-symbol{
+ width:49px!important;height:49px!important;
+ border-radius:14px!important;
+ background:#f9edf1!important;
+ border:1px solid #f0d7df!important;
+ color:#bd2446!important;
+ box-shadow:none!important;transform:none!important;
+}
+.connect #quick-access .card-symbol svg{width:26px!important;height:26px!important;filter:none!important}
+.connect #quick-access .card h3{
+ font-size:21px!important;line-height:1.2!important;
+ letter-spacing:-.035em!important;color:#0c2842!important;
+ margin:0 0 12px!important;
+}
+.connect #quick-access .card p{
+ color:#677a8c!important;font-size:13px!important;
+ line-height:1.65!important;margin:0 0 22px!important;
+}
+.connect #quick-access .card .arrow{
+ align-self:flex-start!important;display:inline-flex!important;align-items:center!important;
+ gap:8px!important;margin-top:auto!important;
+ padding:9px 12px!important;
+ border-radius:9px!important;background:#fbecf0!important;
+ color:#b72041!important;
+ font-family:"DM Sans","Segoe UI",Arial,sans-serif!important;
+ font-size:10px!important;font-weight:800!important;
+ letter-spacing:.07em!important;
+}
+.connect #quick-access .card .arrow svg{width:14px;height:14px}
+@media(hover:hover){
+ .connect #quick-access a.card:hover{
+  transform:translateY(-4px)!important;
+  border-color:#e9c2cb!important;
+  box-shadow:0 20px 42px rgba(8,35,62,.105)!important;
+ }
+ .connect #quick-access a.card:hover .card-symbol{transform:none!important;box-shadow:none!important}
+}
+@media(max-width:600px){
+ .connect #quick-access .cards{gap:12px!important}
+ .connect #quick-access a.card{
+  min-height:0!important;padding:22px 20px 20px 23px!important;
+  border-radius:15px!important;
+ }
+ .connect #quick-access .card-topline{margin-bottom:15px!important}
+ .connect #quick-access .card-symbol{width:44px!important;height:44px!important;border-radius:12px!important}
+ .connect #quick-access .card-symbol svg{width:23px!important;height:23px!important}
+ .connect #quick-access .card h3{font-size:20px!important;margin-bottom:8px!important}
+ .connect #quick-access .card p{margin-bottom:16px!important}
+ .connect #quick-access .card .arrow{padding:9px 11px!important}
+}
