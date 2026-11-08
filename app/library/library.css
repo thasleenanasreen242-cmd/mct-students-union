@@ -1,4 +1,4 @@
-.library-folder-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px; }
+.library-folder-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px; }
 .connect .library-folder { display:flex;flex-direction:column;min-height:325px;padding:27px;border:1px solid #dce4ed;border-top:2px solid #d72549;border-radius:17px;background:linear-gradient(155deg,#fff 60%,#f2f6fa);box-shadow:0 12px 30px rgba(12,37,62,.045); }
 .library-folder .num { color:#b12745;letter-spacing:.1em; }
 .connect .library-folder h3 { font-size:clamp(1.1rem,1.7vw,1.35rem);line-height:1.35;margin:20px 0 10px;color:#112b43; }
