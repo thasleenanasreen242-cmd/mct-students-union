@@ -6,12 +6,12 @@ import Link from "next/link";
 
 const resources = [
   {
-    title: "Study Resources — Folder 1",
+    title: "Study Resources 01",
     description: "Open the first shared collection of academic resources on Google Drive.",
     href: "https://drive.google.com/drive/folders/1Cm4hUJZwqSd4bXYS9HGHqbJxnrgSCEUQ",
   },
   {
-    title: "Study Resources — Folder 2",
+    title: "Study Resources 02",
     description: "Open the second shared collection of academic resources on Google Drive.",
     href: "https://drive.google.com/drive/folders/16K7BELHTotsZm7wT0GLx05qLvmnlLAjN",
   },
