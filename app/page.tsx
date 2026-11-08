@@ -3,6 +3,7 @@ import "./hero-bevel.css";
 import "./hero-icon.css";
 import "./instagram-3d.css";
 import "./premium-type.css";
+import "./modern-refresh.css";
 import Link from "next/link";
 import CourtIcon, { type CourtIconName } from "./components/CourtIcon";
 import ActionArrow from "./components/ActionArrow";
