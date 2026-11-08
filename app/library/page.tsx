@@ -35,8 +35,8 @@ export default function LibraryPage() {
           <div className="library-folder-grid">
             <article className="library-folder">
               <span className="num">01 / ACADEMICS</span>
-              <h3>Previous year question papers and model answers</h3>
-              <p>Browse the shared academic collections on Google Drive.</p>
+              <h3>Question papers, study materials &amp; model answers</h3>
+              <p>Access shared collections of previous year papers, study materials and model answers on Google Drive.</p>
               <div className="library-resource-links">
                 <a href="https://drive.google.com/drive/folders/1Cm4hUJZwqSd4bXYS9HGHqbJxnrgSCEUQ" target="_blank" rel="noopener noreferrer">Study Resources 01 <span aria-hidden="true">↗</span></a>
                 <a href="https://drive.google.com/drive/folders/16K7BELHTotsZm7wT0GLx05qLvmnlLAjN" target="_blank" rel="noopener noreferrer">Study Resources 02 <span aria-hidden="true">↗</span></a>
@@ -44,12 +44,6 @@ export default function LibraryPage() {
             </article>
             <article className="library-folder">
               <span className="num">02 / ACADEMICS</span>
-              <h3>Study materials &amp; model answers</h3>
-              <p>Subject notes, revision guides and model answers will be listed when verified collections become available.</p>
-              <span className="library-coming-soon">RESOURCES COMING SOON</span>
-            </article>
-            <article className="library-folder">
-              <span className="num">03 / ACADEMICS</span>
               <h3>Bare Acts &amp; judgments</h3>
               <p>Legal texts, judgments and case references will be added as the resource catalogue develops.</p>
               <span className="library-coming-soon">RESOURCES COMING SOON</span>
