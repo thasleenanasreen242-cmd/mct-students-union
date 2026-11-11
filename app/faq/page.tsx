@@ -1,4 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "FAQs — Student Hub, Library & Union Services",
+  description: "Find answers about MCT Students’ Union services, student support, grievances, suggestions, digital library resources and campus notices.",
+  alternates: { canonical: "/faq" },
+  openGraph: { title: "Frequently Asked Questions | MCT Students’ Union", description: "Quick answers about student support, Union services, law resources and campus updates.", url: "/faq", images: ["/images/og-mct-students-union.svg"] },
+  twitter: { card: "summary_large_image", title: "FAQs | MCT Students’ Union", description: "Answers about student support, resources and Union services.", images: ["/images/og-mct-students-union.svg"] },
+};
 
 const questions = [
   { q: "Who can use the MCT Students’ Union website?", a: "The website is intended as an information and engagement hub for students of MCT College of Legal Studies. Some resources may be available to visitors, while student-specific services may be added as they are confirmed." },
