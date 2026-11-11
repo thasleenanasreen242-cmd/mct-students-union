@@ -5,6 +5,15 @@ import "./library.css";
 import "../modern-refresh.css";
 import Link from "next/link";
 import ActionArrow from "../components/ActionArrow";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Law Students’ Digital Library & Study Resources",
+  description: "Explore the developing MCT law students’ digital library for previous question papers, study materials, model answers and legal reference resources.",
+  alternates: { canonical: "/library" },
+  openGraph: { title: "Law Students’ Digital Library | MCT Students’ Union", description: "Find law study resources and updates from the MCT Students’ Union digital library.", url: "/library", images: ["/images/og-mct-students-union.png"] },
+  twitter: { card: "summary_large_image", images: ["/images/og-mct-students-union.png"] },
+};
 
 export default function LibraryPage() {
   return (

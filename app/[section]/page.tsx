@@ -6,6 +6,20 @@ import { notFound } from "next/navigation";
 import { portalSections } from "../portal-sections";
 import LibraryPage from "../library/page";
 import ActionArrow from "../components/ActionArrow";
+import type { Metadata } from "next";
+
+export async function generateMetadata({params}:{params:Promise<{section:string}>}):Promise<Metadata> {
+ const {section}=await params;
+ const item=portalSections.find(x=>x.slug===section);
+ if(!item)return {robots:{index:false,follow:false}};
+ return {
+  title:item.label,
+  description:item.description,
+  alternates:{canonical:`/${item.slug}`},
+  openGraph:{title:`${item.label} | MCT Students’ Union`,description:item.description,url:`/${item.slug}`,images:["/images/og-mct-students-union.png"]},
+  twitter:{card:"summary_large_image",images:["/images/og-mct-students-union.png"]},
+ };
+}
 export function generateStaticParams(){return portalSections.filter(x=>x.slug!=="library").map(x=>({section:x.slug}));}
 export default async function SectionPage({params}:{params:Promise<{section:string}>}){
  const requestedSection = (await params).section;

@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: "FAQs — Student Hub, Library & Union Services",
   description: "Find answers about MCT Students’ Union services, student support, grievances, suggestions, digital library resources and campus notices.",
   alternates: { canonical: "/faq" },
-  openGraph: { title: "Frequently Asked Questions | MCT Students’ Union", description: "Quick answers about student support, Union services, law resources and campus updates.", url: "/faq", images: ["/images/og-mct-students-union.svg"] },
-  twitter: { card: "summary_large_image", title: "FAQs | MCT Students’ Union", description: "Answers about student support, resources and Union services.", images: ["/images/og-mct-students-union.svg"] },
+  openGraph: { title: "Frequently Asked Questions | MCT Students’ Union", description: "Quick answers about student support, Union services, law resources and campus updates.", url: "/faq", images: ["/images/og-mct-students-union.png"] },
+  twitter: { card: "summary_large_image", title: "FAQs | MCT Students’ Union", description: "Answers about student support, resources and Union services.", images: ["/images/og-mct-students-union.png"] },
 };
 
 const questions = [

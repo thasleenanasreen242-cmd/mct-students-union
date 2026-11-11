@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: "Student Support & Welfare Information",
   description: "Find guidance for student concerns, academic support, welfare and safety information, Union contacts and ways to improve campus life at MCT College of Legal Studies.",
   alternates: { canonical: "/student-support" },
-  openGraph: { title: "Student Support | MCT Students’ Union", description: "Find the right route for student concerns, academic guidance, welfare information and Union support.", url: "/student-support", images: ["/images/og-mct-students-union.svg"] },
-  twitter: { card: "summary_large_image", title: "Student Support | MCT Students’ Union", description: "Guidance for student concerns, welfare information and Union support.", images: ["/images/og-mct-students-union.svg"] },
+  openGraph: { title: "Student Support | MCT Students’ Union", description: "Find the right route for student concerns, academic guidance, welfare information and Union support.", url: "/student-support", images: ["/images/og-mct-students-union.png"] },
+  twitter: { card: "summary_large_image", title: "Student Support | MCT Students’ Union", description: "Guidance for student concerns, welfare information and Union support.", images: ["/images/og-mct-students-union.png"] },
 };
 
 const supportAreas = [
