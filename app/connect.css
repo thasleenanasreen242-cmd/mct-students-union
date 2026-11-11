@@ -433,3 +433,57 @@
   .chairman-avatar { width:94px;height:130px; }
 }
 .connect .action-arrow-icon, .mct-world-panel .action-arrow-icon, .mct-world-nav .action-arrow-icon { display:inline-block; width:1em; height:1em; vertical-align:-0.12em; flex-shrink:0; stroke:currentColor; }
+
+/* November refinements: subtle reveal, responsive menu, service artwork and notice cards */
+.connect [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.connect [data-reveal].is-visible{opacity:1;transform:translateY(0)}
+.connect .notice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.connect .notice-card{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:250px;padding:24px;border:1px solid #dfe6ee;border-radius:18px;background:linear-gradient(145deg,#fff 0%,#f8fafc 100%);box-shadow:0 12px 30px rgba(10,34,60,.055);transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease}
+.connect .notice-card:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(#d92348,#102e4c)}
+.connect .notice-card:hover{transform:translateY(-5px);border-color:#e8b5c1;box-shadow:0 19px 38px rgba(10,34,60,.11)}
+.connect .notice-card-top{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-bottom:20px}
+.connect .notice-category,.connect .notice-date{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.055em;text-transform:uppercase}
+.connect .notice-category{color:#b51e3b;background:#fff0f3;padding:8px 11px;border-radius:999px}
+.connect .notice-category svg,.connect .notice-date svg{width:16px;height:16px;flex:none}
+.connect .notice-date{color:#748398}
+.connect .notice-card h3{font-size:20px;line-height:1.3;margin:0 0 9px;color:#0b233d}
+.connect .notice-card p{font-size:13px;line-height:1.65;margin:0 0 18px;color:#64758a}
+.connect .notice-status{margin-top:auto;align-self:flex-start;padding:7px 10px;border-radius:7px;background:#edf3f8;color:#425a72;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.connect .noticeboard-footnote{font-size:12px;color:#758397;margin:18px 0 0}
+.connect .service-art{display:grid;place-items:center;width:76px;height:76px;margin:0 0 20px;border:1px solid rgba(255,255,255,.2);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.045));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 12px 25px rgba(0,0,0,.12)}
+.connect .service-art svg{width:49px;height:49px;color:#f2c58c;filter:drop-shadow(0 4px 8px rgba(0,0,0,.2))}
+.connect .featurebox{transition:transform .24s ease,box-shadow .24s ease}
+.connect .featurebox:hover{transform:translateY(-3px)!important;box-shadow:0 22px 45px rgba(10,35,59,.2)!important}
+.connect .mobile-menu{display:none}
+@media(max-width:800px){
+ .connect .navinner{min-height:72px;flex-wrap:wrap;gap:8px}
+ .connect .navlinks{display:none!important}
+ .connect .mobile-menu{display:block;position:relative;margin-left:auto}
+ .connect .mobile-menu summary{list-style:none;display:flex;align-items:center;justify-content:center;gap:12px;min-height:42px;padding:0 14px;border:1px solid #dce5ee;border-radius:11px;background:#fff;color:#102b46;font-size:12px;font-weight:800;cursor:pointer}
+ .connect .mobile-menu summary::-webkit-details-marker{display:none}
+ .connect .menu-glyph{display:flex;flex-direction:column;gap:4px}
+ .connect .menu-glyph i{display:block;width:15px;height:2px;border-radius:3px;background:#c51d3c;transition:transform .2s ease}
+ .connect .mobile-menu[open] .menu-glyph i:first-child{transform:translateY(6px) rotate(45deg)}
+ .connect .mobile-menu[open] .menu-glyph i:nth-child(2){opacity:0}
+ .connect .mobile-menu[open] .menu-glyph i:last-child{transform:translateY(-6px) rotate(-45deg)}
+ .connect .mobilelinks{position:absolute;top:calc(100% + 10px);right:0;z-index:30;display:flex!important;flex-direction:column;gap:3px;width:min(82vw,310px);max-height:min(70vh,480px);overflow:auto;padding:10px;border:1px solid #dfe7ef;border-radius:15px;background:#fff;box-shadow:0 22px 48px rgba(4,24,44,.2)}
+ .connect .mobilelinks a{display:flex;align-items:center;min-height:46px;padding:0 13px;border-radius:9px;color:#102b46!important;font-size:13px;font-weight:750}
+ .connect .mobilelinks a:hover,.connect .mobilelinks a:focus-visible{background:#fff0f3;color:#b71936!important}
+ .connect .mobile-menu[open] .mobilelinks{animation:mct-menu-in .18s ease both}
+ .connect .notice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@keyframes mct-menu-in{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){
+ .connect .notice-grid{grid-template-columns:1fr;gap:13px}
+ .connect .notice-card{min-height:0;padding:21px}
+ .connect .notice-card-top{gap:9px;margin-bottom:14px}
+ .connect .notice-card h3{font-size:19px}
+ .connect .service-art{width:62px;height:62px;border-radius:16px}
+ .connect .service-art svg{width:40px;height:40px}
+ .connect .navinner{padding-block:8px}
+ .connect .mobilelinks{width:min(88vw,330px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .connect [data-reveal],.connect .notice-card,.connect .featurebox,.connect .menu-glyph i{transition:none!important;animation:none!important;transform:none!important}
+ .connect [data-reveal]{opacity:1!important}
+}
