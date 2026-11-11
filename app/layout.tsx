@@ -3,6 +3,7 @@ import "./globals.css";
 import "./premium-type.css";
 import "./modern-refresh.css";
 import MCTChatBot from "./components/MCTChatBot";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mct-students-union.vercel.app"),
@@ -22,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body><a className="skip-link" href="#main-content">Skip to main content</a>{children}<MCTChatBot /></body>
+      <body>{process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ? <ClerkProvider><a className="skip-link" href="#main-content">Skip to main content</a>{children}<MCTChatBot /></ClerkProvider> : <><a className="skip-link" href="#main-content">Skip to main content</a>{children}<MCTChatBot /></>}</body>
     </html>
   );
 }

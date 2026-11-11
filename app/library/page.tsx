@@ -6,6 +6,10 @@ import "../modern-refresh.css";
 import Link from "next/link";
 import ActionArrow from "../components/ActionArrow";
 import type { Metadata } from "next";
+import { PublishedUnionContent } from "../components/PublishedUnionContent";
+import "../published.css";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Law Students’ Digital Library & Study Resources",
@@ -74,6 +78,7 @@ export default function LibraryPage() {
               <div className="library-source-note">Official government PDFs · <a href="https://indiacode.gov.in/" target="_blank" rel="noopener noreferrer">Find a document on India Code</a> if a PDF doesn’t open · Judgments coming later</div>
             </article>
           </div>
+          <div style={{marginTop:32}}><h2>Union-managed PDF collection</h2><p>Study documents uploaded by authorised Union administration.</p><PublishedUnionContent kind="library" /></div>
           <p className="library-access-note">Study-material links open external Google Drive folders; access depends on the folder owners’ sharing permissions. Bare Act links open official government documents from India Code or the Ministry of Home Affairs. Check the latest amendments and commencement provisions when using legal texts.</p>
           <p className="library-return"><Link className="btn" href="/"><ActionArrow direction="left" /> Return to Students’ Union</Link></p>
         </div>
