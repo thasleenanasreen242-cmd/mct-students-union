@@ -1,4 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Student Support & Welfare Information",
+  description: "Find guidance for student concerns, academic support, welfare and safety information, Union contacts and ways to improve campus life at MCT College of Legal Studies.",
+  alternates: { canonical: "/student-support" },
+  openGraph: { title: "Student Support | MCT Students’ Union", description: "Find the right route for student concerns, academic guidance, welfare information and Union support.", url: "/student-support", images: ["/images/og-mct-students-union.svg"] },
+  twitter: { card: "summary_large_image", title: "Student Support | MCT Students’ Union", description: "Guidance for student concerns, welfare information and Union support.", images: ["/images/og-mct-students-union.svg"] },
+};
 
 const supportAreas = [
   { n: "01", title: "Raise a concern", desc: "Share a concern about student welfare, campus facilities, classroom experience or other student matters with the Union.", action: "Contact the Union", href: "https://wa.me/919496744513?text=Hello%2C%20I%20would%20like%20to%20raise%20a%20student%20concern." },
