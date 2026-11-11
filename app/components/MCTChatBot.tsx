@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import "../chat.css";
 
@@ -19,21 +19,25 @@ export default function MCTChatBot(){
  const [open,setOpen]=useState(false);
  const [input,setInput]=useState("");
  const [messages,setMessages]=useState<Message[]>([{role:"bot",text:greeting}]);
+ const inputRef=useRef<HTMLInputElement>(null);
+ const launcherRef=useRef<HTMLButtonElement>(null);
+ useEffect(()=>{if(open)inputRef.current?.focus();},[open]);
+ const closeChat=()=>{setOpen(false);requestAnimationFrame(()=>launcherRef.current?.focus());};
  const send=(message:string)=>{
   const value=message.trim();if(!value)return;
   setMessages(items=>[...items,{role:"user",text:value},{role:"bot",text:answer(value)}]);setInput("");
  };
  return <div className="mct-chat">
-  {open&&<section className="mct-chat-window" aria-label="MCT Student Help chat">
-   <header className="mct-chat-head"><div className="mct-chat-avatar">M</div><div className="mct-chat-headline"><strong>MCT Student Help</strong><small>Automated campus guide</small></div><button type="button" aria-label="Close chat" onClick={()=>setOpen(false)}>×</button></header>
-   <div className="mct-chat-body" role="log" aria-live="polite" aria-relevant="additions text">{messages.map((item,index)=><div key={index} className={"mct-chat-message "+(item.role==="user"?"from-user":"from-bot")}>{item.text}</div>)}
+  {open&&<section id="mct-student-help" className="mct-chat-window" role="region" aria-label="MCT Student Help chat" onKeyDown={event=>{if(event.key==="Escape")closeChat();}}>
+   <header className="mct-chat-head"><div className="mct-chat-avatar" aria-hidden="true">M</div><div className="mct-chat-headline"><strong>MCT Student Help</strong><small>Automated campus guide</small></div><button type="button" aria-label="Close chat" onClick={closeChat}>×</button></header>
+   <div className="mct-chat-body" role="log" aria-label="Chat messages" aria-live="polite" aria-relevant="additions text">{messages.map((item,index)=><div key={index} className={"mct-chat-message "+(item.role==="user"?"from-user":"from-bot")}>{item.text}</div>)}
    {messages.length===1&&<div className="mct-chat-prompts">{["Question papers","Grievance support","Union activities"].map(q=><button type="button" onClick={()=>send(q)} key={q}>{q}</button>)}</div>}</div>
    <nav className="mct-chat-links" aria-label="Helpful pages"><Link href="/library" onClick={()=>setOpen(false)}>Library</Link><Link href="https://wa.me/919496744513?text=Hello%2C%20I%20would%20like%20to%20raise%20a%20student%20concern." onClick={()=>setOpen(false)}>Grievances</Link><Link href="/suggestions" onClick={()=>setOpen(false)}>Suggestions</Link></nav>
-   <form className="mct-chat-input" onSubmit={e=>{e.preventDefault();send(input)}}><input aria-label="Ask MCT a question" placeholder="Ask about student services..." value={input} onChange={e=>setInput(e.target.value)} maxLength={500}/><button type="submit" aria-label="Send" disabled={!input.trim()}>↑</button></form>
+   <form className="mct-chat-input" onSubmit={e=>{e.preventDefault();send(input)}}><input ref={inputRef} aria-label="Ask MCT a question" placeholder="Ask about student services..." value={input} onChange={e=>setInput(e.target.value)} maxLength={500}/><button type="submit" aria-label="Send message" disabled={!input.trim()}>↑</button></form>
    <p className="mct-chat-disclaimer">Automated guidance only. This chat does not submit grievances or store complaints.</p>
   </section>}
   <div className="mct-launcher-row"><a className="mct-wa-launcher" href="https://wa.me/919496744513?text=Hello%2C%20I%20need%20assistance%20regarding%20MCT%20Students%27%20Union." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.5 11.6a8.6 8.6 0 0 1-12.6 7.6L3.4 20.5l1.3-4.3a8.6 8.6 0 1 1 15.8-4.6Z"/><path d="M8.7 8.1c-.4 0-.8.6-.8 1.3 0 2.7 3.3 6.3 6.5 6.6.8.1 1.6-.7 1.5-1.2l-2.2-1.2-.9 1c-1.2-.5-2.7-2-3.2-3.2l.9-.8-1.1-2.3-.7-.2Z"/></svg></a>
-  <button className="mct-chat-launcher" type="button" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-label={open?"Close MCT Student Help":"Open MCT Student Help"} title={open?"Close Ask MCT":"Ask MCT"}>
+  <button ref={launcherRef} className="mct-chat-launcher" type="button" onClick={()=>open?closeChat():setOpen(true)} aria-controls="mct-student-help" aria-expanded={open} aria-label={open?"Close MCT Student Help":"Open MCT Student Help"} title={open?"Close Ask MCT":"Ask MCT"}>
     <span className="mct-chat-symbol" aria-hidden="true">{open?
       <svg viewBox="0 0 32 32" width="27" height="27" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M9 9 23 23M23 9 9 23"/></svg>:
       <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">

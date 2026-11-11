@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}<MCTChatBot /></body>
+      <body><a className="skip-link" href="#main-content">Skip to main content</a>{children}<MCTChatBot /></body>
     </html>
   );
 }

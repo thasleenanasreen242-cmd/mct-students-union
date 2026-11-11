@@ -17,7 +17,7 @@ const supportAreas = [
 ];
 
 export default function StudentSupportPage() {
-  return <main className="connect">
+  return <main id="main-content" tabIndex={-1} className="connect">
     <header className="nav"><div className="wrap navinner"><Link className="union-identity" href="/"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56"/><span><strong>MCT <em>STUDENTS&apos; UNION</em></strong><small>COLLEGE OF LEGAL STUDIES</small></span></Link><Link className="navbtn" href="/">Back to home</Link></div></header>
     <section className="innerhero"><div className="wrap"><div className="breadcrumbs"><Link href="/">Home</Link> / Student support</div><div className="eyebrow">YOU ARE NOT ON YOUR OWN</div><h1>Student support</h1><p>A clear starting point for academic questions, student concerns, welfare information and ideas to improve campus life.</p></div></section>
     <section className="section"><div className="wrap"><div className="support-intro"><div><div className="eyebrow">FIND THE RIGHT SUPPORT</div><h2>Tell us what you need help with.</h2></div><p>Choose the route that best matches your concern. For matters requiring an official decision, use the relevant college office or authorised committee.</p></div><div className="support-grid">{supportAreas.map(x=><article className="support-card" key={x.n}><span className="support-no">{x.n} / SUPPORT</span><h3>{x.title}</h3><p>{x.desc}</p><Link className="textlink" href={x.href} target={x.href.startsWith("http") ? "_blank" : undefined} rel={x.href.startsWith("http") ? "noopener noreferrer" : undefined}>{x.action} <span aria-hidden="true">↗</span></Link></article>)}</div></div></section>

@@ -21,7 +21,7 @@ const questions = [
 ];
 
 export default function FAQPage() {
-  return <main className="connect">
+  return <main id="main-content" tabIndex={-1} className="connect">
     <header className="nav"><div className="wrap navinner"><Link className="union-identity" href="/"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56"/><span><strong>MCT <em>STUDENTS&apos; UNION</em></strong><small>COLLEGE OF LEGAL STUDIES</small></span></Link><Link className="navbtn" href="/">Back to home</Link></div></header>
     <section className="innerhero"><div className="wrap"><div className="breadcrumbs"><Link href="/">Home</Link> / Frequently asked questions</div><div className="eyebrow">HELP CENTRE / QUICK ANSWERS</div><h1>Frequently asked questions</h1><p>Find clear answers about student support, the digital library, Union services and this website.</p></div></section>
     <section className="section"><div className="wrap faq-layout"><div className="faq-intro"><div className="eyebrow">NEED A HAND?</div><h2>Start with the answer you need.</h2><p>If your question is not covered here, visit the Student Support page to find the available contact route.</p><Link className="btn" href="/student-support">Go to student support</Link></div><div className="faq-list">{questions.map((item,i)=><details className="faq-item" key={item.q}><summary><span className="faq-number">{String(i+1).padStart(2,"0")}</span><strong>{item.q}</strong><span className="faq-plus" aria-hidden="true">+</span></summary><p>{item.a}</p></details>)}</div></div></section>

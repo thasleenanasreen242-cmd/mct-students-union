@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function LibraryPage() {
   return (
-    <main className="connect">
+    <main id="main-content" tabIndex={-1} className="connect">
       <header className="nav">
         <div className="wrap navinner">
           <Link className="union-identity" href="/" aria-label="MCT Students' Union home">
