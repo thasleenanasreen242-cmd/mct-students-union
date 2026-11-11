@@ -15,6 +15,17 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", images: ["/images/og-mct-students-union.png"] },
 };
 
+const bareActs = [
+  { name: "Constitution of India", href: "https://www.indiacode.nic.in/bitstream/123456789/16124/1/the_constitution_of_india.pdf" },
+  { name: "Indian Contract Act, 1872", href: "https://www.indiacode.nic.in/bitstream/123456789/2187/2/A187209.pdf" },
+  { name: "Bharatiya Nyaya Sanhita, 2023 (BNS)", href: "https://www.indiacode.nic.in/bitstream/123456789/20062/1/a202345.pdf" },
+  { name: "Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)", href: "https://www.indiacode.nic.in/bitstream/123456789/20099/1/eng.pdf" },
+  { name: "Bharatiya Sakshya Adhiniyam, 2023 (BSA)", href: "https://www.indiacode.nic.in/indiacode/bitstream/123456789/20063/1/aa202347.pdf" },
+  { name: "Code of Civil Procedure, 1908", href: "https://www.indiacode.nic.in/bitstream/123456789/2191/1/aA1908-05.pdf" },
+  { name: "Transfer of Property Act, 1882", href: "https://www.indiacode.nic.in/bitstream/123456789/14648/1/tpa.pdf" },
+  { name: "Specific Relief Act, 1963", href: "https://www.indiacode.nic.in/bitstream/123456789/1583/7/A1963-47.pdf" },
+];
+
 export default function LibraryPage() {
   return (
     <main id="main-content" tabIndex={-1} className="connect">
@@ -56,11 +67,14 @@ export default function LibraryPage() {
             <article className="library-folder">
               <span className="num">02 / ACADEMICS</span>
               <h3>Bare Acts &amp; judgments</h3>
-              <p>Legal texts, judgments and case references will be added as the resource catalogue develops.</p>
-              <span className="library-coming-soon">RESOURCES COMING SOON</span>
+              <p>Read the texts of key Indian laws directly from the Government of India’s India Code collection.</p>
+              <div className="library-resource-links library-bare-act-links" aria-label="Official Bare Act PDFs">
+                {bareActs.map(act => <a href={act.href} key={act.name} target="_blank" rel="noopener noreferrer">{act.name}<span aria-hidden="true"><ActionArrow /></span></a>)}
+              </div>
+              <span className="library-source-note">Official India Code PDFs · Judgments and case references coming later</span>
             </article>
           </div>
-          <p className="library-access-note">These links open external Google Drive folders. Access and downloads depend on the folder owners’ sharing permissions. Folder contents have not yet been independently catalogued.</p>
+          <p className="library-access-note">Study-material links open external Google Drive folders; access depends on the folder owners’ sharing permissions. Bare Act links open official India Code documents. Check the latest amendments and commencement provisions when using legal texts.</p>
           <p className="library-return"><Link className="btn" href="/"><ActionArrow direction="left" /> Return to Students’ Union</Link></p>
         </div>
       </section>

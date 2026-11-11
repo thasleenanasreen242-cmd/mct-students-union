@@ -7,6 +7,10 @@
 .connect .library-resource-links a { display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px;border:1px solid #efcbd3;border-radius:10px;background:#fff7f9;color:#a52243;font-size:12px;font-weight:700; }
 .connect .library-resource-links a:hover { background:#ffe9ee;border-color:#d34a69; }
 .library-coming-soon { margin-top:auto;color:#ae3651;font-size:11px;font-weight:800;letter-spacing:.09em; }
+.library-bare-act-links { margin-top:12px; }
+.connect .library-bare-act-links a { min-height:44px;line-height:1.35; }
+.library-bare-act-links a span { flex:none; }
+.library-source-note { margin-top:16px;color:#65778a;font-size:11px;line-height:1.6; }
 .library-access-note { font-size:.88rem;margin-top:25px;max-width:790px; }
 .library-return { margin-top:32px; }
 @media(max-width:920px) { .library-folder-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
