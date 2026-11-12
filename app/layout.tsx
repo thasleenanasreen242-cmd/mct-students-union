@@ -4,6 +4,7 @@ import "./premium-type.css";
 import "./modern-refresh.css";
 import MCTChatBot from "./components/MCTChatBot";
 import { ClerkProvider } from "@clerk/nextjs";
+import { clerkReadyForEnvironment } from "../lib/clerk-runtime";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mct-students-union.vercel.app"),
@@ -21,9 +22,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const content = <><a className="skip-link" href="#main-content">Skip to main content</a>{children}<MCTChatBot /></>;
   return (
     <html lang="en">
-      <body>{process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ? <ClerkProvider><a className="skip-link" href="#main-content">Skip to main content</a>{children}<MCTChatBot /></ClerkProvider> : <><a className="skip-link" href="#main-content">Skip to main content</a>{children}<MCTChatBot /></>}</body>
+      <body>{clerkReadyForEnvironment() ? <ClerkProvider>{content}</ClerkProvider> : content}</body>
     </html>
   );
 }
