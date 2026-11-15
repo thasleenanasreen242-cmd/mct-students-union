@@ -1,4 +1,5 @@
 import { neon } from "@neondatabase/serverless";
+import { transparencyRecordId } from "./transparency";
 
 export const kinds = ["notice", "library", "event", "activity", "office_bearer"] as const;
 export type ContentKind = (typeof kinds)[number];
@@ -20,7 +21,7 @@ export async function publicItems(kind: ContentKind): Promise<UnionItem[]> {
   if (!process.env.DATABASE_URL) return [];
   try {
     const sql = database();
-    const rows = await sql`SELECT * FROM union_content WHERE kind = ${kind} AND status = 'published'
+    const rows = await sql`SELECT * FROM union_content WHERE kind = ${kind} AND id <> ${transparencyRecordId} AND status = 'published'
       AND (expires_at IS NULL OR expires_at > now())
       ORDER BY pinned DESC, starts_at DESC NULLS LAST, created_at DESC LIMIT 100`;
     return rows as UnionItem[];
