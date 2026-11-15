@@ -9,7 +9,20 @@ export async function GET() {
   try {
     const rows = await database()`SELECT * FROM union_content ORDER BY updated_at DESC LIMIT 500`;
     return Response.json({ items: rows });
-  } catch { return Response.json({ error: "Unable to read content. Check the Neon schema." }, { status: 500 }); }
+  } catch (error) {
+    const code = error && typeof error === "object" && "code" in error ? error.code : undefined;
+    const message = code === "42P01"
+      ? "The admin database is missing the union_content table. Check which Neon branch DATABASE_URL points to."
+      : code === "42501"
+        ? "The admin database role cannot read union_content. Check that Preview DATABASE_URL uses the dashboard's editor role."
+        : code === "28P01" || code === "28000"
+          ? "The admin database rejected the login. Check the Preview DATABASE_URL credentials."
+          : code === "3D000"
+            ? "The database named in Preview DATABASE_URL does not exist."
+            : "Unable to read content from the admin database. Check the Preview database connection.";
+    console.error("Admin database read failed", typeof code === "string" && /^[0-9A-Z]{5}$/.test(code) ? code : "unknown");
+    return Response.json({ error: message }, { status: 500 });
+  }
 }
 
 export async function POST(request: Request) {
