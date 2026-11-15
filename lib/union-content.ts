@@ -17,15 +17,18 @@ export function database() {
 }
 
 export async function publicItems(kind: ContentKind): Promise<UnionItem[]> {
-  if (!process.env.DATABASE_URL) return [];
+  const readerUrl = process.env.PUBLISHED_CONTENT_DATABASE_URL;
+  if (!readerUrl && !process.env.DATABASE_URL) return [];
   try {
-    const sql = database();
-    const rows = await sql`SELECT * FROM union_content WHERE kind = ${kind} AND status = 'published'
-      AND (expires_at IS NULL OR expires_at > now())
-      ORDER BY pinned DESC, starts_at DESC NULLS LAST, created_at DESC LIMIT 100`;
+    const rows = readerUrl
+      ? await neon(readerUrl)`SELECT * FROM public.union_published_content WHERE kind = ${kind}
+          ORDER BY pinned DESC, starts_at DESC NULLS LAST, created_at DESC LIMIT 100`
+      : await database()`SELECT * FROM union_content WHERE kind = ${kind} AND status = 'published'
+          AND (expires_at IS NULL OR expires_at > now())
+          ORDER BY pinned DESC, starts_at DESC NULLS LAST, created_at DESC LIMIT 100`;
     return rows as UnionItem[];
-  } catch (error) {
-    console.error("Unable to load public Union content", error);
+  } catch {
+    console.error("Unable to load published Union content");
     return [];
   }
 }
