@@ -9,9 +9,12 @@ export const transparencyMetrics = [
 
 export type TransparencyCounts = Record<(typeof transparencyMetrics)[number]["key"], number>;
 
+export type ResolutionTarget = { days: number; resolvedWithinTarget: number };
+
 export type TransparencyReport = {
   counts: TransparencyCounts;
   updatedAt: string;
+  resolutionTarget?: ResolutionTarget;
 };
 
 // A reserved row in the existing content store. Only the transparency route edits it.
@@ -33,12 +36,26 @@ export function parseTransparencyCounts(input: unknown): TransparencyCounts | nu
   return counts;
 }
 
+// Omitted target data is valid for older reports and when tracking is disabled.
+export function parseResolutionTarget(input: unknown, resolved: number): ResolutionTarget | null {
+  if (!input || typeof input !== "object") return null;
+  const { days, resolvedWithinTarget } = input as Record<string, unknown>;
+  if (typeof days !== "number" || !Number.isInteger(days) || days < 1 || days > 365) return null;
+  if (
+    typeof resolvedWithinTarget !== "number" ||
+    !Number.isInteger(resolvedWithinTarget) ||
+    resolvedWithinTarget < 0 ||
+    resolvedWithinTarget > resolved
+  ) return null;
+  return { days, resolvedWithinTarget };
+}
+
 export function readTransparencyReport(row: { body: string } | undefined): TransparencyReport | null {
   if (!row) return null;
   const stored: Partial<TransparencyReport> | null = JSON.parse(row.body);
   const counts = parseTransparencyCounts(stored?.counts);
   const updatedAt = stored?.updatedAt;
-  return counts && typeof updatedAt === "string" && Number.isFinite(Date.parse(updatedAt))
-    ? { counts, updatedAt }
-    : null;
+  if (!counts || typeof updatedAt !== "string" || !Number.isFinite(Date.parse(updatedAt))) return null;
+  const resolutionTarget = parseResolutionTarget(stored?.resolutionTarget, counts.resolved);
+  return resolutionTarget ? { counts, updatedAt, resolutionTarget } : { counts, updatedAt };
 }

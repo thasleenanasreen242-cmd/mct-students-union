@@ -54,3 +54,37 @@
   .metric dd { font-size: 20px; text-align: right; max-width: 100px; }
   .panel .browse { width: 100%; }
 }
+
+.performance {
+  margin-top: clamp(20px, 4vw, 36px);
+  padding: clamp(14px, 2.5vw, 28px);
+  border-radius: 16px;
+  background: linear-gradient(120deg, #102941, #211b36);
+  color: #fff;
+}
+
+.panel .performanceHeading h2 { margin: 0; color: #fff; font-size: clamp(19px, 3vw, 26px); }
+.panel .performanceHeading p { margin: 6px 0 0; color: #d4deeb; font-size: 13px; }
+
+.performance .rateGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rate { min-width: 0; padding: 14px; border: 1px solid #ffffff24; border-radius: 10px; background: #ffffff0c; }
+.rateHeading { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; justify-content: space-between; }
+.panel .rateHeading h3 { margin: 0; color: #fff; font-size: 14px; }
+.rateHeading strong { color: #ffb7c9; font-size: 20px; font-variant-numeric: tabular-nums; }
+.panel .rate p { margin: 5px 0 0; color: #d4deeb; font-size: 12px; }
+.rate meter { display: block; width: 100%; height: 12px; margin: 7px 0 0; }
+.rate meter::-webkit-meter-bar { background: #ffffff29; border: 0; border-radius: 8px; }
+.rate meter::-webkit-meter-optimum-value { background: #ff9bb5; border-radius: 8px; }
+.rate meter::-moz-meter-bar { background: #ff9bb5; border-radius: 8px; }
+
+@media (max-width: 600px) {
+  .performance .rateGrid { grid-template-columns: 1fr; }
+}
