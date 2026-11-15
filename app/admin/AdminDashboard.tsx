@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import TransparencyEditor from "./TransparencyEditor";
 import { SignOutButton } from "@clerk/nextjs";
 import { useCallback, useEffect, useState } from "react";
 import type { ContentKind, UnionItem } from "../../lib/union-content";
@@ -17,7 +18,7 @@ const expired = (item: UnionItem) => Boolean(item.expires_at && new Date(item.ex
 
 export default function AdminDashboard() {
   const [items,setItems] = useState<UnionItem[]>([]);
-  const [section,setSection] = useState<ContentKind|"overview">("overview");
+  const [section,setSection] = useState<ContentKind|"overview"|"transparency">("overview");
   const [editor,setEditor] = useState(false);
   const [itemId,setItemId] = useState<string|null>(null);
   const [form,setForm] = useState<Draft>(empty("notice"));
@@ -45,11 +46,12 @@ export default function AdminDashboard() {
     <aside className="admin-sidebar"><Link className="admin-brand" href="/">MCT <span>STUDENTS’ UNION</span><small>ADMIN CONTENT STUDIO</small></Link><span className="admin-overline">WORKSPACE</span>
       <button className={section==="overview"?"admin-nav active":"admin-nav"} onClick={()=>{setSection("overview");setEditor(false)}}>▦ &nbsp; Overview</button>
       {sections.map(s=><button key={s.id} className={section===s.id?"admin-nav active":"admin-nav"} onClick={()=>{setSection(s.id);setEditor(false);setQuery("")}}>{s.glyph} &nbsp; {s.label}<small>{count(s.id)}</small></button>)}
+      <button className={section==="transparency"?"admin-nav active":"admin-nav"} onClick={()=>{setSection("transparency");setEditor(false);setError("");setSuccess("")}}>◇ &nbsp; Transparency</button>
       <div className="admin-sidebar-bottom"><Link href="/" target="_blank">↗ View website</Link><SignOutButton><button>⇥ Sign out</button></SignOutButton></div>
     </aside>
-    <div className="admin-main"><header className="admin-topbar"><div><span className="admin-overline">MCT UNION / ADMINISTRATION</span><h1>{editor?itemId?"Edit content":"Create content":section==="overview"?"Dashboard overview":sections.find(s=>s.id===section)?.label}</h1></div><div className="admin-actions"><span className="admin-role">● Super Admin</span>{!editor&&<button className="admin-primary" onClick={()=>begin(section==="overview"?"notice":section)}>+ Create new</button>}</div></header>
-    {error&&<div className="admin-message error" role="alert">{error}</div>}{success&&<div className="admin-message success" role="status">{success}</div>}
-    {editor?<form className="admin-editor" onSubmit={save}><div className="admin-editor-head"><div><h2>{itemId?"Update":"New"} {sections.find(s=>s.id===form.kind)?.label}</h2><p>Draft content remains private until published.</p></div><button type="button" className="admin-secondary" onClick={()=>setEditor(false)}>← Cancel</button></div>
+    <div className="admin-main"><header className="admin-topbar"><div><span className="admin-overline">MCT UNION / ADMINISTRATION</span><h1>{editor?itemId?"Edit content":"Create content":section==="overview"?"Dashboard overview":section==="transparency"?"Transparency":sections.find(s=>s.id===section)?.label}</h1></div><div className="admin-actions"><span className="admin-role">● Super Admin</span>{!editor&&section!=="transparency"&&<button className="admin-primary" onClick={()=>begin(section==="overview"?"notice":section)}>+ Create new</button>}</div></header>
+    {error&&section!=="transparency"&&<div className="admin-message error" role="alert">{error}</div>}{success&&<div className="admin-message success" role="status">{success}</div>}
+    {section==="transparency"?<TransparencyEditor />:editor?<form className="admin-editor" onSubmit={save}><div className="admin-editor-head"><div><h2>{itemId?"Update":"New"} {sections.find(s=>s.id===form.kind)?.label}</h2><p>Draft content remains private until published.</p></div><button type="button" className="admin-secondary" onClick={()=>setEditor(false)}>← Cancel</button></div>
       <div className="admin-fields"><label>Section<select value={form.kind} onChange={e=>setForm(empty(e.target.value as ContentKind))}>{sections.map(s=><option key={s.id} value={s.id}>{s.label}</option>)}</select></label>
       <label>Status<select value={form.status} onChange={e=>set("status",e.target.value)}><option value="draft">Draft</option><option value="published">Published</option><option value="archived">Archived</option></select></label>
       <label className="wide">{form.kind==="office_bearer"?"Person's name":"Title"}<input required maxLength={200} value={form.title} onChange={e=>set("title",e.target.value)} placeholder="Enter title" /></label>

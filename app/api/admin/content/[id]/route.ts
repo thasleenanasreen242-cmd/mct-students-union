@@ -1,3 +1,4 @@
+import { transparencyRecordId } from "../../../../../lib/transparency";
 import { adminApiGuard } from "../../../../../lib/admin-access";
 import { database, validKind } from "../../../../../lib/union-content";
 
@@ -8,6 +9,7 @@ const isUuid = (id: string) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}
 export async function PATCH(request: Request, { params }: Params) {
   const denial = await adminApiGuard(); if (denial) return denial;
   const { id } = await params;
+  if (id.toLowerCase() === transparencyRecordId) return Response.json({ error: "Not found" }, { status: 404 });
   if (!isUuid(id)) return Response.json({ error: "Invalid ID" }, { status: 400 });
   let data: Record<string, unknown>;
   try { data = await request.json(); } catch { return Response.json({ error: "Invalid JSON" }, { status: 400 }); }
@@ -30,6 +32,7 @@ export async function PATCH(request: Request, { params }: Params) {
 export async function DELETE(_request: Request, { params }: Params) {
   const denial = await adminApiGuard(); if (denial) return denial;
   const { id } = await params;
+  if (id.toLowerCase() === transparencyRecordId) return Response.json({ error: "Not found" }, { status: 404 });
   if (!isUuid(id)) return Response.json({ error: "Invalid ID" }, { status: 400 });
   try {
     const rows = await database()`DELETE FROM union_content WHERE id=${id} RETURNING id`;

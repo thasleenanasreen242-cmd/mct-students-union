@@ -1,3 +1,4 @@
+import { transparencyRecordId } from "../../../../lib/transparency";
 import { adminApiGuard } from "../../../../lib/admin-access";
 import { database, validKind } from "../../../../lib/union-content";
 
@@ -7,7 +8,7 @@ export async function GET() {
   const denial = await adminApiGuard();
   if (denial) return denial;
   try {
-    const rows = await database()`SELECT * FROM union_content ORDER BY updated_at DESC LIMIT 500`;
+    const rows = await database()`SELECT * FROM union_content WHERE id <> ${transparencyRecordId} ORDER BY updated_at DESC LIMIT 500`;
     return Response.json({ items: rows });
   } catch { return Response.json({ error: "Unable to read content. Check the Neon schema." }, { status: 500 }); }
 }
