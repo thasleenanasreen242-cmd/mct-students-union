@@ -39,6 +39,14 @@ export default function TransparencyEditor() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const counts = Object.fromEntries(transparencyMetrics.map(({ key }) => [key, Number(form.get(key))]));
+    const days = String(form.get("targetDays") ?? "");
+    const withinTarget = String(form.get("resolvedWithinTarget") ?? "");
+    if (Boolean(days) !== Boolean(withinTarget)) {
+      setPublished(false);
+      setError("Enter both target fields, or leave both blank.");
+      return;
+    }
+    const resolutionTarget = days ? { days: Number(days), resolvedWithinTarget: Number(withinTarget) } : null;
     setSaving(true);
     setError("");
     setPublished(false);
@@ -47,7 +55,7 @@ export default function TransparencyEditor() {
       const response = await fetch("/api/admin/transparency", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(counts),
+        body: JSON.stringify({ counts, resolutionTarget }),
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
@@ -77,6 +85,20 @@ export default function TransparencyEditor() {
               </label>
             ))}
           </div>
+          <fieldset style={{ border: 0, borderTop: "1px solid #e3e8f0", margin: "28px 0 0", padding: "15px 0 0", minWidth: 0 }}>
+            <legend>Resolution target (optional)</legend>
+            <p id="resolution-target-help">Count how many of the issues in the Resolved total were closed within this many days of being received.</p>
+            <div className="admin-fields">
+              <label>
+                Target in days
+                <input name="targetDays" type="number" min={1} max={365} step={1} defaultValue={report?.resolutionTarget?.days} aria-describedby="resolution-target-help" disabled={saving} />
+              </label>
+              <label>
+                Resolved within target
+                <input name="resolvedWithinTarget" type="number" min={0} max={maxTransparencyCount} step={1} defaultValue={report?.resolutionTarget?.resolvedWithinTarget} aria-describedby="resolution-target-help" disabled={saving} />
+              </label>
+            </div>
+          </fieldset>
           <div className="admin-form-footer">
             <button type="submit" className="admin-primary" disabled={saving}>{saving ? "Publishing…" : "Publish figures"}</button>
           </div>
