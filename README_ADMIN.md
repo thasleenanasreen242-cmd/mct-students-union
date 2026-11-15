@@ -2,6 +2,13 @@
 
 This project includes a live content-management dashboard at `/admin` for a **single designated Super Admin**. It uses Clerk (authentication), Neon Postgres (content records), and Vercel Blob (public PDFs and images). Unconfigured deployments deny admin access. No API credential belongs in source code or public chat.
 
+## Admin Preview with Neon
+
+1. Connect the Neon database to the Vercel **Preview** environment. Confirm that the project has a Preview variable named `DATABASE_URL`.
+2. Create a new Preview deployment from the `admin-preview` Git branch after connecting Neon.
+3. In Neon, select the database branch used by that deployment and run [the admin schema](db/admin-schema.sql) in its SQL Editor. If automatic Neon branching is enabled, use the branch associated with the new deployment.
+4. Open `/admin` on the Preview deployment and save a draft notice. Refresh the page to verify that the draft persists.
+
 ## 1. Connect the three services to the existing Vercel project
 
 In Vercel: `brandpilot` → `mct-students-union` → **Storage / Marketplace / Integrations**:
