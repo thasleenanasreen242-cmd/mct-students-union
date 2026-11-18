@@ -29,7 +29,17 @@ export default async function TransparencyFigures({ full = false }: { full?: boo
   const metrics = full ? transparencyMetrics : transparencyMetrics.slice(0, 3);
 
   return (
-    <div className={styles.panel}>
+    <div className={full ? `${styles.panel} ${styles.dashboard}` : styles.panel}>
+      {full && (
+        <div className={styles.dashboardHeading}>
+          <h2>At a glance</h2>
+          {report ? (
+            <p>Updated <time dateTime={report.updatedAt}>{dateFormat.format(new Date(report.updatedAt))}</time></p>
+          ) : (
+            <p>Awaiting the first verified figures.</p>
+          )}
+        </div>
+      )}
       <dl className={styles.metrics}>
         {metrics.map(({ key, label, icon }) => (
           <div className={styles.metric} key={key}>
@@ -65,18 +75,16 @@ export default async function TransparencyFigures({ full = false }: { full?: boo
           </ul>
         </section>
       )}
-      <div className={styles.footer}>
+      {!full && <div className={styles.footer}>
         {report ? (
           <p>Updated <time dateTime={report.updatedAt}>{dateFormat.format(new Date(report.updatedAt))}</time></p>
         ) : (
           <p>Awaiting the first verified figures.</p>
         )}
-        {!full && (
-          <Link href="/transparency" className={styles.browse}>
-            View transparency dashboard <ActionArrow direction="right" />
-          </Link>
-        )}
-      </div>
+        <Link href="/transparency" className={styles.browse}>
+          View transparency dashboard <ActionArrow direction="right" />
+        </Link>
+      </div>}
     </div>
   );
 }

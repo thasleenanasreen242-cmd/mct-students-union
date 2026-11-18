@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ActionArrow from "../components/ActionArrow";
+import CourtIcon from "../components/CourtIcon";
 import TransparencyFigures from "../components/TransparencyFigures";
-import "../connect.css";
-import "../modern-refresh.css";
+import styles from "./transparency.module.css";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -14,25 +14,27 @@ export const metadata: Metadata = {
 
 export default function TransparencyPage() {
   return (
-    <main id="main-content" tabIndex={-1} className="connect">
-      <header className="nav">
-        <div className="wrap navinner">
-          <Link className="union-identity" href="/" aria-label="MCT Students’ Union home">
-            <strong>MCT <em>STUDENTS&apos; UNION</em></strong>
+    <main id="main-content" tabIndex={-1} className={styles.page}>
+      <header className={styles.header}>
+        <div className={styles.wrap}>
+          <Link className={styles.brand} href="/" aria-label="MCT Students’ Union home">
+            <img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="" width="35" height="40" />
+            <span>MCT <strong>STUDENTS&apos; UNION</strong></span>
           </Link>
-          <Link className="navbtn" href="/#transparency"><ActionArrow direction="left" /> Back home</Link>
+          <Link className={styles.back} href="/#transparency"><ActionArrow direction="left" /> Back home</Link>
         </div>
       </header>
-      <section className="innerhero">
-        <div className="wrap">
-          <div className="eyebrow">UNION TRANSPARENCY</div>
-          <h1>Accountability, made visible.</h1>
-          <p>Verified totals for student issues, programmes and welfare initiatives.</p>
-        </div>
-      </section>
-      <section className="section" aria-label="Published transparency figures">
-        <div className="wrap"><TransparencyFigures full /></div>
-      </section>
+      <div className={styles.wrap}>
+        <section className={styles.hero} aria-labelledby="transparency-title">
+          <div>
+            <div className={styles.eyebrow}>Union transparency</div>
+            <h1 id="transparency-title">Accountability,<br /> made visible.</h1>
+            <p>Verified totals for student issues, programmes and welfare initiatives.</p>
+          </div>
+          <div className={styles.heroIcon} aria-hidden="true"><CourtIcon name="landmark" /></div>
+        </section>
+        <TransparencyFigures full />
+      </div>
     </main>
   );
 }

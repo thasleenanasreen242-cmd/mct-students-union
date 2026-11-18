@@ -88,3 +88,25 @@
 @media (max-width: 600px) {
   .performance .rateGrid { grid-template-columns: 1fr; }
 }
+
+.dashboard.panel { padding: 0; border: 0; border-radius: 0; background: transparent; }
+.dashboardHeading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 5px 14px; margin-bottom: 14px; }
+.dashboardHeading h2 { margin: 0; color: #102941; font-size: clamp(20px, 3vw, 27px); letter-spacing: -.02em; }
+.dashboardHeading p { margin: 0; color: #53657d; font-size: 13px; }
+.dashboard .metric { padding: clamp(14px, 2vw, 22px); border-radius: 13px; }
+.dashboard .icon { background: #fce8ee; color: #a41436; }
+.dashboard .metric dd { letter-spacing: -.035em; }
+
+.dashboard .performance {
+  border: 1px solid #e1e7ef;
+  background: #fff;
+  color: #102941;
+}
+
+.dashboard .performanceHeading h2, .dashboard .rateHeading h3 { color: #102941; }
+.dashboard .performanceHeading p, .dashboard .rate p { color: #53657d; }
+.dashboard .rate { border-color: #e4e9f0; background: #f7f9fc; }
+.dashboard .rateHeading strong { color: #a41436; }
+.dashboard .rate meter::-webkit-meter-bar { background: #e6ebf2; }
+.dashboard .rate meter::-webkit-meter-optimum-value { background: #a41436; }
+.dashboard .rate meter::-moz-meter-bar { background: #a41436; }
