@@ -1,4 +1,4 @@
-import Link from "next/link";
+import CtaLink from "./CtaLink";
 import { publicItems, type ContentKind } from "../../lib/union-content";
 
 const labels: Record<ContentKind,string> = {notice:"Notices",library:"Library resources",event:"Events",activity:"Union activities",office_bearer:"Office-bearers"};
@@ -14,8 +14,8 @@ export async function PublishedUnionContent({kind,limit}:{kind:ContentKind;limit
       <h3>{item.title}</h3>{item.role&&<strong className="published-role">{item.role}</strong>}
       {item.summary&&<p>{item.summary}</p>}{item.body&&<p className="published-body">{item.body}</p>}
       {item.starts_at&&<time dateTime={item.starts_at}>{new Date(item.starts_at).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:kind==="event"?"short":undefined})}</time>}
-      {item.media_url&&<a target="_blank" rel="noopener noreferrer" href={item.media_url}>{item.media_type==="application/pdf"?"Open PDF resource ↗":"View attachment ↗"}</a>}
+      {item.media_url&&<CtaLink variant="secondary" direction="up-right" target="_blank" rel="noopener noreferrer" href={item.media_url}>{item.media_type==="application/pdf"?"Open PDF resource":"View attachment"}</CtaLink>}
     </article>)}</div>
-    {limit&&entries.length===limit&&<p><Link href={`/${routes[kind]}`}>View all {labels[kind].toLowerCase()} →</Link></p>}
+    {limit&&entries.length===limit&&<p><CtaLink variant="secondary" href={`/${routes[kind]}`}>View all {labels[kind].toLowerCase()}</CtaLink></p>}
   </section>;
 }

@@ -1,6 +1,5 @@
-import Link from "next/link";
+import CtaLink from "./CtaLink";
 import { publicItems } from "../../lib/union-content";
-import ActionArrow from "./ActionArrow";
 import CourtIcon from "./CourtIcon";
 import styles from "./WeekAhead.module.css";
 
@@ -54,9 +53,9 @@ export default async function WeekAhead() {
                       </details>
                     )}
                     {event.media_url && (
-                      <a className={styles.attachment} href={event.media_url} target="_blank" rel="noopener noreferrer">
-                        {imageUrl ? "View image" : event.media_type === "application/pdf" ? "Open PDF" : "View attachment"} <ActionArrow />
-                      </a>
+                      <CtaLink className={styles.attachment} variant="secondary" direction="up-right" href={event.media_url} target="_blank" rel="noopener noreferrer">
+                        {imageUrl ? "View image" : event.media_type === "application/pdf" ? "Open PDF" : "View attachment"}
+                      </CtaLink>
                     )}
                   </div>
                   {imageUrl && <img className={styles.image} src={imageUrl} alt="" loading="lazy" />}
@@ -69,7 +68,7 @@ export default async function WeekAhead() {
         <p className={styles.empty}>No events to display right now.</p>
       )}
       <div className={styles.footer}>
-        <Link className={styles.browse} href="/events">Browse events <ActionArrow direction="right" /></Link>
+        <CtaLink href="/events">Browse events</CtaLink>
       </div>
     </div>
   );
