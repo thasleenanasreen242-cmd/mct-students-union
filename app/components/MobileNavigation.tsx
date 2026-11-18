@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useRef, type KeyboardEvent } from "react";
 import ActionArrow from "./ActionArrow";
-import CtaLink from "./CtaLink";
 import CourtIcon, { type CourtIconName } from "./CourtIcon";
 import styles from "./MobileNavigation.module.css";
 
@@ -59,9 +58,11 @@ export default function MobileNavigation({ links }: { links: NavigationLink[] })
             </li>
           ))}
         </ul>
-        <CtaLink className={styles.support} stretch href="/student-support" onNavigate={() => { if (menu.current) menu.current.open = false; }}>
-          Student support
-        </CtaLink>
+        <Link className={styles.support} href="/student-support" onNavigate={() => { if (menu.current) menu.current.open = false; }}>
+          <span className={styles.icon}><CourtIcon name="shield" /></span>
+          <span>Student support</span>
+          <ActionArrow />
+        </Link>
       </nav>
     </details>
   );

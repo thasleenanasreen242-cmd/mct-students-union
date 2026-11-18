@@ -444,9 +444,55 @@ html { scroll-behavior: auto !important; }
  .connect #quick-access a.card:after{font-size:90px!important;bottom:31px!important}
 }
 
-/* Keep the main grievance action comfortably sized on narrow screens. */
-.connect #grievance a.grievance-whatsapp[data-cta] {
+/* WhatsApp action in the homepage grievance section. */
+.connect #grievance .grievance-whatsapp {
+ display: grid;
+ grid-template-columns: auto minmax(0, 1fr) auto;
+ align-items: center;
+ gap: clamp(10px, 2vw, 16px);
  width: min(100%, 25rem);
- min-height: 62px;
- margin-top: 16px;
+ min-height: 76px;
+ margin-top: 22px;
+ padding: 12px;
+ border: 1px solid #dce4ef;
+ border-radius: 18px;
+ background: linear-gradient(120deg, #fff 58%, #fff5f7);
+ color: #122a44;
+ box-shadow: 0 7px 20px #122a440d;
+ transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.connect #grievance .grievance-whatsapp-icon,
+.connect #grievance .grievance-whatsapp-arrow {
+ display: grid;
+ place-items: center;
+}
+
+.connect #grievance .grievance-whatsapp-icon {
+ width: clamp(38px, 11vw, 48px);
+ aspect-ratio: 1;
+ border-radius: 13px;
+ background: #e4f7ed;
+ color: #096047;
+}
+
+.connect #grievance .grievance-whatsapp-icon svg { width: 23px; height: 23px; }
+.connect #grievance .grievance-whatsapp-copy { display: grid; gap: 4px; min-width: 0; }
+.connect #grievance .grievance-whatsapp-copy strong { font-size: clamp(15px, 2.5vw, 18px); font-weight: 800; line-height: 1.2; }
+.connect #grievance .grievance-whatsapp-copy > span { color: #53657d; font-size: 13px; line-height: 1.3; }
+
+.connect #grievance .grievance-whatsapp-arrow {
+ width: clamp(32px, 9vw, 40px);
+ aspect-ratio: 1;
+ border-radius: 50%;
+ background: #a41436;
+ color: #fff;
+}
+
+.connect #grievance .grievance-whatsapp-arrow svg { width: 17px; height: 17px; }
+.connect #grievance .grievance-whatsapp:hover { border-color: #d09aa9; box-shadow: 0 9px 24px #122a4415; }
+.connect #grievance .grievance-whatsapp:focus-visible { outline: 2px solid #a41436; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+ .connect #grievance .grievance-whatsapp { transition: none; }
 }

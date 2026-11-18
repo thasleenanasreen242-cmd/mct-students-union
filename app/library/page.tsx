@@ -1,4 +1,3 @@
-import CtaLink from "../components/CtaLink";
 import "../connect.css";
 import "../instagram-3d.css";
 import "../premium-type.css";
@@ -40,7 +39,7 @@ export default function LibraryPage() {
             <img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56" />
             <span><strong>MCT <em>STUDENTS&apos; UNION</em></strong><small>COLLEGE OF LEGAL STUDIES</small></span>
           </Link>
-          <CtaLink variant="secondary" direction="left" href="/">Back home</CtaLink>
+          <Link className="navbtn" href="/"><ActionArrow direction="left" /> Back home</Link>
         </div>
       </header>
 
@@ -65,8 +64,8 @@ export default function LibraryPage() {
               <h3>Question papers, study materials &amp; model answers</h3>
               <p>Access shared collections of previous year papers, study materials and model answers on Google Drive.</p>
               <div className="library-resource-links">
-                <CtaLink variant="secondary" stretch href="https://drive.google.com/drive/folders/1Cm4hUJZwqSd4bXYS9HGHqbJxnrgSCEUQ" target="_blank" rel="noopener noreferrer">Study Resources 01</CtaLink>
-                <CtaLink variant="secondary" stretch href="https://drive.google.com/drive/folders/16K7BELHTotsZm7wT0GLx05qLvmnlLAjN" target="_blank" rel="noopener noreferrer">Study Resources 02</CtaLink>
+                <a href="https://drive.google.com/drive/folders/1Cm4hUJZwqSd4bXYS9HGHqbJxnrgSCEUQ" target="_blank" rel="noopener noreferrer">Study Resources 01 <span aria-hidden="true"><ActionArrow /></span></a>
+                <a href="https://drive.google.com/drive/folders/16K7BELHTotsZm7wT0GLx05qLvmnlLAjN" target="_blank" rel="noopener noreferrer">Study Resources 02 <span aria-hidden="true"><ActionArrow /></span></a>
               </div>
             </article>
             <article className="library-folder">
@@ -74,14 +73,14 @@ export default function LibraryPage() {
               <h3>Bare Acts &amp; judgments</h3>
               <p>Read the texts of key Indian laws directly from the Government of India’s India Code collection.</p>
               <div className="library-resource-links library-bare-act-links" aria-label="Official Bare Act PDFs">
-                {bareActs.map(act => <CtaLink variant="secondary" stretch href={act.href} key={act.name} target="_blank" rel="noopener noreferrer">{act.name}</CtaLink>)}
+                {bareActs.map(act => <a href={act.href} key={act.name} target="_blank" rel="noopener noreferrer">{act.name}<span aria-hidden="true"><ActionArrow /></span></a>)}
               </div>
               <div className="library-source-note">Official government PDFs · <a href="https://indiacode.gov.in/" target="_blank" rel="noopener noreferrer">Find a document on India Code</a> if a PDF doesn’t open · Judgments coming later</div>
             </article>
           </div>
           <div style={{marginTop:32}}><h2>Union-managed PDF collection</h2><p>Study documents uploaded by authorised Union administration.</p><PublishedUnionContent kind="library" /></div>
           <p className="library-access-note">Study-material links open external Google Drive folders; access depends on the folder owners’ sharing permissions. Bare Act links open official government documents from India Code or the Ministry of Home Affairs. Check the latest amendments and commencement provisions when using legal texts.</p>
-          <p className="library-return"><CtaLink variant="secondary" direction="left" href="/">Return to Students’ Union</CtaLink></p>
+          <p className="library-return"><Link className="btn" href="/"><ActionArrow direction="left" /> Return to Students’ Union</Link></p>
         </div>
       </section>
       <footer className="footer"><div className="wrap"><div className="logo">MCT <span>STUDENTS&apos; UNION</span></div><p>Learn · Lead · Belong</p><div className="footerlinks"><a href="https://mctlawcollege.org/" target="_blank" rel="noopener noreferrer">Official college website <ActionArrow /></a></div></div></footer>
