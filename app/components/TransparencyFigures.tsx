@@ -26,7 +26,7 @@ export default async function TransparencyFigures({ full = false }: { full?: boo
       basis: "resolved issues",
     });
   }
-  const metrics = full ? transparencyMetrics : transparencyMetrics.slice(0, 3);
+  const axisMax = counts ? Math.max(1, ...Object.values(counts)) : 1;
 
   return (
     <div className={full ? `${styles.panel} ${styles.dashboard}` : styles.panel}>
@@ -40,15 +40,40 @@ export default async function TransparencyFigures({ full = false }: { full?: boo
           )}
         </div>
       )}
-      <dl className={styles.metrics}>
-        {metrics.map(({ key, label, icon }) => (
-          <div className={styles.metric} key={key}>
-            <CourtIcon name={icon} className={styles.icon} />
-            <dt>{label}</dt>
-            <dd>{report ? numberFormat.format(report.counts[key]) : <span aria-label="Awaiting verified figures">—</span>}</dd>
+      {full ? (
+        counts && (
+          <div className={styles.chart}>
+            <dl className={styles.chartRows}>
+              {transparencyMetrics.map(({ key, label }) => (
+                <div className={styles.chartRow} key={key}>
+                  <dt>{label}</dt>
+                  <dd>
+                    <span className={styles.chartTrack} aria-hidden="true">
+                      <span style={{ width: `${counts[key] / axisMax * 100}%` }} />
+                    </span>
+                    <strong>{numberFormat.format(counts[key])}</strong>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <div className={styles.chartScale} aria-hidden="true">
+              <span />
+              <div><span>0</span><span>{numberFormat.format(axisMax)}</span></div>
+              <span />
+            </div>
           </div>
-        ))}
-      </dl>
+        )
+      ) : (
+        <dl className={styles.metrics}>
+          {transparencyMetrics.slice(0, 3).map(({ key, label, icon }) => (
+            <div className={styles.metric} key={key}>
+              <CourtIcon name={icon} className={styles.icon} />
+              <dt>{label}</dt>
+              <dd>{counts ? numberFormat.format(counts[key]) : <span aria-label="Awaiting verified figures">—</span>}</dd>
+            </div>
+          ))}
+        </dl>
+      )}
       {full && rates.length > 0 && (
         <section className={styles.performance} aria-labelledby="transparency-performance">
           <div className={styles.performanceHeading}>

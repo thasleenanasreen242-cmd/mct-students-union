@@ -93,9 +93,50 @@
 .dashboardHeading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 5px 14px; margin-bottom: 14px; }
 .dashboardHeading h2 { margin: 0; color: #102941; font-size: clamp(20px, 3vw, 27px); letter-spacing: -.02em; }
 .dashboardHeading p { margin: 0; color: #53657d; font-size: 13px; }
-.dashboard .metric { padding: clamp(14px, 2vw, 22px); border-radius: 13px; }
-.dashboard .icon { background: #fce8ee; color: #a41436; }
-.dashboard .metric dd { letter-spacing: -.035em; }
+.chart {
+  --chart-label-width: minmax(150px, 25%);
+  --chart-value-width: 7.5rem;
+  --chart-gap: 14px;
+  padding: clamp(16px, 3vw, 30px);
+  border: 1px solid #e1e7ef;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px #142b4410;
+}
+
+.chartRows { display: grid; gap: 14px; margin: 0; }
+
+.chartRow {
+  display: grid;
+  grid-template-columns: var(--chart-label-width) minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--chart-gap);
+}
+
+.chartRow dt { color: #304961; font-size: 14px; font-weight: 750; }
+.chartRow dd { display: grid; grid-template-columns: minmax(0, 1fr) var(--chart-value-width); align-items: center; gap: var(--chart-gap); margin: 0; }
+.chartRow strong { color: #102941; font-size: 15px; font-variant-numeric: tabular-nums; text-align: right; }
+.chartTrack { display: block; height: 12px; border-radius: 4px; background: #f1e8ee; }
+.chartTrack > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #aa173c, #d63558); }
+
+.chartScale {
+  display: grid;
+  grid-template-columns: var(--chart-label-width) minmax(0, 1fr) var(--chart-value-width);
+  gap: var(--chart-gap);
+  margin-top: 9px;
+  color: #53657d;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chartScale > div { display: flex; justify-content: space-between; }
+
+@media (max-width: 640px) {
+  .chart { --chart-value-width: 6.5rem; --chart-gap: 9px; }
+  .chartRow { grid-template-columns: 1fr; row-gap: 4px; }
+  .chartScale { grid-template-columns: minmax(0, 1fr) var(--chart-value-width); }
+  .chartScale > span:first-child { display: none; }
+}
 
 .dashboard .performance {
   border: 1px solid #e1e7ef;
