@@ -1,0 +1,79 @@
+.page {
+  min-height: 100vh;
+  padding-bottom: clamp(70px, 9vw, 120px);
+  color: #102941;
+  background: #f5f7fb;
+}
+
+.wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+
+.header {
+  border-bottom: 1px solid #dfe6ef;
+  background: #fff;
+}
+
+.header .wrap {
+  display: flex;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #102941;
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.brand img { object-fit: contain; flex: none; }
+.brand strong { color: #a41436; }
+
+.back {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #dfe6ef;
+  border-radius: 9px;
+  color: #102941;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.back:hover { background: #fcebf0; border-color: #ecc7d3; }
+.page a:focus-visible { outline: 2px solid #a41436; outline-offset: 3px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  margin: clamp(18px, 4vw, 38px) 0 clamp(22px, 4vw, 38px);
+  padding: clamp(24px, 5vw, 58px);
+  border-radius: clamp(16px, 3vw, 26px);
+  background: radial-gradient(ellipse at 100% 95%, #772543, transparent 60%), linear-gradient(115deg, #0a1e34, #153752);
+  color: #fff;
+}
+
+.eyebrow { color: #ffc1d0; font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.hero h1 { margin: 12px 0; color: #fff; font-size: clamp(32px, 6vw, 64px); line-height: 1; letter-spacing: -.045em; }
+.hero p { margin: 0; max-width: 37ch; color: #d8e3ef; font-size: clamp(14px, 2vw, 17px); }
+.heroIcon { display: grid; place-items: center; width: clamp(90px, 16vw, 180px); aspect-ratio: 1; border: 1px solid #ffffff3d; border-radius: 50%; background: #ffffff0e; color: #ffc1d0; }
+.heroIcon svg { width: 60%; height: 60%; }
+
+@media (max-width: 520px) {
+  .wrap { width: calc(100% - 28px); }
+  .brand { font-size: 12px; }
+  .back { padding-inline: 8px; font-size: 12px; }
+  .hero { grid-template-columns: 1fr; }
+  .heroIcon { display: none; }
+}
