@@ -72,7 +72,7 @@ export default function Home(){
        BrandPilot <ActionArrow />
      </a>
      <a className={styles.instagram} href="https://www.instagram.com/brandpilotcloud/" target="_blank" rel="noopener noreferrer">
-       BrandPilot Instagram <ActionArrow />
+       Follow BrandPilot <ActionArrow />
      </a>
    </div>
  </div></footer>
