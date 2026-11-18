@@ -1,0 +1,7 @@
+@media (max-width: 800px) {
+  .connect .home-nav .navinner {
+    position: relative;
+    flex-wrap: nowrap;
+    padding-right: 0;
+  }
+}
