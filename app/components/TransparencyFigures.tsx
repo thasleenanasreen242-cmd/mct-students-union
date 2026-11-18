@@ -1,7 +1,6 @@
-import Link from "next/link";
+import CtaLink from "./CtaLink";
 import { publishedTransparency } from "../../lib/published-transparency";
 import { transparencyMetrics } from "../../lib/transparency";
-import ActionArrow from "./ActionArrow";
 import CourtIcon from "./CourtIcon";
 import styles from "./TransparencyFigures.module.css";
 
@@ -106,9 +105,7 @@ export default async function TransparencyFigures({ full = false }: { full?: boo
         ) : (
           <p>Awaiting the first verified figures.</p>
         )}
-        <Link href="/transparency" className={styles.browse}>
-          View transparency dashboard <ActionArrow direction="right" />
-        </Link>
+        <CtaLink href="/transparency">View transparency dashboard</CtaLink>
       </div>}
     </div>
   );

@@ -1,6 +1,6 @@
+import CtaLink from "../components/CtaLink";
 import type { Metadata } from "next";
 import Link from "next/link";
-import ActionArrow from "../components/ActionArrow";
 import CourtIcon from "../components/CourtIcon";
 import TransparencyFigures from "../components/TransparencyFigures";
 import styles from "./transparency.module.css";
@@ -21,7 +21,7 @@ export default function TransparencyPage() {
             <img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="" width="35" height="40" />
             <span>MCT <strong>STUDENTS&apos; UNION</strong></span>
           </Link>
-          <Link className={styles.back} href="/#transparency"><ActionArrow direction="left" /> Back home</Link>
+          <CtaLink variant="secondary" direction="left" href="/#transparency">Back home</CtaLink>
         </div>
       </header>
       <div className={styles.wrap}>

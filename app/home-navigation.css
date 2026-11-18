@@ -1,4 +1,6 @@
 @media (max-width: 800px) {
+  .connect .home-nav a.home-support-cta[data-cta] { display: none; }
+
   .connect .home-nav .navinner {
     position: relative;
     flex-wrap: nowrap;

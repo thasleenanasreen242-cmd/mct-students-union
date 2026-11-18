@@ -55,7 +55,7 @@
     list-style: none;
   }
 
-  .panel a {
+  .panel .links a {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
@@ -70,17 +70,15 @@
     line-height: 1.25;
   }
 
-  .panel a:hover, .panel a:focus-visible { background: #fce8ee; }
-  .panel a > svg { width: 13px; }
+  .panel .links a:hover, .panel .links a:focus-visible { background: #fce8ee; }
+  .panel .links a > svg { width: 13px; }
   .icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 7px; background: #fbe7ee; color: #a41436; }
   .icon svg { width: 17px; height: 17px; }
 
-  .panel .support { margin-top: 8px; padding-inline: 10px; background: #a41436; color: #fff; }
-  .panel .support:hover, .panel .support:focus-visible { background: #82102b; }
-  .support .icon { background: #ffffff24; color: #fff; }
+  .support { margin-top: 8px; }
 }
 
 @media (max-width: 360px) {
   .panel .links { grid-template-columns: 1fr; }
-  .panel a { min-height: 46px; }
+  .panel .links a { min-height: 46px; }
 }

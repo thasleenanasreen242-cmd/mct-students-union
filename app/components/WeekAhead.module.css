@@ -63,14 +63,10 @@
 .pinned { padding: 3px 8px; border-radius: 999px; background: #fce8ee; color: #9d1735; }
 .details { margin-top: 9px; }
 .details summary { cursor: pointer; color: #a41436; font-size: 13px; font-weight: 750; }
-.panel .attachment { display: inline-flex; align-items: center; gap: 5px; margin-top: 9px; color: #a41436; font-size: 13px; font-weight: 750; }
-.panel .attachment:hover, .details summary:hover { text-decoration: underline; }
 .image { display: block; width: 100%; max-height: 140px; grid-column: 2; object-fit: cover; border-radius: 10px; }
 
 .panel .empty { margin: 0; padding: 12px; color: #475b72; }
 .footer { display: flex; justify-content: flex-end; margin-top: 18px; }
-.panel .browse { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 18px; background: #a41436; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 750; }
-.panel .browse:hover { background: #83102b; }
 
 @media (min-width: 720px) {
   .card:has(.image) { grid-template-columns: 110px minmax(0, 1fr) minmax(130px, 22%); }
@@ -85,5 +81,6 @@
   .month { font-size: 11px; }
   .image { grid-column: 1 / -1; }
   .footer { margin-top: 12px; }
-  .panel .browse { width: 100%; }
 }
+
+.panel .attachment { margin-top: 10px; }
