@@ -50,8 +50,11 @@ export default function Home(){
  <section data-reveal className="section" id="grievance"><div className="wrap feature"><div><div className="eyebrow feature-eyebrow"><CourtIcon name="shield"/> 04 / STUDENT GRIEVANCE PORTAL</div><h2>Every concern deserves to be heard.</h2><p>Raise concerns about classrooms, examinations, hostels, infrastructure or student welfare. Open WhatsApp to send your concern directly to the designated contact number.</p>
  <Link className="grievance-whatsapp" href="https://wa.me/919496744513?text=Hello%2C%20I%20would%20like%20to%20raise%20a%20student%20concern.">
    <span className="grievance-whatsapp-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.4 11.6a8.4 8.4 0 0 1-12.1 7.5L3 20.5l1.5-5.1a8.4 8.4 0 1 1 15.9-3.8Z"/><path d="M8.6 8.3c-.5.2-.9.8-.9 1.5 0 2.5 3.2 5.7 5.8 6.1.7.1 1.5-.4 1.8-1l-2-1.2-1.1 1c-1.3-.5-2.3-1.5-2.9-2.9l.9-1.1-1.6-2.4Z"/></svg></span>
-   <span>Send a grievance on WhatsApp</span>
-   <ActionArrow />
+   <span className="grievance-whatsapp-copy">
+     <strong>Send a grievance</strong>
+     <span>Opens WhatsApp</span>
+   </span>
+   <span className="grievance-whatsapp-arrow"><ActionArrow /></span>
  </Link>
  </div><div className="featurebox"><div className="service-art"><CourtIcon name="shield"/></div><span className="status">WHATSAPP CONTACT</span><h3>Speak to your Union.</h3><p>01 — Choose a complaint category<br/>02 — Describe your concern<br/>03 — Review and send in WhatsApp</p></div></div></section>
  <section data-reveal className="section" id="transparency"><div className="wrap"><Heading icon="landmark" eyebrow="UNION TRANSPARENCY" title="Accountability, made visible." description="Verified totals for issues raised by students and the Union’s progress in addressing them."/><TransparencyFigures /></div></section>
