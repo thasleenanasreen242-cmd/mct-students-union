@@ -1,4 +1,3 @@
-import CtaLink from "../components/CtaLink";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -23,9 +22,9 @@ const questions = [
 
 export default function FAQPage() {
   return <main id="main-content" tabIndex={-1} className="connect">
-    <header className="nav"><div className="wrap navinner"><Link className="union-identity" href="/"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56"/><span><strong>MCT <em>STUDENTS&apos; UNION</em></strong><small>COLLEGE OF LEGAL STUDIES</small></span></Link><CtaLink variant="secondary" direction="left" href="/">Back home</CtaLink></div></header>
+    <header className="nav"><div className="wrap navinner"><Link className="union-identity" href="/"><img src="https://mctlawcollege.org/assets/images/branding/logo-new.webp" alt="MCT College of Legal Studies crest" width="49" height="56"/><span><strong>MCT <em>STUDENTS&apos; UNION</em></strong><small>COLLEGE OF LEGAL STUDIES</small></span></Link><Link className="navbtn" href="/">Back to home</Link></div></header>
     <section className="innerhero"><div className="wrap"><div className="breadcrumbs"><Link href="/">Home</Link> / Frequently asked questions</div><div className="eyebrow">HELP CENTRE / QUICK ANSWERS</div><h1>Frequently asked questions</h1><p>Find clear answers about student support, the digital library, Union services and this website.</p></div></section>
-    <section className="section"><div className="wrap faq-layout"><div className="faq-intro"><div className="eyebrow">NEED A HAND?</div><h2>Start with the answer you need.</h2><p>If your question is not covered here, visit the Student Support page to find the available contact route.</p><CtaLink href="/student-support">Go to student support</CtaLink></div><div className="faq-list">{questions.map((item,i)=><details className="faq-item" key={item.q}><summary><span className="faq-number">{String(i+1).padStart(2,"0")}</span><strong>{item.q}</strong><span className="faq-plus" aria-hidden="true">+</span></summary><p>{item.a}</p></details>)}</div></div></section>
+    <section className="section"><div className="wrap faq-layout"><div className="faq-intro"><div className="eyebrow">NEED A HAND?</div><h2>Start with the answer you need.</h2><p>If your question is not covered here, visit the Student Support page to find the available contact route.</p><Link className="btn" href="/student-support">Go to student support</Link></div><div className="faq-list">{questions.map((item,i)=><details className="faq-item" key={item.q}><summary><span className="faq-number">{String(i+1).padStart(2,"0")}</span><strong>{item.q}</strong><span className="faq-plus" aria-hidden="true">+</span></summary><p>{item.a}</p></details>)}</div></div></section>
     <footer className="footer"><div className="wrap"><div className="logo">MCT <span>STUDENTS&apos; UNION</span></div><div className="footerlinks"><Link href="/">Home</Link><Link href="/student-support">Student support</Link><Link href="/library">Library</Link><Link href="/suggestions">Suggestions</Link></div><div className="footerbottom">Independent student-led platform; not the official college website.</div></div></footer>
     <style>{`
       .faq-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:60px;align-items:start}
