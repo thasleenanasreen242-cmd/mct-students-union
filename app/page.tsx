@@ -16,7 +16,7 @@ import "./published.css";
 
 const navigation = [
   { href: "#college", label: "Our College", icon: "landmark" },
-  { href: "#quick-access", label: "Explore", icon: "scales" },
+  { href: "#quick-access", label: "Quick access", icon: "scales" },
   { href: "/library", label: "Library", icon: "book" },
   { href: "/transparency", label: "Transparency", icon: "scroll" },
   { href: "#activities", label: "Activities", icon: "laurel" },
