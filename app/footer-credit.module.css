@@ -1,0 +1,19 @@
+.credit {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  margin-top: 10px;
+  color: #c9d5e2;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.credit a {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.credit a:hover {
+  color: #ffb4c4;
+}
