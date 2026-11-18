@@ -1,19 +1,47 @@
 .credit {
+  grid-column: 1 / -1;
   display: grid;
-  justify-items: start;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 8px;
+  width: min(100%, 280px);
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px solid #395168;
+  border-radius: 14px;
+  background: #132b43;
   color: #c9d5e2;
   font-size: 13px;
   line-height: 1.5;
 }
 
-.credit a {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
+.credit a.website,
+.credit a.instagram {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-weight: 700;
+  text-decoration: none;
 }
 
-.credit a:hover {
-  color: #ffb4c4;
+.credit a.website {
+  background: #bd1b42;
+  color: #fff;
+  font-size: 15px;
+}
+
+.credit a.website:hover {
+  background: #aa173a;
+}
+
+.credit a.instagram {
+  border-color: #55718b;
+  color: #eef5fc;
+}
+
+.credit a.instagram:hover {
+  background: #203d58;
 }

@@ -67,8 +67,13 @@ export default function Home(){
  <section data-reveal className="section" id="this-week"><div className="wrap"><Heading icon="calendar" eyebrow="10 / THIS WEEK AT MCT" title="The week ahead." description="Confirmed campus events, academic dates and deadlines."/><WeekAhead /></div></section>
  <section data-reveal className="instagram-strip" aria-label="Students Union Instagram"><div className="wrap instagram-inner"><div className="instagram-copy"><span className="instagram-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg></span><div><span className="eyebrow">FOLLOW THE UNION</span><h2>Campus moments. Real connections.</h2><p>Follow student life, union activities and campus highlights on Instagram.</p></div></div><a className="instagram-cta" href="https://www.instagram.com/studentsunionmctlawcollege/" target="_blank" rel="noopener noreferrer">Follow on Instagram <span aria-hidden="true"><ActionArrow /></span></a></div></section><footer className="footer"><div className="wrap"><div className="logo">MCT <span>STUDENTS&apos; UNION</span></div><p>A permanent student-led digital campus platform for MCT College of Legal Studies.</p><div className="footerlinks"><Link href="https://wa.me/919496744513?text=Hello%2C%20I%20would%20like%20to%20raise%20a%20student%20concern.">Grievances</Link><Link href="/library">Library</Link><Link href="/transparency">Transparency</Link><Link href={suggestionWhatsApp}>Suggestions on WhatsApp</Link><Link href="/initiatives">Initiatives</Link><Link href="/faq">FAQs</Link><Link href="/student-support">Student support</Link><Link href="/admin">Administration</Link><a href="https://mctlawcollege.org/" target="_blank" rel="noopener noreferrer">Official college website <ActionArrow /></a></div><div className="footerbottom">© {new Date().getFullYear()} MCT Students’ Union · Independent student-led platform; not the official college website.</div>
    <div className={styles.credit}>
-     <span>Designed &amp; developed by <a href="https://brandpilotcloud.com" target="_blank" rel="noopener noreferrer">BrandPilot</a>.</span>
-     <a href="https://www.instagram.com/brandpilotcloud/" target="_blank" rel="noopener noreferrer">BrandPilot Instagram</a>
+     <span>Designed &amp; developed by</span>
+     <a className={styles.website} href="https://brandpilotcloud.com" target="_blank" rel="noopener noreferrer">
+       BrandPilot <ActionArrow />
+     </a>
+     <a className={styles.instagram} href="https://www.instagram.com/brandpilotcloud/" target="_blank" rel="noopener noreferrer">
+       BrandPilot Instagram <ActionArrow />
+     </a>
    </div>
  </div></footer>
  </main>
